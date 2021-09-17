@@ -1,0 +1,14 @@
+rand = 0x800B9BC0;
+bcopy = 0x800C1158;
+bzero = 0x800C49E8;
+memset = 0x800b71d4;
+memmove = 0x800bf74c;
+memcpy = 0x800bee24;
+memchr = 0x800bf6fc;
+strcmp = 0x800c3308;
+strcpy = 0x800bf86c;
+strncmp = 0x800c3288;
+strncpy = 0x800c1e30;
+strstr = 0x800bee64;
+
+func_800C1148 = 0x800C1148;

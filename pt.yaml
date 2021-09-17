@@ -1,0 +1,55 @@
+options:
+  platform:     psx
+  basename:     pt
+  # paths
+  base_path:    .
+  target_path:  pt.dat
+  asm_path:     asm/pt
+  asset_path:   assets/pt
+  src_path:     src/pt
+  # compiler
+  compiler: GCC
+  # disasm/linker
+  symbol_addrs_path:    symbol_addrs.pt.txt
+  undefined_syms_path:  undefined_syms.pt.txt
+  undefined_funcs_auto_path: undefined_funcs_auto.pt.txt
+  undefined_syms_auto_path: undefined_syms_auto.pt.txt
+  find_file_boundaries: yes
+  enable_ld_alignment_hack: yes
+segments:
+  - [0x0, header]       # 0x8000fa00
+  - [0x80, bin]
+  - name:  pt
+    type:  code
+    start: 0x00000800
+    vram:  0x80010200
+    subalign: 4
+    subsegments:
+      - [0x800, bin] # data
+      - [0xB82C, asm] # TBD if this is the real start
+      - [0x1B4F0, asm]
+      - [0x1DAF0, asm]
+      - [0x1DC20, asm]
+      - [0x1DCB0, asm]
+      - [0x1E620, c]
+      - [0x1E650, asm]
+      - [0x1E710, asm]
+      - [0x20E80, asm]
+      - [0x20ED0, asm]
+      - [0x20F20, asm]
+      - [0x20FA0, asm]
+      - [0x21010, asm]
+      - [0x212B0, asm]
+      - [0x26190, asm]
+      - [0x2B0E0, asm]
+      - [0x2B530, asm]
+      - [0x2B7A0, asm]
+      - [0x2B7D0, asm]
+      - [0x2CD60, asm]
+      - [0x2CD80, asm]
+      - [0x2CDD0, asm]
+      - [0x31C30, c]
+      - [0x31C9C, asm]
+      - [0x328C0, asm]
+      - [0x378B0, bin] # data?
+  - [0x74800] # end of file

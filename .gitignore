@@ -1,0 +1,25 @@
+# files
+
+*_auto*.txt
+*.ld
+*.ok
+
+*.dat
+sles_018.71
+*.str
+*.wad
+*.cnf
+PQ*
+
+
+# directories
+
+__pycache__/
+build/
+expected/
+junk/
+nonmatchings
+wad/
+
+asm/
+assets/

@@ -1,0 +1,26 @@
+options:
+  platform: psx
+  basename: sles_018
+# paths
+  base_path: .
+  target_path: sles_018.71
+  asm_path: sles_018/asm
+  asset_path: sles_018/assets
+  src_path: sles_018/src
+  # compiler
+  compiler: GCC
+  # disasm/linker
+  find_file_boundaries: yes
+  enable_ld_alignment_hack: yes
+segments:
+  - [0x00, header]
+  - [0x80, bin]
+  - name: bootloader
+    type: code
+    start: 0x800
+    vram:  0x80010200
+    subsegments:
+    - [0x800, bin] # data?
+    - [0xFF0, asm] # code?
+    - [0x5E00, bin] # data
+  - [0x7800] # end of file
