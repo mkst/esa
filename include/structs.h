@@ -33,11 +33,23 @@ typedef struct {
 } struct001;
 
 typedef struct {
-    /* 0x0   */ u8  pad0[0x2AC];
+    /* 0x0   */ u8  pad0[0x294];
+    /* 0x294 */ u8  unk294;
+    /* 0x295 */ u8  unk295;
+    /* 0x296 */ s16 unk296;
+    /* 0x298 */ u8  pad298[0x4];
+    /* 0x29C */ s16 unk29C;
+    /* 0x2A0 */ u8  pad29E[0xE];
     /* 0x2AC */ s16 unk2AC;
     /* 0x2AE */ u8  unk2AE[0x6];
     /* 0x2B4 */ s16 unk2B4;     // is this a union with struct000?
-} struct003;
+    /* 0x2B6 */ u8  pad2B6[0xA];
+    /* 0x2C0 */ u8  unk2C0;
+    /* 0x2C1 */ u8  unk2C1;
+    /* 0x2C2 */ u8  pad2C2[0x6];
+    /* 0x2C8 */ s16 unk2C8;
+    /* 0x2CC */ s32 unk2CC;
+} Animal;
 
 typedef struct {
     /* 0x0   */ u8  pad0[0x6];

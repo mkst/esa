@@ -36,7 +36,7 @@ INCLUDE_ASM(s32, "51374", func_80061688);
 //     arg0->unk290 = 1;
 // }
 
-void func_80061700(struct003 *arg0, s16 arg1) {
+void func_80061700(Animal *arg0, s16 arg1) {
     arg0->unk2AC = 6;
     arg0->unk2B4 = arg1;
     func_80061E74(arg0, arg1, -0x80, -1);
@@ -70,3 +70,31 @@ INCLUDE_ASM(s32, "51374", func_800619FC);
 INCLUDE_ASM(s32, "51374", func_80061A58);
 
 INCLUDE_ASM(s32, "51374", func_80061AB8);
+
+INCLUDE_ASM(s32, "51374", func_80061AF0);
+
+INCLUDE_ASM(s32, "51374", func_80061B68);
+
+INCLUDE_ASM(s32, "51374", func_80061B80);
+
+INCLUDE_ASM(s32, "51374", func_80061C60);
+
+INCLUDE_ASM(s32, "51374", func_80061D44);
+
+INCLUDE_ASM(s32, "51374", func_80061D9C);
+
+void func_80061E74(Animal *arg0, u16 arg1, s16 arg2, s16 arg3) {
+    arg0->unk2C8 = arg2;
+    arg0->unk2C1 = arg3;
+    arg0->unk2C0 = 5;
+    arg0->unk2CC = 0;
+    arg0->unk296 = arg1;
+    arg0->unk29C = arg2;
+    arg0->unk295 = arg3;
+    arg0->unk294 = 1;
+}
+
+INCLUDE_ASM(s32, "51374", func_80061EB0);
+
+// skill a/b handler
+INCLUDE_ASM(s32, "51374", func_8006202C);

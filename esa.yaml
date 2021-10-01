@@ -13,7 +13,7 @@ options:
   symbol_addrs_path:    symbol_addrs.esa.txt
   undefined_syms_path:  undefined_syms.esa.txt
   undefined_funcs_auto_path: undefined_funcs_auto.esa.txt
-  undefined_syms_auto_path: undefined_syms_auto.esa.txt
+  undefined_syms_auto_path:  undefined_syms_auto.esa.txt
   find_file_boundaries: yes
   enable_ld_alignment_hack: yes
 segments:
@@ -25,16 +25,18 @@ segments:
     vram:  0x80010200
     subalign: 4
     subsegments:
-      - [0x800, data] # (ro)data strings but getting treated as words
-      - [0x900, bin]
-      - [0x6FCC, bin] # Error: opcode not supported on this processor: mips1 (mips1) `movf $zero,$zero,$fcc0'
+      - [0x800, rodata] # (ro)data strings but getting treated as words
+      # - [0x6FCC, bin] # probably more data
       - [0x7650, asm]
       - [0x3F424, c]
       - [0x3FE5C, asm]
+      - [0x4346C, c]
+      - [0x434A4, asm]
       - [0x51374, c, 51374] # overlay2_7741B0 in sssv
-      - [0x520F0, asm]
+      - [0x52A54, asm]
+      - [0x534B0, asm]
       - [0xA3E60, asm]
-      - [0xA6C00, asm]
+      - [0xA6C00, c] # contains 'start' entrypoint
       - [0xA8EC0, asm]
       - [0xA8EF0, asm]
       - [0xA9180, asm]

@@ -122,6 +122,12 @@ $(BUILD_DIR)/src/pt/%.c.o: CPP_TARGET := -DTARGET_PT
 # e.g.
 $(BUILD_DIR)/src/esa/B2500.c.o: CC := $(CC_PSYQ_43)
 
+$(BUILD_DIR)/src/esa/A6C00.c.o: CC := $(CC_PSYQ_41)
+$(BUILD_DIR)/src/esa/A6C00.c.o: OPT_FLAGS := -O2
+
+
+$(BUILD_DIR)/src/esa/4346C.c.o: OPT_FLAGS := -O1
+
 # closer but not quite right
 $(BUILD_DIR)/src/pt/1E620.c.o: CC := $(CC_PSYQ_41)
 $(BUILD_DIR)/src/pt/1E620.c.o: OPT_FLAGS := -O1
