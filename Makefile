@@ -61,6 +61,7 @@ PYTHON          := python3
 WINE            := wine
 SED             := sed
 UNIX2DOS        := unix2dos
+GREP            := grep
 
 CPP             := cpp -P
 
@@ -85,7 +86,7 @@ AS_FLAGS        := -march=r3000 -mtune=r3000
 AS_FLAGS        += $(AS_INCLUDES)
 
 CPP_INCLUDES    := -Iinclude
-CPP_FLAGS       := -undef -Wall -lang-c
+CPP_FLAGS       := -undef -Wall -lang-c -fno-builtin -gstabs
 CPP_FLAGS       += -Dmips -D__GNUC__=2 -D__OPTIMIZE__ -D__mips__ -D__mips -Dpsx -D__psx__ -D__psx -D_PSYQ -D__EXTENSIONS__ -D_MIPSEL -D__CHAR_UNSIGNED__ -D_LANGUAGE_C -DLANGUAGE_C
 CPP_FLAGS       += $(CPP_INCLUDES)
 
@@ -125,8 +126,13 @@ $(BUILD_DIR)/src/esa/B2500.c.o: CC := $(CC_PSYQ_43)
 $(BUILD_DIR)/src/esa/A6C00.c.o: CC := $(CC_PSYQ_41)
 $(BUILD_DIR)/src/esa/A6C00.c.o: OPT_FLAGS := -O2
 
+$(BUILD_DIR)/src/esa/AF8E0.c.o: CC := $(CC_PSYQ_41)
+$(BUILD_DIR)/src/esa/AF8E0.c.o: OPT_FLAGS := -O2
+
 
 $(BUILD_DIR)/src/esa/4346C.c.o: OPT_FLAGS := -O1
+
+# $(BUILD_DIR)/src/esa/534B0.c.o: OPT_FLAGS := -O1
 
 # closer but not quite right
 $(BUILD_DIR)/src/pt/1E620.c.o: CC := $(CC_PSYQ_41)
