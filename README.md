@@ -4,7 +4,7 @@
 
 Proof-of-Concept decompilation of the PlayStation game Evo's Space Adventure.
 
-**NOTE:** This repo barely does anything interesting. It successfully matches **6** function written in C.
+**NOTE:** This repo barely does anything interesting. It successfully matches **11** function written in C.
 
 See the [Wiki](https://github.com/mkst/esa/wiki) for more information.
 

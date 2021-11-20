@@ -40,9 +40,7 @@ INCLUDE_ASM(s32, "A6C00", func_800B717C);
 //     }
 // }
 
-
-// INCLUDE_ASM(s32, "A6C00", memset);
-s32 memset(s8 *s, s8 c, s32 len) {
+s8 *memset(s8 *s, s8 c, s32 len) {
     s8 *p;
     if ((s == NULL) || (len <= 0)) {
         p = NULL;

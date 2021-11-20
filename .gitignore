@@ -10,7 +10,7 @@ sles_018.71
 *.wad
 *.cnf
 PQ*
-
+ctx.c
 
 # directories
 

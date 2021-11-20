@@ -10,6 +10,11 @@ strcpy = 0x800bf86c;
 strncmp = 0x800c3288;
 strncpy = 0x800c1e30;
 strstr = 0x800bee64;
+memclr = 0x800BF558;
+
+InterruptCallback = 0x800ABC08;
+trapIntrDMA = 0x800BF32C;
+setIntrDMA = 0x800BF4AC;
 
 LoadAndExecute = 0x800b2a78;
 sprintf = 0x800b2a88;
@@ -29,6 +34,7 @@ CdInit2 = 0x800b8d00;
 GetTPage = 0x800b8d10;
 SetDefDrawEnv = 0x800b8d50;
 VSync = 0x800b8e10;
+v_wait = 0x800B8F88;
 SetDefDispEnv = 0x800b9020;
 __subsf3 = 0x800b9080;
 PushMatrix = 0x800b90e0;

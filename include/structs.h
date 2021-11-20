@@ -70,4 +70,9 @@ typedef struct {
     /* 0x184 */ s16 unk184;
 } struct004;
 
+typedef struct {
+    /* 0x0 */ u8 pad0[0x154];
+    /* 0x154 */ u8 unk154;
+} Object; // struct071? assume size == 0x270
+
 #endif

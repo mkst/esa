@@ -28,13 +28,23 @@ segments:
       - [0x800, rodata] # (ro)data strings but getting treated as words
       # - [0x6FCC, bin] # probably more data
       - [0x7650, asm]
-      - [0x3F424, c]
-      - [0x3FE5C, asm]
-      - [0x4346C, c]
+      - [0x3F424, c, 3F424] # part of overlay2_7070A0
+      - [0x3FE5C, c, 3FE5C]
+      - [0x4346C, c, 4346C]
       - [0x434A4, asm]
       - [0x51374, c, 51374] # overlay2_7741B0 in sssv
       - [0x52A54, asm]
-      - [0x534B0, asm]
+      - [0x534B0, c, 534B0]
+      - [0x53778, asm] #
+      - [0x54C14, asm]
+  - name:  lib
+    type:  code
+    start: 0x000A3DD0
+    vram:  0x800B37D0
+    subalign: 8
+    subsegments:
+      - [0xA3DD0, rodata]
+      - [0xA3DD8, asm]
       - [0xA3E60, asm]
       - [0xA6C00, c] # contains 'start' entrypoint
       - [0xA8EC0, asm]
@@ -58,12 +68,12 @@ segments:
       - [0xAA1C0, asm]
       - [0xAA3B0, asm]
       - [0xAA5C0, asm]
-      - [0xAF8E0, asm]
+      - [0xAF8E0, c, AF8E0] # LIBETC
       - [0xAFB80, asm]
       - [0xB2500, c]
       - [0xB2570, asm]
       - [0xB2630, asm]
-      - [0xB7C88, bin] # too early but.. alignment pain
+      - [0xB7C80, bin] # too early but.. alignment pain
       - [0xD44B0, bin] # data
   - [0xD5520, bin, trailer]
   - [0x11D000] # end of file
