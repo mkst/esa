@@ -31,7 +31,6 @@ INCLUDE_ASM(s32, "A6C00", RotMatrixZYX_gte);
 INCLUDE_ASM(s32, "A6C00", start);
 
 INCLUDE_ASM(s32, "A6C00", func_800B717C);
-
 // void func_800B717C(void) {
 //     s32 pad[1];
 //     if (D_800DE2B8 == 0) {

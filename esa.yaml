@@ -28,6 +28,11 @@ segments:
       - [0x800, rodata] # (ro)data strings but getting treated as words
       # - [0x6FCC, bin] # probably more data
       - [0x7650, asm]
+      - [0xC000, c, C000]
+      - [0xD460, c, D460]
+      - [0xD9C4, asm]
+      - [0xED10, asm, audio] # some spu related stuff
+      - [0xF800, asm]
       - [0x3F424, c, 3F424] # part of overlay2_7070A0
       - [0x3FE5C, c, 3FE5C]
       - [0x4346C, c, 4346C]
@@ -37,6 +42,19 @@ segments:
       - [0x534B0, c, 534B0]
       - [0x53778, asm] #
       - [0x54C14, asm]
+      - [0x71FB0, asm]
+      - [0x7D9FC, asm, bear]
+      - [0x7FDDC, asm, mouse]
+      - [0x80970, asm]
+      - [0x817D4, asm, husky]
+      - [0x83AAC, asm, polar_bear]
+      - [0x85C8C, asm, tortoise]
+      - [0x88A50, asm, chameleon]
+      - [0x8D00C, asm, desert_fox]
+      - [0x8DF70, asm, vulture]
+      - [0x8F850, asm, seagull] # +/- offset
+      - [0x90924, asm, parrot]
+      - [0x90D0C, asm]
   - name:  lib
     type:  code
     start: 0x000A3DD0

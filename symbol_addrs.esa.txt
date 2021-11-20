@@ -1,3 +1,4 @@
+abs = 0x800B5C54;
 rand = 0x800B9BC0;
 bcopy = 0x800C1158;
 bzero = 0x800C49E8;
@@ -149,5 +150,10 @@ _SpuInit = 0x800c2a28;
 _SpuSetAnyVoice = 0x800c44a8;
 
 
-
 func_800C1148 = 0x800C1148;
+
+
+load_animal = 0x800817B4;
+create_particle_effect = 0x800ABBB0;
+racing_mouse_turbo = 0x80090330;
+play_sound_effect_at_location = 0x8001BA00;
