@@ -94,7 +94,7 @@ ifdef PERMUTER
 CPP_FLAGS       += -DPERMUTER
 endif
 
-CC_FLAGS        := -quiet -G0 -Wall
+CC_FLAGS        := -quiet -G0 -Wall -fno-builtin
 OPT_FLAGS       := -O2
 
 
