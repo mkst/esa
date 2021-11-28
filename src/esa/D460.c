@@ -7,9 +7,9 @@ __asm__(
   ".endm"
 );
 
-INCLUDE_ASM(s32, "D460", func_8001CE60);
+INCLUDE_ASM("asm/esa/nonmatchings/D460", func_8001CE60);
 
-INCLUDE_ASM(s32, "D460", func_8001CE8C);
+INCLUDE_ASM("asm/esa/nonmatchings/D460", func_8001CE8C);
 
 u16 func_8001CEB4(void) {
     return rand();
@@ -79,7 +79,7 @@ s16 func_8001CFEC(s16 arg0, s16 arg1) {
     return res;
 }
 
-INCLUDE_ASM(s32, "D460", func_8001D140);
+INCLUDE_ASM("asm/esa/nonmatchings/D460", func_8001D140);
 
 s16 func_8001D294(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
     s32 temp_v0;

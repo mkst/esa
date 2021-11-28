@@ -1,9 +1,17 @@
 # Function map
 
-| ESA           | SSSV                 | Notes
-|:--------------| :--------------------|
+| ESA           | SSSV                 | Notes  |
+|:--------------| :--------------------|:-------|
 | func_8001BA00 | play_sound_effect_at_location |
-| func_8001CEB4 | func_8012826C        | rng
+| func_8001CE60 | func_80128200 |
+| func_8001CE8C | func_8012822C |
+| func_8001CEB4 | func_8012826C | rng
+| func_8001CED4 | func_8012835C |
+| func_8001CF24 | func_801283AC |
+| func_8001CF7C | func_8012840C |
+| func_8001CF98 | func_8012844C |
+| func_8001CFEC | func_801284B8 |
+| func_8001D294 | func_80128C10 |
 | func_8003BF7C | func_802A935C_6BAA0C | tbd
 | func_8003D794 | func_802A78CC_6B8F7C | tbd
 | func_800463C4 | func_802B2EA8_6C4558 |
@@ -39,21 +47,18 @@
 | func_800A05EC | func_803144F8_725BA8 |
 | func_800A0678 | func_80314590_725C40 |
 | func_800A06C4 | parrot_fly |
-| func_800ABBB0 | create_particle_effect |
-| func_8001CED4 | func_8012835C |
-| func_8001CF24 | func_801283AC |
-| func_8001CF7C | func_8012840C |
-| func_8001CF98 | func_8012844C |
-| func_8001CFEC | func_801284B8 |
-| func_8001D294 | func_80128C10 |
-| func_8001CE8C | func_8012822C |
-| func_8001CE60 | func_80128200 |
-
+| func_800A1294 | func_8035DA60_76F110 |
+| func_800A1294 | func_8035DEC4_76F574 |
+| func_800A2074 | func_802DC6A4_6EDD54 |
+| func_800A21B0 | func_802DC854_6EDF04 |
+| func_800A2660 | func_802DD004_6EE6B4 |
+| func_800A401C | create_particle_effect |
+| func_8008F7DC | func_8031D624_72ECD4 |
 
 # Variable Map
 
-| ESA        | SSSV       | Notes
-|:----------:|:----------:|
+| ESA        | SSSV       | Notes |
+|:----------:|:----------:|:------|
 | D_800E5274 | D_803D552C |
 | D_800E527C | D_803D5530 |
 | D_800E52C0 | D_803D5544 |
