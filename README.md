@@ -50,12 +50,15 @@ Compile back into `build/esa.dat` and `build/pt.dat` respectively:
 make all --jobs
 ```
 
-If you just wish to work with `esa.dat` then:
+To work with `esa.dat` alone then:
 ```sh
 make extract_esa
 make --jobs
 ```
 
+## Issues
+
+- Modern `as` is used due to limitations of `ASPSX.EXE` (limited `include_asm` support, generates non-standard object). This is likely the cause of codegen mismatches (e.g. `li.d` behaviour appears to differ).
 
 ## Tools / Thanks
 

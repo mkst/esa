@@ -1,7 +1,7 @@
 #include "common.h"
 
 
-INCLUDE_ASM(s32, "B2500", _err_math);
+INCLUDE_ASM("asm/esa/nonmatchings/B2500", _err_math);
 // s32 _err_math(s32 arg0, s32 arg1) {
 //
 //     D_800E2C78 = arg0;

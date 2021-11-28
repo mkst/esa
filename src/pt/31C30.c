@@ -1,6 +1,6 @@
 #include "common.h"
 
-INCLUDE_ASM(s32, "31C30", func_80041630);
+INCLUDE_ASM("asm/pt/nonmatchings/31C30", func_80041630);
 
 // not even close
 // extern s32 D_8005AE08;

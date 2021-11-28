@@ -6,6 +6,12 @@ s32  rand(void);
 s8  *memset(s8 *s, s8 c, s32 len);
 void memclr(s32 *src, s32 cnt);
 
+void func_8006309C(u8 arg0, struct005 *animal);
+void load_animal(s16 id);
+void func_80076D94(void);
+s32  create_particle_effect(s32 x, s32 z, s32 y, s16 id, s32, s32, s32, s32, u16 color1, u16 color2, s32); // TBD
+void func_800ABBB0(s32, s32, s32);
+void func_80076D60(s8 arg0);
 
 u16  func_8001CEB4(void);
 s16  func_8001CED4(s16 idx);

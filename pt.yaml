@@ -16,6 +16,8 @@ options:
   undefined_syms_auto_path: undefined_syms_auto.pt.txt
   find_file_boundaries: yes
   enable_ld_alignment_hack: yes
+  # split
+  use_legacy_include_asm: no
 segments:
   - [0x0, header]       # 0x8000fa00
   - [0x80, bin]

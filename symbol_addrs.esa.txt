@@ -154,6 +154,6 @@ func_800C1148 = 0x800C1148;
 
 
 load_animal = 0x800817B4;
-create_particle_effect = 0x800ABBB0;
+create_particle_effect = 0x800A401C;
 racing_mouse_turbo = 0x80090330;
 play_sound_effect_at_location = 0x8001BA00;

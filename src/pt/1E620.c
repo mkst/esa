@@ -1,6 +1,7 @@
 #include "common.h"
 
-INCLUDE_ASM(s32, "1E620", func_8002E020);
+INCLUDE_ASM("asm/pt/nonmatchings/1E620", func_8002E020);
+
 extern s32 D_80082658;
 extern s32 D_80082668;
 

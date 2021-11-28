@@ -16,6 +16,8 @@ options:
   undefined_syms_auto_path:  undefined_syms_auto.esa.txt
   find_file_boundaries: yes
   enable_ld_alignment_hack: yes
+  # split
+  use_legacy_include_asm: no
 segments:
   - [0x0, header]
   - [0x80, bin]     # zero padding
@@ -44,7 +46,7 @@ segments:
       - [0x54C14, asm]
       - [0x71FB0, asm]
       - [0x7D9FC, asm, bear]
-      - [0x7FDDC, asm, mouse]
+      - [0x7FDDC, c, mouse]
       - [0x80970, asm]
       - [0x817D4, asm, husky]
       - [0x83AAC, asm, polar_bear]
@@ -55,6 +57,8 @@ segments:
       - [0x8F850, asm, seagull] # +/- offset
       - [0x90924, asm, parrot]
       - [0x90D0C, asm]
+      - [0x91BBC, c, 91BBC]
+      - [0x92C98, asm]
   - name:  lib
     type:  code
     start: 0x000A3DD0

@@ -52,13 +52,18 @@ typedef struct {
 } Animal;
 
 typedef struct {
-    /* 0x0   */ u8  pad0[0x6];
+    /* 0x0   */ u16 state;
+    /* 0x02  */ u8  unk2[0x4];
     /* 0x06  */ s16 xPos;
     /* 0x08  */ u8  pad8[0x2];
     /* 0x0A  */ s16 zPos;
-    /* 0x08  */ u8  padC[0x2];
+    /* 0x0C  */ u8  padC[0x2];
     /* 0x0E  */ s16 yPos;
-    /* 0x08  */ u8  pad10[0x162];
+    /* 0x10  */ u8  pad10[0x32];
+    /* 0x42 */  u16 unk42;
+    /* 0x44 */  u8  pad44[0x6];
+    /* 0x4A */  s8  unk4A;
+    /* 0x4B */  u8  pad4B[0x127];
     /* 0x172 */ s16 unk172;
     /* 0x174 */ u8  pad174[0x4];
     /* 0x178 */ s16 unk178;
@@ -74,5 +79,44 @@ typedef struct {
     /* 0x0 */ u8 pad0[0x154];
     /* 0x154 */ u8 unk154;
 } Object; // struct071? assume size == 0x270
+
+typedef struct {
+    /* 0x00  */ u8  pad0[0x6];
+    /* 0x06  */ s16 xPos;
+    /* 0x08  */ u8  pad8[0x2];
+    /* 0x0A  */ s16 zPos;
+    /* 0x0C  */ u8  padC[0x2];
+    /* 0x0E  */ s16 yPos;
+    /* 0x10  */ u8  pad10[0x32];
+    /* 0x42  */ u16 unk42;
+    /* 0x44  */ u8  pad44[0x234];
+    /* 0x278 */ s16 unk278;
+    /* 0x27A */ s16 unk27A;
+    /* 0x27C */ s16 unk27C;
+    /* 0x27E */ u8  pad27E[0x2];
+    /* 0x280 */ s16 unk280;
+    /* 0x282 */ s16 unk282;
+    /* 0x284 */ s16 unk284;
+    /* 0x286 */ u8  pad286[0x4];
+    /* 0x28A */ s16 unk28A;
+    /* 0x28C */ u8  pad28C[0x80];
+    /* 0x30C */ s16 unk30C;
+    /* 0x30E */ u8  pad30E[0x14];
+    /* 0x322 */ s16 unk322;
+    /* 0x324 */ u8  unk324[0x26];
+    /* 0x34A */ u16 unk34A;
+    /* 0x34C */ u8  pad34C[0x39];
+    /* 0x385 */ u8  unk385;
+    /* 0x386 */ u8  unk386;
+    /* 0x387 */ u8  pad387[0x7];
+    /* 0x38E */ s8  unk38E;
+} struct005;
+
+typedef struct {
+    /* 0x0 */ u8  pad0[0x90];
+    /* 0x90 */ u16 unk90; // animalId;
+    /* 0x92 */ u8  pad92[0x1C];
+    /* 0xAE */ u16  unkAE;
+} struct006;  // struct035 in sssv
 
 #endif

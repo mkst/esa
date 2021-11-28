@@ -2,9 +2,9 @@
 
 extern u16 D_800E52C0;
 
-INCLUDE_ASM(s32, "534B0", func_80062EB0);
+INCLUDE_ASM("asm/esa/nonmatchings/534B0", func_80062EB0);
 
-INCLUDE_ASM(s32, "534B0", func_80062EF4);
+INCLUDE_ASM("asm/esa/nonmatchings/534B0", func_80062EF4);
 
 // func_802DB940_6ECFF0
 void func_80062F98(s16 *arg0, s16 arg1, u16 arg2) {
@@ -51,11 +51,11 @@ void func_8006303C(s16 *arg0, s16 arg1, u16 arg2) {
 }
 
 // func_802DBA58_6ED108
-INCLUDE_ASM(s32, "534B0", func_8006309C);
+INCLUDE_ASM("asm/esa/nonmatchings/534B0", func_8006309C);
 
 // func_802DBB64_6ED214
 // matches with -O1
-INCLUDE_ASM(s32, "534B0", func_80063164);
+INCLUDE_ASM("asm/esa/nonmatchings/534B0", func_80063164);
 // void func_80063164(u8 *arg0, u16 *arg1, u16 arg2) {
 //     *arg0 = arg2;
 //     do {

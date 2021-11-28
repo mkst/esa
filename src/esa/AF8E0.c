@@ -12,7 +12,7 @@ void setIntrDMA();
 extern s32 *D_800DE758;
 extern s32  D_800DE75C[];
 
-INCLUDE_ASM(s32, "AF8E0", startIntrDMA);
+INCLUDE_ASM("asm/esa/nonmatchings/AF8E0", startIntrDMA);
 // void *startIntrDMA(void) {
 //     memclr(D_800DE75C, 8);
 //     *D_800DE758 = 0;
@@ -20,9 +20,9 @@ INCLUDE_ASM(s32, "AF8E0", startIntrDMA);
 //     return setIntrDMA;
 // }
 
-INCLUDE_ASM(s32, "AF8E0", trapIntrDMA);
+INCLUDE_ASM("asm/esa/nonmatchings/AF8E0", trapIntrDMA);
 
-INCLUDE_ASM(s32, "AF8E0", setIntrDMA);
+INCLUDE_ASM("asm/esa/nonmatchings/AF8E0", setIntrDMA);
 
 void memclr(s32 *src, s32 cnt) {
     s32 *p = src;
