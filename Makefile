@@ -45,6 +45,13 @@ ESA_O_FILES     := $(foreach file,$(ESA_S_FILES),$(BUILD_DIR)/$(file).o) \
                    $(foreach file,$(ESA_C_FILES),$(BUILD_DIR)/$(file).o) \
                    $(foreach file,$(ESA_BIN_FILES),$(BUILD_DIR)/$(file).o)
 
+# ESA_PSYQ_C_FILES := \
+#     src/esa/3FD80.c \
+#     src/esa/A6C00.c \
+#     src/esa/AF8E0.c
+
+# ESA_PSYQ_O_FILES    := $(foreach file,$(ESA_PSYQ_C_FILES),$(BUILD_DIR)/$(file).o)
+
 
 PT_S_FILES      := $(foreach dir,$(PT_ASM_DIRS),$(wildcard $(dir)/*.s))
 PT_C_FILES      := $(foreach dir,$(PT_C_DIRS),$(wildcard $(dir)/*.c))
@@ -53,6 +60,7 @@ PT_BIN_FILES    := $(foreach dir,$(PT_BIN_DIRS),$(wildcard $(dir)/*.bin))
 PT_O_FILES      := $(foreach file,$(PT_S_FILES),$(BUILD_DIR)/$(file).o) \
                    $(foreach file,$(PT_C_FILES),$(BUILD_DIR)/$(file).o) \
                    $(foreach file,$(PT_BIN_FILES),$(BUILD_DIR)/$(file).o)
+
 
 # TOOLS
 
@@ -70,11 +78,28 @@ AS              := $(CROSS)as -EL
 LD              := $(CROSS)ld -EL
 OBJCOPY         := $(CROSS)objcopy
 
-CC_PSYQ_41      := $(WINE) $(TOOLS_DIR)/psyq/4.1/CC1PSX.EXE
-CC_PSYQ_43      := $(WINE) $(TOOLS_DIR)/psyq/4.3/CC1PSX.EXE
-CC_PSYQ_46      := $(WINE) $(TOOLS_DIR)/psyq/4.6/CC1PSX.EXE
+# psyq compilers
+PSYQ2ELF        := $(TOOLS_DIR)/psyq-obj-parser
 
-CC              := $(CC_PSYQ_46)
+PSYQ_41_DIR     := $(TOOLS_DIR)/psyq/4.1
+PSYQ_43_DIR     := $(TOOLS_DIR)/psyq/4.3
+PSYQ_46_DIR     := $(TOOLS_DIR)/psyq/4.6
+
+CC1PSX_41       := $(WINE) $(PSYQ_41_DIR)/CC1PSX.EXE
+CC1PSX_43       := $(WINE) $(PSYQ_43_DIR)/CC1PSX.EXE
+CC1PSX_46       := $(WINE) $(PSYQ_46_DIR)/CC1PSX.EXE
+
+# full psyq build chain
+CCPSX_PSYQ_41   := PSYQ_PATH=$(PSYQ_41_DIR) $(WINE) $(PSYQ_41_DIR)/ccpsx.exe
+CCPSX_PSYQ_43   := PSYQ_PATH=$(PSYQ_43_DIR) $(WINE) $(PSYQ_43_DIR)/ccpsx.exe
+CCPSX_PSYQ_46   := PSYQ_PATH=$(PSYQ_46_DIR) $(WINE) $(PSYQ_46_DIR)/ccpsx.exe
+CCPSX_PSYQ      := $(CCPSX_PSYQ_46)
+
+# gcc
+CC_2_95_2       := $(TOOLS_DIR)/gcc/2.95.2/cc1
+
+CC              := $(CC_2_95_2) -msplit-addresses
+
 
 SPLAT           := $(PYTHON) $(TOOLS_DIR)/splat/split.py
 
@@ -83,19 +108,24 @@ SPLAT           := $(PYTHON) $(TOOLS_DIR)/splat/split.py
 
 AS_INCLUDES     := -Iinclude
 AS_FLAGS        := -march=r3000 -mtune=r3000
+AS_FLAGS        += -G0
 AS_FLAGS        += $(AS_INCLUDES)
 
 CPP_INCLUDES    := -Iinclude
-CPP_FLAGS       := -undef -Wall -lang-c -fno-builtin -gstabs
-CPP_FLAGS       += -Dmips -D__GNUC__=2 -D__OPTIMIZE__ -D__mips__ -D__mips -Dpsx -D__psx__ -D__psx -D_PSYQ -D__EXTENSIONS__ -D_MIPSEL -D__CHAR_UNSIGNED__ -D_LANGUAGE_C -DLANGUAGE_C
+CPP_FLAGS       := -undef -Wall -lang-c
+CPP_FLAGS       += -Dmips -D__GNUC__=2 -D__OPTIMIZE__ -D__mips__ -D__mips -Dpsx -D__psx__ -D__psx
+CPP_FLAGS       += -D_PSYQ -D__EXTENSIONS__ -D_MIPSEL -D__CHAR_UNSIGNED__ -D_LANGUAGE_C -DLANGUAGE_C
 CPP_FLAGS       += $(CPP_INCLUDES)
 
 ifdef PERMUTER
 CPP_FLAGS       += -DPERMUTER
 endif
 
-CC_FLAGS        := -quiet -G0 -Wall -fno-builtin
+CC_FLAGS        := -quiet -Wall -fno-builtin
+GLOBAL_DATA     := -G0
 OPT_FLAGS       := -O2
+
+CCPSX_FLAGS     := -Wall -fno-builtin
 
 
 ifeq ($(VERBOSE),1)
@@ -106,11 +136,11 @@ endif
 
 ESA_LD_FLAGS    := -Map $(ESA_TARGET).map -T $(ESA_BASENAME).ld \
                    -T undefined_syms_auto.$(ESA_BASENAME).txt -T undefined_funcs_auto.$(ESA_BASENAME).txt -T undefined_syms.$(ESA_BASENAME).txt \
-				   --no-check-sections
+                   --no-check-sections
 
 PT_LD_FLAGS     := -Map $(PT_TARGET).map -T $(PT_BASENAME).ld \
                    -T undefined_syms_auto.$(PT_BASENAME).txt -T undefined_funcs_auto.$(PT_BASENAME).txt -T undefined_syms.$(PT_BASENAME).txt \
-				   --no-check-sections
+                   --no-check-sections
 
 OBJCOPY_FLAGS   := -O binary
 
@@ -120,26 +150,28 @@ OBJCOPY_FLAGS   := -O binary
 $(BUILD_DIR)/src/esa/%.c.o: CPP_TARGET := -DTARGET_ESA
 $(BUILD_DIR)/src/pt/%.c.o: CPP_TARGET := -DTARGET_PT
 
-# e.g.
-$(BUILD_DIR)/src/esa/B2500.c.o: CC := $(CC_PSYQ_43)
+# force psyq compiler
+$(BUILD_DIR)/src/esa/3FD80.c.o: CC := $(CC1PSX_46)
+$(BUILD_DIR)/src/esa/A6C00.c.o: CC := $(CC1PSX_41)
+$(BUILD_DIR)/src/esa/AF8E0.c.o: CC := $(CC1PSX_41)
+$(BUILD_DIR)/src/esa/B2500.c.o: CC := $(CC1PSX_43)
 
-$(BUILD_DIR)/src/esa/A6C00.c.o: CC := $(CC_PSYQ_41)
-$(BUILD_DIR)/src/esa/A6C00.c.o: OPT_FLAGS := -O2
+# $(BUILD_DIR)/src/esa/51D00.c.o: CC := $(CC1PSX_46)
 
-$(BUILD_DIR)/src/esa/AF8E0.c.o: CC := $(CC_PSYQ_41)
-$(BUILD_DIR)/src/esa/AF8E0.c.o: OPT_FLAGS := -O2
-
-
+#
 $(BUILD_DIR)/src/esa/4346C.c.o: OPT_FLAGS := -O1
 
-# $(BUILD_DIR)/src/esa/534B0.c.o: OPT_FLAGS := -O1
+$(BUILD_DIR)/src/esa/51C88.c.o: GLOBAL_DATA := -G8
+$(BUILD_DIR)/src/esa/51D00.c.o: GLOBAL_DATA := -G8
+$(BUILD_DIR)/src/esa/3FD80.c.o: GLOBAL_DATA := -G8
 
 # closer but not quite right
-$(BUILD_DIR)/src/pt/1E620.c.o: CC := $(CC_PSYQ_41)
-$(BUILD_DIR)/src/pt/1E620.c.o: OPT_FLAGS := -O1
+# $(BUILD_DIR)/src/pt/1E620.c.o: CC := $(CC1PSX_41)
+# $(BUILD_DIR)/src/pt/1E620.c.o: OPT_FLAGS := -O1
 
-# $(BUILD_DIR)/src/pt/31C30.c.o: CC := $(CC_PSYQ_41)
+# $(BUILD_DIR)/src/pt/31C30.c.o: CC := $(CC1PSX_41)
 # $(BUILD_DIR)/src/pt/31C30.c.o: OPT_FLAGS := -O1
+
 
 # TARGETS
 
@@ -174,14 +206,14 @@ verify_pt: $(PT_TARGET).ok
 clean:
 	rm -rf $(BUILD_DIR)
 
-very-clean:
+very-clean: clean
 	rm -rf $(ESA_ASM_DIR) $(ESA_ASSETS_DIR)
 	rm -rf $(PT_ASM_DIR) $(PT_ASSETS_DIR)
 	rm -rf *_auto.*.txt
 
 # RECIPES
 
-$(ESA_TARGET).elf: $(ESA_O_FILES)
+$(ESA_TARGET).elf: $(ESA_O_FILES) $(ESA_PSYQ_O_FILES)
 	$(LD) $(ESA_LD_FLAGS) -o $@
 
 $(PT_TARGET).elf: $(PT_O_FILES)
@@ -198,11 +230,18 @@ $(BUILD_DIR)/%.bin.o: %.bin
 	$(LD) -r -b binary -o $@ $<
 
 $(BUILD_DIR)/%.c.o: %.c
-	$(CPP) $(CPP_FLAGS) $(CPP_TARGET) $< | $(UNIX2DOS) | $(CC) $(CC_FLAGS) $(OPT_FLAGS) | $(AS) $(AS_FLAGS) -o $@
+	$(CPP) $(CPP_FLAGS) $(CPP_TARGET) $< | $(UNIX2DOS) | $(CC) $(CC_FLAGS) $(GLOBAL_DATA) $(OPT_FLAGS) | $(AS) $(AS_FLAGS) -o $@
+
+# TODO: allow this to be uncommented to use ccpsx.exe
+# $(ESA_PSYQ_O_FILES): $(BUILD_DIR)/%.c.o: %.c
+# 	$(CCPSX_PSYQ) -c -v -D_REAL_PSYQ $(CPP_INCLUDES) $(CCPSX_FLAGS) $(GLOBAL_DATA) $(OPT_FLAGS) $< -o $@bj
+# 	$(PSYQ2ELF) $@bj -v -o $@
+
 
 %.ok: %.dat
 	@echo "$$(cat $(notdir $(<:.dat=)).sha1)  $<" | sha1sum --check
 	@touch $@
+
 
 # keep .obj files
 .SECONDARY:

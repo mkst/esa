@@ -1,8 +1,7 @@
 #ifndef INCLUDE_ASM_H
 #define INCLUDE_ASM_H
 
-#define STRINGIFY_(x) #x
-#define STRINGIFY(x) STRINGIFY_(x)
+#ifndef _REAL_PSYQ
 
 #ifndef PERMUTER
 
@@ -33,6 +32,8 @@ __asm__(".include \"include/include_asm.inc\"\n");
 
 #else
 #define INCLUDE_ASM(FOLDER, NAME)
+#endif
+
 #endif
 
 

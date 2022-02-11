@@ -4,32 +4,54 @@
 typedef struct struct000 struct000;
 
 struct struct000 {
-    /* 0x0   */ u8  pad0[0x290];
+    /* 0x0   */ u8  pad0;
+    /* 0x1   */ u8  unk1[5];
+    /* 0x6   */ s16 unk6;
+    /* 0x8   */ u8  pad8[0x2];
+    /* 0xA   */ s16 unkA;
+    /* 0xC   */ u8  padC[0x2];
+    /* 0xE   */ s16 unkE;
+    /* 0x10  */ u8  pad10[0x32];
+    /* 0x42  */ u16 unk42;
+    /* 0x44  */ u8  unk44[0x24C];
     /* 0x290 */ s8  unk290;
-    /* 0x294 */ u8  pad291[0x1B];
+    /* 0x291 */ u8  pad291[0x3];
+    /* 0x294 */ s8  unk294;
+    /* 0x295 */ s8  unk295;
+    /* 0x296 */ u8  unk296[0x2];
+    /* 0x298 */ s16 unk298;
+    /* 0x29A */ s16 unk29A;
+    /* 0x29C */ s16 unk29C;
+    /* 0x29E */ u8  pad29E[0xE];
     /* 0x2AC */ s16 unk2AC;
     /* 0x2AE */ u8  unk2AE[0x2];
     /* 0x2B0 */ s16 unk2B0;
     /* no padding required */
     /* 0x2B4 */ struct000 *unk2B4; // pointer
     /* 0x2B8 */ s16 unk2B8;
-    /* 0x2BA */ u8  unk2BA;
-    /* 0x2BB */ u8  pad2BB[0x11];
-    /* 0x2CC */ s32 unk2CC;
-    /* 0x2D0 */ u8  pad2D0[0x1C];
+    /* 0x2BA */ s8  unk2BA;
+    /* 0x2BB */ u8  pad2BB[0x5];
+    /* 0x2C0 */ s8  unk2C0;
+    /* 0x2C1 */ u8  unk2C1;
+    /* 0x2C2 */ u8  pad2C2[0x6];
+    /* 0x2C8 */ s16 unk2C8;
+    /* 0x2CA */ s16 pad2CA;
+    /* 0x2CC */ struct000 *unk2CC;
+    /* 0x2D0 */ s8  unk2D0;
+    /* 0x2D1 */ u8  pad2D1[0x1B];
     /* 0x2EC */ s32 unk2EC;
     /* 0x2F0 */ u8  pad2F0[0x50];
     /* 0x340 */ s32 unk340;
 };
 
 typedef struct {
-    struct000 *unk0;
-    s32 pad4;
+    void *unk0;
+    struct000 *animal;
 } struct002;
 
 typedef struct {
-    u8 pad0[0x3B84];
-    struct002 unk3B84[68];
+    /* 0x0 */ u8 pad0[0x3B80];
+    /* 0x3B80 */ struct002 animals[68];
 } struct001;
 
 typedef struct {

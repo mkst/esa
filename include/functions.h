@@ -26,11 +26,13 @@ void func_8004F828(struct004 *arg0, s16 arg1, s16 arg2, s16 arg3, s16 arg4);
 void func_80051A94(Object *arg0);
 
 void func_80061670(struct000 *arg0);
+void func_80061688(struct000 *arg0, struct000 *arg1, u16 arg2);
 void func_80061700(Animal *arg0, s16 arg1);
 void func_8006173C(struct000 *arg0, struct000 *arg1);
 void func_80061764(struct000 *arg0, void *arg1, s16 arg2);
 void func_8006179C(struct000 *arg0);
-void func_80061B68();
+void func_80061AF0(struct000 *arg0, s16 arg1, s16 arg2, s16 arg3, s8 arg4, u8 arg5);
+void func_80061B68(struct000 *arg0);
 void func_80061C60(struct000 *arg0, struct000 *arg1, s16 arg2, s16 arg3);
 void func_80061D44(struct000 *arg0, struct000 *arg1);
 void func_80061E74(Animal *arg0, u16 arg1, s16 arg2, s16 arg3);
@@ -38,6 +40,7 @@ void func_80061E74(Animal *arg0, u16 arg1, s16 arg2, s16 arg3);
 void func_80062F98(s16 *arg0, s16 arg1, u16 arg2);
 void func_8006303C(s16 *arg0, s16 arg1, u16 arg2);
 
+void func_8007C444(struct000 *);
 
 void func_800C1DD4(s32*, s32*);
 
