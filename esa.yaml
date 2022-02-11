@@ -36,10 +36,14 @@ segments:
       - [0xED10, asm, audio] # some spu related stuff
       - [0xF800, asm]
       - [0x3F424, c, 3F424] # part of overlay2_7070A0
+      - [0x3FCEC, c, 3FCEC]
+      - [0x3FD80, c, 3FD80]
       - [0x3FE5C, c, 3FE5C]
       - [0x4346C, c, 4346C]
       - [0x434A4, asm]
       - [0x51374, c, 51374] # overlay2_7741B0 in sssv
+      - [0x51C88, c, 51C88]
+      - [0x51D00, c, 51D00]
       - [0x52A54, asm]
       - [0x534B0, c, 534B0]
       - [0x53778, asm] #
