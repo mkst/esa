@@ -10,12 +10,15 @@ options:
   # compiler
   compiler: GCC
   # disasm/linker
+  gp_value: 0
   symbol_addrs_path:    symbol_addrs.pt.txt
   undefined_syms_path:  undefined_syms.pt.txt
   undefined_funcs_auto_path: undefined_funcs_auto.pt.txt
   undefined_syms_auto_path: undefined_syms_auto.pt.txt
   find_file_boundaries: yes
   enable_ld_alignment_hack: yes
+  # fixme
+  asm_function_macro: .globl
   # split
   use_legacy_include_asm: no
 segments:

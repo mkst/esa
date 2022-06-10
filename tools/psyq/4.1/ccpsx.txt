@@ -1,0 +1,799 @@
+!This program cannot be run in DOS mode.
+.text
+`.rdata
+@.data
+.idata
+SUVWj
+_^][
+_^][
+_^][
+_^][
+QRhX
+_^][
+_^]3
+T$(h
+D$(h
+L$(h
+T$(h
+D$(h
+L$(h
+T$(h
+D$(h
+D$$@
+D$$@
+D$$@
+D$$SQh
+D$$SQh
+T$$QR
+l$$Q
+T$(R
+L$(h
+T$(h
+D$(h
+L$$j
+T$(h(
+L$(h,
+T$(h8
+D$(h@
+L$(hH
+T$(hP
+D$(h\
+L$(hp
+D$$SRh
+D$$SRh
+D$(h
+L$(h
+T$(h
+D$(h
+L$(h
+T$(h
+D$(h
+L$(h
+tWSh
+T$(h
+D$(h
+L$(h
+T$(h
+t)Sh
+D$(h
+L$(h,
+T$(h<
+D$$P
+L$(h|
+T$(h
+D$(h
+L$(h
+T$(h
+D$(h
+t#Sh
+L$(h
+D$$SQh
+D$$SQh
+D$$SQh
+D$$SRh
+<+u<E
+D$$SQh
+D$$t
+_^][
+_^][
+_^][
+_^][
+_^][
+_^][
+_^][
+_^][
+_^][
+_^][
+_^][
+L$$IQh
+_^][
+l$$MUh<
+_^][
+_^][
+_^][
+_^]3
+QSUV
+_^][Y
+t1< u
+_^][Y
+Uj\Sh
+_^][
+_^][
+t	VS
+_^][
+_^][
+_^]3
+t$<.u
+_^][
+_^][
+G<.u 
+_^][
+_^][
+_^][
+IQVR
+[_^]
+D$,VP
+5d5A
+_^][
+_^][
+_^]3
+_^][Y
+D$ _^][Y
+_^][Y
+_^][Y
+_^][Y
+_^][
+_^][
+_^][
+_^][
+_^][
+j@PQ
+tzVS
+GIt%
+t/Ku
+_^][
+_^][
+hX!A
+hX!A
+u#hX!A
+uKPhX!A
+s@j P
+Sj.P
+Cj j
+j QP
+SUVW3
+t9VU
+|$ ;
+</t*
+_^][
+KVtG
+^_][
+^_][
+^_][
+=<AA
+SUVW
+_^][
+_^][Y
+_^][Y
+_^][Y
+_^][Y
+_^]3
+SUVW
+_^][
+_^][
+_^][
+_^]3
+\$ 3
+_^][
+_^][
+SUVW
+?6u 
+D$`P
+T$dQ
+D$XRP
+L$\Q
+T$\R
+|$\-u
+D$8'
+D$"0
+RUWV
+RUWV
+u	HE
+D$"-
+D$"+
+D$" 
+T$$+
+PVWj 
+D$*RP
+QVWj0
+T$HPR
+D$TP
+QRWj 
+_^][
+RVUP
+_^][
+WSPF
+_^][
+-@AA
+_^][
+_^][
+_^]3
+|$$3
+_^][
+_^][
+_^][
+T$0j
+D$(<
+/;t$$u
+T$ j
++t$$
+_^][
++t$$
+_^][
+_^][
+HSUVWh
+5@$A
+-LAA
+_^][
+UVW3
+_^][
+_^][
+_^][
+																								
+													
+													
+										
+					
+5`5A
+_^][
+_^][
+_^][
+SUVW
+l$ u
+_^][
+L$(+
+T$$j
+_^][
+_^][
+_^][
++D$ _^][
+QSUR
+wB;5
+_^][
+_^][
+D$(j
+L$ UQSRP
+_^][
+_^][
+_^][
+D$0j
+u#UV
+_^][
+_^][
+_^][
+_^][
+%lAA
+<xt	<X
+T$,r
+D$,I
+_^][
+_^]3
+[]^_
+SUVP
+5,!A
+-x!A
+=tES
+_^][Y
+=H%A
+PRVW
+5$!A
+8"uV
+8"uV@
+8"u%
+\$$3
+D$ _^]
+WSUVj
+_^][
+_^][
+_^][
+_^][
+_^]3
+SUVWP
+l$(u
+_^][
+_^][
+_^][
+_^][
+_^][
+D$(P
+SVWUj
+]_^[
+t.;t$$t(
+VC20XC00U
+SVWU
+tEVU
+t3x<
+]_^[
+SUVW3
+_^][
+IQRV
+_^][
+SUVW
+D$(P
+QVSRP
+_^][
+_^][
+_^][
+UPVQh 
+D$$j
+RPh 
+T$$j
+VPQRh 
+D$,P
+_^][
+VWUSRP
+_^][
+_^][
+_^][
+UVWuNj
+l$4VU
+D$<WP
+D$,WQVURP
+_^][
+\$D3
+D$8u
+_^][
+_^][
+_^][
+_^][
+_^][
+_^][
+_^][
+_^][
+_^][
+VUj	S
+_^][
+_^][
+D$<VPj
+T$<j
+QRj	S
+T$<VPQRj
+T$0VP
+D$4UQRP
+L$DQ
+_^][
+QSUVW
+_^][Y
+_^][Y
+_^][Y
+_^][Y
+5,!A
+8<=t!
+5,!A
+5,!A
+SUVW
+_^][
+=@%A
+=@%A
+t.Ht
+Hu1Sj
+Ht	Hu
+_^][
+_^][
+WuBh
+PQRS
+SUVW
+D$ P
+_^][
+_^][
+WVPQ
+_^][
+QVWRP
+_^][
+VWh 
+_^][
+_^][
+WUVQh 
+WURP
+|$$UWQ
+T$ P
+D$(RP
+_^][
+L$ PPVQj
+T$$P
+D$$RVPj
+_^]3
+QVWRP
+_^][
+VWj	U
+_^][
+_^][
+WSVPj
+WSUQ
+T$$P
+RWSUP
+_^][
+VRWSUP
+D$(j
+T$4j
+VQh 
+T$4P
+D$0PVQh 
+_^]3
+_^][Y
+T$(SSSSWQh 
+_^][Y
+_^][Y
+L$(j
+VUWPh 
+VUQf
+T$$WSR
+_^][Y
+D$,;
+L$ R
+T$ Q
+L$ RQP
+_^][Y
+|$,;
+WWURj	S
+tKVj
+VWUPj
+QPWR
+_^][Y
+t$,W
+_^][Y
+_^]3
+^_[3
+_^][
+_^][
+_^][
+_^][
+_^][
+_^][
+_^]3
+_^][Y
+_^][Y
+T$ j
+_^][Y
+_^][Y
+u	Iu
+FGQPS
+u	Iu
+_^][Y
+_^][Y
+_^][Y
+_^][Y
+54!A
+xf==
+54!A
+54!A
+_^][
+L$ RPSQ
+_^][
+D$ QRUP
+_^][
+QRVP
+WPQVR3
+</t*
+L$ PQSR
+t?j\S
+^][Y
+_^][
+_^][
+_^]3
+VQVRh
+D$dSU3
+5@%A
+D$,D
+D$b%
+L$`8\$
+T$,Q
+T$ SQP
+SSRP
+_^][
+5\AA
+D$|_^][
+D$|PQ
+T$ R
+D$|_^][
+\$|R
+D$|_^][
+D$|_^][
+_^][Y
+-x!A
+-x!A
+_^][Y
+<=u.
+<+=t
+_^][Y
+5x!A
+L$$;
+_^][Y
+A<;t
+FAOt*
+FAOt
+SUVW
+T$ r
+D$ f
+_^][
+_^]3
+_^][
+_^][
+_^][
+VWSU
+T$$PPj
+_^][
+L$$P
+D$ Pj
+_^][
+_^][
+Zw	f
+w	f=A
+MtSf
+tNf;
+r[f=z
+tUf=
+rYf=Z
+ (8PX
+700WP
+`h````
+ppxxxx
+(null)
+runtime error 
+TLOSS error
+SING error
+DOMAIN error
+R6028
+- unable to initialize heap
+R6027
+- not enough space for lowio initialization
+R6026
+- not enough space for stdio initialization
+R6025
+- pure virtual function call
+R6024
+- not enough space for _onexit/atexit table
+R6019
+- unable to open console device
+R6018
+- unexpected heap error
+R6017
+- unexpected multithread lock error
+R6016
+- not enough space for thread data
+abnormal program termination
+R6009
+- not enough space for environment
+R6008
+- not enough space for arguments
+R6002
+- floating point not loaded
+Microsoft Visual C++ Runtime Library
+Runtime Error!
+Program: 
+<program name unknown>
+GetLastActivePopup
+GetActiveWindow
+MessageBoxA
+user32.dll
+.com
+.exe
+.bat
+.cmd
+PATH
+CCPSX
+aspsx
+ccpsx
+psylink
+PSX version 3.02
+-Dmips
+-D__mips__
+-D__mips
+-Dpsx
+-D__psx__
+-D__psx
+-D_PSYQ
+-D__EXTENSIONS__
+-D_MIPSEL
+-D__CHAR_UNSIGNED__
+PlayStation (SDevTC)
+cpppsx
+cc1psx
+cc1plpsx
+ -G SIZE     set variable size for gp register optimisation : 0=none
+ -mgpopt     improve gp register optimisation
+text	group
+bss	group	bss
+	section	.rdata,text
+	section	.text,text
+	section	.ctors,text
+	section	.dtors,text
+	section	.data,text
+	section	.sdata,text
+	section	.sbss,bss
+	section	.bss,bss
+	regs	pc=%s
+__SN_ENTRY_POINT
+a.out
+stdlib
+compiler_path
+library_path
+c_include_path
+cplus_include_path
+assembler_path
+linker_path
+flags
+tmpdir
+temp
+sn.ini
+psyq.ini
+SN_PATH
+PSYQ_PATH
+TMPDIR
+TEMP
+COMPILER_PATH
+ASSEMBLER_PATH
+LINKER_PATH
+LIBRARY_PATH
+C_INCLUDE_PATH
+CPLUS_INCLUDE_PATH
+Error - can't find %s or %s config files - stopping.
+%s=%s
+%s=%s
+%s=%s
+-undef
+-D__GNUC__=2
+-quiet
+Win32
+3.05.0009
+%s %s (%s, %s)
+No input files specified
+@%s,%s
+Win32
+3.05.0009
+CC for %s v%s (%s)
+(c) SN Systems Software Ltd 1997
+Usage: %s [options / files]
+Main options :
+ -c          compile to object file
+ -S          compile to assembler source
+ -E          pre-process only
+ -v          print executed commands
+ -o FILE     specify output file
+ -l LIBRARY  specify library to link in
+ -L DIR      specify directory to search for libraries
+ -I DIR      specify directory to search for include files
+ -D NAME     define pre-processor macro
+ -D NAME=DEF define pre-processor macro to string DEF
+ -U NAME     undefine pre-processor macro
+ -g          generate debugging information
+ -ON         set optimisation level N : O0=none, O3=max
+ -f...       compiler option/optimisation - see compiler documentation
+ -m...       machine specific option - see compiler documentation
+ -ansi       check code for ANSI compliance
+ -Wall       enable all warnings
+ -w          disable all warnings
+ -W...       other warning control - see compiler documentation
+ -Wp,...     specify pre-processor option(s)
+ -Wa,...     specify assembler option(s)
+ -Wl,...     specify linker option(s)
+ -X...       specify linker option (same as -Wl,...)
+ -nostdlib   do not link in the standard libraries
+ -save-temps preserve intermediate temporary files
+Associated expected tools: 
+C preprocessor : %-10s (in INI 'compiler_path' directory)
+C compiler     : %-10s (in INI 'compiler_path' directory)
+C++ compiler   : %-10s (in INI 'compiler_path' directory)
+Assembler      : %-10s (in INI 'assembler_path' directory)
+Linker         : %-10s (in INI 'linker_path' directory)
+See the supplied compiler documentation for further information
+Error - multiple output files specified
+Error - missing parameter to option '-o'
+Error - missing parameter to option '-x'
+cpp-output
+c++-cpp-output
+assembler
+assembler-with-cpp
+c-header
+none
+Unknown language after -x option
+Error - missing parameter to option '-G'
+-D__OPTIMIZE__
+Error - missing parameter to option '-I'
+Error - missing parameter to option '-L'
+Error - missing parameter to option '-l'
+.lib
+nostdinc
+pedantic
+idirafter
+include
+imacros
+iprefix
+iwithprefix
+iwithprefixbefore
+isystem
+Error - missing parameter to option '%s'
+%b.d
+ansi
+-ansi
+-trigraphs
+-D__STRICT_ANSI__
+-version
+comments-c++
+underscores
+entrypoint
+Error - missing parameter to option '-entrypoint'
+undef
+kanji
+-kanji
+save-temps
+trigraphs
+-trigraphs
+traditional-cpp
+-traditional
+traditional
+-traditional
+-traditional
+nostdlib
+Error - unknown command line option '%s'
+Error - unknown command line option '%s'
+Error - Unable to open command file %s
+(list)
+%s%c%s
+Error : could not execute %s
+.obj
+-lang-c-c++-comments
+-lang-c
+-lang-c++)
+-D__cplusplus
+-lang-asm
+-D_LANGUAGE_C_PLUS_PLUS
+-D_LANGUAGE_ASSEMBLY
+-DLANGUAGE_ASSEMBLY
+-D_LANGUAGE_C
+-DLANGUAGE_C
+Error opening linker script file '%s'
+	include	"%s"
+	inclib	"%s"
+	inclib	"%s"
+Error - out of memory
+Error - could not create temporary file '%s'
+Error : command shell out of memory
+[%s]
+HeapFree
+ExitProcess
+TerminateProcess
+GetCurrentProcess
+GetLastError
+DeleteFileA
+HeapAlloc
+GetCommandLineA
+GetVersion
+HeapDestroy
+HeapCreate
+VirtualFree
+VirtualAlloc
+WideCharToMultiByte
+ReadFile
+SetHandleCount
+GetStdHandle
+GetFileType
+GetStartupInfoA
+SetFilePointer
+CloseHandle
+WriteFile
+GetFileAttributesA
+CreateFileA
+GetCurrentProcessId
+UnhandledExceptionFilter
+GetModuleFileNameA
+FreeEnvironmentStringsA
+MultiByteToWideChar
+FreeEnvironmentStringsW
+GetEnvironmentStrings
+GetEnvironmentStringsW
+GetCPInfo
+GetACP
+GetOEMCP
+RtlUnwind
+CompareStringA
+CompareStringW
+SetEnvironmentVariableA
+SetStdHandle
+FlushFileBuffers
+SetEndOfFile
+GetProcAddress
+LoadLibraryA
+HeapReAlloc
+LCMapStringA
+LCMapStringW
+GetStringTypeA
+GetStringTypeW
+KERNEL32.dll
+DuplicateHandle
+SetEnvironmentVariableW
+GetExitCodeProcess
+WaitForSingleObject
+CreateProcessA
+GetLocaleInfoA
+GetLocaleInfoW
