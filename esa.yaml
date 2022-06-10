@@ -10,14 +10,23 @@ options:
   # compiler
   compiler: GCC
   # disasm/linker
+  gp_value: 0 # tbd
   symbol_addrs_path:    symbol_addrs.esa.txt
   undefined_syms_path:  undefined_syms.esa.txt
   undefined_funcs_auto_path: undefined_funcs_auto.esa.txt
   undefined_syms_auto_path:  undefined_syms_auto.esa.txt
   find_file_boundaries: yes
   enable_ld_alignment_hack: yes
+  # fixme
+  asm_function_macro: .globl
   # split
   use_legacy_include_asm: no
+  migrate_rodata_to_functions: no
+  section_order:
+  - .rodata
+  - .text
+  - .data
+  - .bss
 segments:
   - [0x0, header]
   - [0x80, bin]     # zero padding
@@ -25,9 +34,9 @@ segments:
     type:  code
     start: 0x00000800
     vram:  0x80010200
-    subalign: 4
+    subalign: 1  # urgh
     subsegments:
-      - [0x800, rodata] # (ro)data strings but getting treated as words
+      - [0x800, bin] # (ro)data strings but getting treated as words
       # - [0x6FCC, bin] # probably more data
       - [0x7650, asm]
       - [0xC000, c, C000]
@@ -41,6 +50,8 @@ segments:
       - [0x3FE5C, c, 3FE5C]
       - [0x4346C, c, 4346C]
       - [0x434A4, asm]
+      - [0x4C61C, c, 4C61C]
+      - [0x4FEF8, asm]
       - [0x51374, c, 51374] # overlay2_7741B0 in sssv
       - [0x51C88, c, 51C88]
       - [0x51D00, c, 51D00]

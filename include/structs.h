@@ -81,7 +81,11 @@ typedef struct {
     /* 0x0A  */ s16 zPos;
     /* 0x0C  */ u8  padC[0x2];
     /* 0x0E  */ s16 yPos;
-    /* 0x10  */ u8  pad10[0x32];
+    /* 0x10  */ u8  pad10[0xC];
+    /* 0x1C  */ s32 xVel;
+    /* 0x20  */ s32 zVel;
+    /* 0x24  */ s32 yVel;
+    /* 0x28  */ u8  pad28[0x1A];
     /* 0x42 */  u16 unk42;
     /* 0x44 */  u8  pad44[0x6];
     /* 0x4A */  s8  unk4A;
@@ -109,7 +113,13 @@ typedef struct {
     /* 0x0A  */ s16 zPos;
     /* 0x0C  */ u8  padC[0x2];
     /* 0x0E  */ s16 yPos;
-    /* 0x10  */ u8  pad10[0x32];
+    /* 0x10  */ u8  pad10[0xC];
+    /* 0x1C  */ s16 xVel;
+    /* 0x1E  */ u8  pad1E[0x2];
+    /* 0x20  */ s16 zVel;
+    /* 0x22  */ u8  pad22[0x2];
+    /* 0x24  */ s16 yVel;
+    /* 0x26  */ u8  pad26[0x1C];
     /* 0x42  */ u16 unk42;
     /* 0x44  */ u8  pad44[0x234];
     /* 0x278 */ s16 unk278;

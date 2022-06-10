@@ -158,12 +158,16 @@ $(BUILD_DIR)/src/esa/B2500.c.o: CC := $(CC1PSX_43)
 
 # $(BUILD_DIR)/src/esa/51D00.c.o: CC := $(CC1PSX_46)
 
+$(BUILD_DIR)/src/esa/mouse.c.o: CC := $(CC1PSX_46)
+
 #
 $(BUILD_DIR)/src/esa/4346C.c.o: OPT_FLAGS := -O1
 
 $(BUILD_DIR)/src/esa/51C88.c.o: GLOBAL_DATA := -G8
 $(BUILD_DIR)/src/esa/51D00.c.o: GLOBAL_DATA := -G8
 $(BUILD_DIR)/src/esa/3FD80.c.o: GLOBAL_DATA := -G8
+
+$(BUILD_DIR)/src/esa/mouse.c.o: GLOBAL_DATA := -G4
 
 # closer but not quite right
 # $(BUILD_DIR)/src/pt/1E620.c.o: CC := $(CC1PSX_41)
