@@ -1,0 +1,38 @@
+name: build_pr
+
+on:
+  pull_request_target:
+    branches: [ master ]
+
+jobs:
+  build_pr:
+    if: ${{ github.event.pull_request.head.repo.full_name != github.repository }}
+    runs-on: ubuntu-20.04
+    steps:
+    - name: Checkout this repo
+      uses: actions/checkout@v3
+      with:
+        submodules: recursive
+        ref: ${{ github.event.pull_request.head.ref }}
+        repository: ${{ github.event.pull_request.head.repo.full_name }}
+    - name: Checkout baserom
+      uses: actions/checkout@v3
+      with:
+        repository: mkst/esa-private
+        token: ${{ secrets.PRIVATE_REPO_ACCESS }}
+        path: baserom
+    - name: Decrypt binaries
+      run: echo ${{ secrets.ESA_BINARIES }} | openssl enc -d -aes-256-cbc -pass stdin -pbkdf2 -in binaries/esa.dat.aes -out esa.dat
+    - name: Decrypt binaries
+      run: echo ${{ secrets.ESA_BINARIES }} | openssl enc -d -aes-256-cbc -pass stdin -pbkdf2 -in binaries/pt.dat.aes -out pt.dat
+    - name: Decrypt binaries
+      run: echo ${{ secrets.ESA_BINARIES }} | openssl enc -d -aes-256-cbc -pass stdin -pbkdf2 -in binaries/sles_018.71.aes -out sles_018.71
+
+    - name: Perform make extract
+      uses: docker://ghcr.io/mkst/esa:latest
+      with:
+        args: make extract
+    - name: Perform make
+      uses: docker://ghcr.io/mkst/esa:latest
+      with:
+        args: make all

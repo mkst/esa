@@ -1,0 +1,16 @@
+__pycache__/
+asm/
+assets/
+build/
+expected/
+junk/
+
+# files
+
+*.dat
+*.ld
+*_auto*.txt
+nonmatchings/
+ctx.c
+ctx.c.m2c
+pah.conf

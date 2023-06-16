@@ -1,0 +1,379 @@
+options:
+  platform:     psx
+  basename:     esa
+  # paths
+  base_path:    .
+  target_path:  esa.dat
+  asm_path:     asm/esa
+  asset_path:   assets/esa
+  src_path:     src/esa
+  # compiler
+  compiler: GCC # SN64
+  # disasm/linker
+  gp_value: 0x800E4090
+  symbol_addrs_path: symbol_addrs.esa.txt
+  undefined_funcs_auto_path: undefined_funcs_auto.esa.txt
+  undefined_syms_auto_path:  undefined_syms_auto.esa.txt
+
+  find_file_boundaries: yes
+
+  use_legacy_include_asm: no
+  migrate_rodata_to_functions: yes
+
+  auto_decompile_empty_functions: no
+
+  include_macro_inc: no # don't write macro.inc to rodata files
+
+  section_order:
+  - .rodata
+  - .text
+  - .data
+  - .bss
+
+segments:
+  - [0x0, header]
+  - [0x80, bin]     # zero padding
+  - name:  main
+    type:  code
+    start: 0x00000800
+    vram:  0x80010200
+    subalign: 4
+    subsegments:
+      - [0x800, rodata]
+      - [0xDE8, rodata] # 7B54
+      - [0xE94, rodata] # BA4C
+      - [0xEA4, rodata] # C278
+      - [0x344C, .rodata, terminal_background]
+      - [0x34F0, .rodata, camera]
+      - [0x3D88, .rodata, overlay2_71C140]
+      - [0x3DEC, .rodata, overlay2_6B5A40]
+      - [0x4E28, .rodata, overlay2_725D10]
+      - [0x52D0, .rodata, overlay2_72AF60]
+      - [0x5314, .rodata, overlay2_707310]
+      - [0x56AC, .rodata, overlay2_6D9330]
+      - [0x57D4, .rodata, overlay2_7741B0]
+      - [0x5A78, .rodata, overlay2_6DB610]
+      - [0x5AB4, .rodata, behaviours]
+      - [0x5B40, .rodata, overlay2_78E970]
+      - [0x5B6C, .rodata, overlay2_716900]
+      - [0x5C30, .rodata, osd]
+      - [0x5C58, .rodata, overlay2_739290]
+      - [0x5D7C, .rodata, dynamic_tail]
+      - [0x5FD4, .rodata, bear]
+      - [0x5FE8, .rodata, polar_bear]
+      - [0x5FFC, rodata] # 90D0C
+      - [0x60E4, .rodata, overlay2_76E7D0]
+      - [0x612C, .rodata, overlay2_75BC80]
+      - [0x6608, rodata] # libetc/intr
+      - [0x667C, rodata] # A0934
+      - [0x6878, rodata]
+      - [0x688C, rodata] # sprintf
+      - [0x6944, rodata] # A4094
+      - [0x696C, rodata] # event
+      - [0x698C, rodata] # A6CDC
+      - [0x69DC, rodata] # libetc/vsync
+      - [0x69FC, rodata] # libspu/s_sca
+      - [0x6A3C, rodata] # libcd/iso9660
+      - [0x6C2C, rodata] # libetc/intr_dma
+      - [0x6DA8, rodata]
+      - [0x6DC4, rodata] # AFF9C
+      - [0x6EBC, rodata] # B1798
+      - [0x6EDC, rodata]
+      - [0x6EEC, rodata]
+      - [0x6EFC, rodata] # B2630
+      - [0x6F3C, rodata] # B3978
+      - [0x6F8C, rodata] # libspu/s_sva
+      - [0x6FCC, rodata]
+      - [0x7568, rodata]
+      - [0x7650, asm] # all handwritten?
+      - [0x7B54, asm] # main game loop?
+      # --
+      - [0xB7CC, asm]
+      - [0xBA4C, asm]
+      - [0xC278, asm]
+      - [0xD460, c, controller]
+      - [0xD9D4, c, evo_microchip] # unknown reloc 30
+      - [0xDEF4, asm]
+      - [0xE8DC, asm] # part of B7CC ?
+      # --
+      - [0xE9D0, asm] # unable to decompile
+      - [0xEBB4, asm]
+      - [0xED10, asm] # setup spu
+      - [0xF4C4, asm]
+      - [0xF514, asm]
+      - [0xF7A0, asm] # cdrom set volume
+      - [0xF7F8, asm] # empty
+      # --
+      - [0xF800, c, terminal_background]
+      - [0x102E8, asm] # tbd
+      - [0x11644, c, controller2]
+      # - [0x105F4, asm]
+      # - [0x11644, asm]
+      # --
+      - [0x11754, c, camera] #
+      - [0x2090C, c, overlay2_71C140]
+      - [0x29C58, c, overlay2_79B090]
+      - [0x29DB0, c, overlay2_6AC360]
+      - [0x2A334, c, overlay2_6B5A40]
+      - [0x376F0, c, overlay2_725D10]
+      - [0x3CF44, c, overlay2_72AF60]
+      - [0x3D6E8, c, objects]
+      - [0x3E4A0, c, overlay2_72B800]
+      - [0x3EF18, c, overlay2_707310]
+      - [0x4FEF8, c, overlay2_6D9330]
+      - [0x51374, c, overlay2_7741B0]
+      - [0x52A54, c, collist2]
+      - [0x52C68, c, aidata]
+      - [0x52DBC, c, overlay2_716530]
+      - [0x53598, c, overlay2_6DB610]
+      - [0x54CE4, c, overlay2_6B5380]
+      - [0x553C4, c, behaviours]
+      - [0x5BE8C, c, overlay2_75D3D0]
+      - [0x6106C, c, collision]
+      - [0x648A0, c, vector]
+      - [0x64DE0, c, overlay2_72A930]
+      - [0x656E0, c, overlay2_6ACF20]
+      - [0x66E64, c, overlay2_78E970]
+      - [0x68D10, c, overlay2_716900]
+      - [0x6D624, c, osd]
+      - [0x6ECA0, c, overlay2_73C890]
+      - [0x6F6E0, c, overlay2_739290]
+      - [0x71FB0, c, overlay2_76F7D0]
+      - [0x7209C, c, overlay2_732A60]
+      - [0x7462C, asm] # esa specific?
+      - [0x74FB8, c, dynamic_tail]
+      - [0x78AF4, c, trails]
+      - [0x7A6AC, c, rat]
+      - [0x7B034, c, fox]
+      - [0x7C5E8, c, sheep]
+      - [0x7D598, c, bear]
+      - [0x7E054, c, dog]
+      - [0x7FDDC, c, mouse]
+      - [0x80970, c, penguin]
+      - [0x816B4, c, husky]
+      - [0x81FD4, c, rabbit]
+      - [0x82668, c, walrus]
+      - [0x83AAC, c, polar_bear]
+      - [0x84B40, c, elephant]
+      - [0x857B4, c, tortoise]
+      - [0x8658C, c, hyena]
+      - [0x86CA8, c, pirana]
+      - [0x86FCC, c, lion]
+      - [0x872A8, c, gorilla]
+      - [0x87E68, c, hippo]
+      - [0x8861C, c, cool_cod]
+      - [0x88A50, c, chameleon]
+      - [0x89470, c, camel]
+      - [0x8AA08, c, kangaroo]
+      - [0x8B86C, c, scorpion]
+      - [0x8D00C, c, desert_fox]
+      - [0x8DF70, c, vulture]
+      - [0x8F850, c, seagull]
+      - [0x8FED4, c, frog]
+      - [0x90924, c, parrot]
+      - [0x90D0C, asm]
+      - [0x910DC, c, overlay2_76E7D0]
+      - [0x91D54, c, overlay2_6ED230]
+      - [0x94298, c, overlay2_75BC80]
+      # PSYQ LIBRARIES
+      - [0x9C1D8, asm] # is this is actually intr.o?
+      - [0x9C208, asm, libetc/intr] # intr.o, ResetCallback
+      - [0x9C7F0, asm]
+      - [0x9C8BC, asm] # GTE commands
+      - [0x9FADC, asm]
+      - [0xA0934, asm] # needs more splits
+      - [0xA3078, asm, libapi/c81]
+      - [0xA3088, asm, sprintf] # libc2, does not OK as asm
+      - [0xA3908, asm] # reloc 30
+      - [0xA3DD0, asm]
+      - [0xA3E60, asm]
+      - [0xA4094, asm] # more TODO here
+      - [0xA61F4, asm, libgte/mtx_06]
+      - [0xA6254, asm, abs]
+      - [0xA6268, asm, event]
+      - [0xA63B8, asm, libgpu/p41]
+      - [0xA6458, asm]
+      - [0xA6ADC, asm]
+      - [0xA6BE0, asm, libgpu/p16]
+      - [0xA6C00, asm, entrypoint] # reloc 30
+      - [0xA6CDC, asm] # reloc 30
+      - [0xA73A0, asm]
+      - [0xA74BC, asm, libgte/rmat_00]
+      - [0xA76BC, asm]
+      - [0xA77D4, asm, libc2/memset]
+      - [0xA7804, asm] # noat?
+      - [0xA8E80, asm, libgpu/p06]
+      - [0xA8EC0, asm, libetc/vmode]
+      - [0xA8ED4, asm, libsnd/ssvm_2] # or libgs/gs_125?
+      - [0xA8EE4, asm]
+      - [0xA8EF0, asm, libgte/fgo_01]
+      - [0xA9180, asm, libgpu/p01]
+      - [0xA91A0, asm]
+      - [0xA91C0, asm, libgpu/p10]
+      - [0xA91F0, asm, libgte/mtx_000]
+      - [0xA9300, asm, libapi/c113]
+      - [0xA9310, asm, libgpu/p00]
+      - [0xA9350, asm, libgpu/e03]
+      - [0xA9410, asm, libetc/vsync]
+      - [0xA9620, asm, libgpu/e04]
+      - [0xA9660, asm, libmath/negsf2] # lib, libmath, negsf2, .text]
+      - [0xA9680, asm, libmath/subsf3]
+      - [0xA96E0, asm, libgte/mtx_006]
+      - [0xA9830, asm, libmath/mulsf3]
+      - [0xA9970, asm, libmath/extsfdf2]
+      - [0xA9AD0, asm, libgte/cor_05]
+      - [0xA9CC0, asm, libmath/fltsisf]
+      - [0xA9D90, asm, libmath/eqdf2]
+      - [0xA9DE0, asm, libmath/gtdf2]
+      - [0xA9EC0, asm, libmath/gesf2]
+      - [0xA9F60, asm, libmath/ltdf2]
+      - [0xAA040, asm, libmath/lesf2]
+      - [0xAA0F0, asm, libmath/eqsf2]
+      - [0xAA120, asm, libmath/gtsf2]
+      - [0xAA1C0, asm] # GTE commands
+      - [0xAA3B0, asm] # GTE commands
+      - [0xAA5C0, asm] # GTE commands
+      - [0xAA728, asm, libmath/ltsf2]
+      - [0xAA7D8, asm, libgte/geo_01]
+      - [0xAA878, asm, libmath/fixsfsi]
+      - [0xAA928, asm, libgte/geo_00]
+      - [0xAA9F8, asm, libmath/addsf3]
+      - [0xAABA8, asm, libspu/s_gks]
+      - [0xAAC38, asm, libspu/s_m_init]
+      - [0xAAC98, asm, libspu/s_stm]
+      - [0xAACC8, asm, libspu/s_stsa]
+      - [0xAAD28, asm]
+      - [0xAB314, asm, sys]
+      - [0xAB394, asm, libspu/s_f]
+      - [0xAB594, asm, libspu/s_srmp]
+      - [0xABA74, asm, libspu/s_r]
+      - [0xABAD4, asm, libspu/s_gvp]
+      - [0xABAF4, asm, libspu/s_svp]
+      - [0xABB64, asm, libspu/s_sca]
+      - [0xABEE4, asm, libcd/iso9660]
+      - [0xAC854, asm, libspu/s_skowa]
+      - [0xAC884, asm, libsnd/sssv]
+      - [0xAC994, asm, libspu/s_sk]
+      - [0xACB54, asm, libspu/s_m_m]
+      - [0xACE24, asm, libspu/s_grv]
+      - [0xACE54, asm, libspu/s_m_f]
+      - [0xACED4, asm, libspu/s_srd]
+      - [0xACF54, asm, libspu/s_srv]
+      - [0xACF84, asm, libspu/s_sr]
+      - [0xAD054, asm, libspu/s_i] # or libsnd/ut_roff
+      - [0xAD074, asm, libspu/s_svv]
+      - [0xAD0F4, asm, libspu/s_itc]
+      - [0xAD1A4, asm, libspu/s_q]
+      - [0xAD224, asm, libgpu/e01]
+      - [0xAD294, asm, libgpu/p38]
+      - [0xAD304, asm, libmath/subdf3]
+      - [0xAD384, asm, libmath/muldf3]
+      - [0xAD784, asm, libmath/fltsidf]
+      - [0xAD8A4, asm, libmath/gedf2]
+      - [0xAD984, asm, libmath/ledf2]
+      - [0xADA64, asm]
+      - [0xADAB4, asm, libmath/fixdfsi]
+      - [0xADBB4, asm, libmath/adddf3]
+      - [0xADF34, asm] # wont match if asm
+      - [0xAF114, asm, msc01]
+      - [0xAF1A4, asm, libmath/trudfsf2]
+      - [0xAF2D4, asm, libmath/divsf3]
+      - [0xAF424, asm, libc2/memcpy]
+      - [0xAF464, asm, libc2/strstr]
+      - [0xAF4D4, asm, libgte/msc09]
+      - [0xAF574, asm, libgte/fgo_00]
+      - [0xAF5B4, asm]
+      - [0xAF5E4, asm, libgte/mtx_004]
+      - [0xAF744, asm, libapi/a12]
+      - [0xAF754, asm, libapi/a08]
+      - [0xAF764, asm, libapi/a09]
+      - [0xAF774, asm]
+      - [0xAF7B0, asm, libapi/a25]
+      - [0xAF7C0, asm, libetc/intr_vb]
+      # - [0xAF8E0, lib, libetc, intr_dma, .text]
+      - [0xAF8E0, asm, libetc/intr_dma]
+      - [0xAFB80, asm, libapi/a37]
+      - [0xAFB90, asm, libapi/a23]
+      - [0xAFBA0, asm, libapi/a91]
+      - [0xAFBB0, asm, libapi/l10]
+      - [0xAFBC0, asm, libapi/a36]
+      - [0xAFBD0, asm, libapi/a24]
+      - [0xAFBE0, asm] # GTE commands
+      - [0xAFC9C, asm, libgte/reg02_8]
+      - [0xAFCAC, asm, libapi/c73]
+      - [0xAFCBC, asm, libc2/strlen]
+      - [0xAFCFC, asm, libc2/memchr]
+      # - [0xAFD4C, lib, libc, memmove, .text] # does not match with libc2
+      - [0xAFD4C, asm, libc/memmove]
+      - [0xAFDBC, asm, libc2/strcat]
+      - [0xAFE6C, asm, libc2/strcpy]
+      - [0xAFEBC, asm, libgte/patchgte]
+      - [0xAFF9C, asm] # GTE commands
+      - [0xB1748, asm, bios_2]  # libapi a07 OR libcd bios_2 ?
+      - [0xB1758, asm, libc2/bcopy]
+      - [0xB1798, asm]
+      - [0xB23C4, asm, libapi/c57]
+      - [0xB23D4, asm]
+      - [0xB2430, asm, libc2/strncpy]
+      - [0xB24A0, asm, libc2/puts]
+      - [0xB2500, asm, libmath/ferr]
+      - [0xB2570, asm, libmath/dbshift]
+      - [0xB2630, asm]
+      - [0xB3028, asm, libspu/s_ini]
+      - [0xB3188, asm]
+      - [0xB3218, asm, libspu/s_sra]
+      - [0xB36E8, asm, libspu/s_crwa]
+      - [0xB3888, asm, libc2/strncmp]
+      - [0xB3908, asm, libc2/strcmp]
+      - [0xB3978, asm]
+      - [0xB4178, asm, libspu/s_sva]
+      - [0xB4778, asm, libspu/s_m_int]
+      - [0xB4A78, asm, libspu/s_gav]
+      - [0xB4AA8, asm, libspu/s_sav]
+      - [0xB4D68, asm, libapi/a11]
+      - [0xB4D78, asm, libspu/s_dcb]
+      - [0xB4DA8, asm, libapi/a13]
+      - [0xB4DB8, asm, libmath/negdf2]
+      - [0xB4DF8, asm, libmath/dbshiftu]
+      - [0xB4EB8, asm, libmath/addmant]
+      - [0xB4F68, asm, libmath/mainasu]
+      - [0xB4FD8, asm, libapi/a22]
+      - [0xB4FE8, asm, libc2/bzero]
+      - [0xB5018, asm, libapi/l03]
+      - [0xB5028, asm, libapi/l02]
+      - [0xB5038, asm, libapi/c68]
+      - [0xB5048, asm]
+      - [0xB526C, asm, libpad/pdmaiini] # libpad
+      - [0xB537C, asm]
+      - [0xB5CEC, asm]
+      - [0xB68DC, asm]
+      - [0xB736C, asm]
+      # .data
+      - [0xB7C74, bin, data] # data from here
+      # - [0xCED58, lib, libetc, intr_dma, .data]
+      # - [0xCED88, asm, CED88]
+      # .sdata (?)
+      - [0xD4690, bin, sdata_D4690]
+      - [0xD4754, .sdata, controller]
+      - [0xD4758, bin, sdata_D4758]
+      # .sbss
+      - [0xD551C, bin, sbss]
+      # - [0xD55A0, .sbss, 78AF4] # fixme
+      # - [0xD55A4, asm]
+      # - [0xD55B0, .sbss, B7CC]
+      # - [0xD55C0, asm] #
+      # - [0xD55EC, .sbss, F008] # D_800E4FEC
+      # - [0xD55F0, bin] # D_800E4FEC
+      # - [0xD5968, bin] # .sdata 4346C
+      # - [0xD596C, bin]
+      # - [0xD5A6C, bin] #.sdata, 719C8]
+      # - [0xD5A80, bin] # D_800E5480
+      # # - [0xD6478, .sdata, A3E60] # only 6 bytes
+      # - [0xD6480, bin]
+      # # - [0xD64C8, .sbss, A3E60] # A3E60 sbss?
+      # - [0xD64D0, bin] # A3E60 sbss?
+      # - [0xD6520, bin] # more .sbss?
+      # - [0xD6530, bin] # more .sbss?
+      # - [0xD6620, bin] # splat says so
+      - [0x11C3DC, bin, heap]
+  - [0x11D000] # end of file

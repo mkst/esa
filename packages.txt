@@ -1,0 +1,5 @@
+gcc-mips-linux-gnu
+less
+make
+python3
+python3-pip

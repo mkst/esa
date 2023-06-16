@@ -1,0 +1,3 @@
+[decompme.compilers]
+"cpp" = "psyq4.6"
+"tools/gcc-2.95.2/gcc" = "psyq4.6"
