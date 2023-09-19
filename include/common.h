@@ -13,7 +13,13 @@
 #define MIN(a,b) (((a)<(b))?(a):(b))
 #endif
 
-#define	FTOFIX32(x)	(long)((x) * (float)0x00010000)
+#define MAX_INT                 0x7FFFFFFF
+#define OB_TYPE_ANIMAL_OFFSET   256
+
+#define TILESET_ASCII_OFFSET    272
+#define TILESET_ZERO            (TILESET_ASCII_OFFSET + '0')
+#define TILESET_NINE            (TILESET_ASCII_OFFSET + '9')
+#define TILESET_SPACE           (TILESET_ASCII_OFFSET + ' ')
 
 // TBD
 // ABBBBBGG GGGRRRRR

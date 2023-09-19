@@ -1,7 +1,13 @@
 dpadd  = __adddf3;
+
 dpmul  = __muldf3;
+fpmul  = __mulsf3;
+
 litodp = __floatsidf;
+sitofp = __floatsisf;
 
 D_80014DDC = 0x80014DDC;
 D_80012E78 = 0x80012E78;
 D_80012E90 = 0x80012E90;
+
+D_80014DB4 = 0x80014DB4;

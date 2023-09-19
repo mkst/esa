@@ -22,6 +22,7 @@ options:
 
   auto_decompile_empty_functions: no
 
+  asm_jtbl_label_macro: jlabel
   include_macro_inc: no # don't write macro.inc to rodata files
 
   section_order:
@@ -50,6 +51,7 @@ segments:
       - [0x4E28, .rodata, overlay2_725D10]
       - [0x52D0, .rodata, overlay2_72AF60]
       - [0x5314, .rodata, overlay2_707310]
+      - [0x53B4, .rodata, 488C8]
       - [0x56AC, .rodata, overlay2_6D9330]
       - [0x57D4, .rodata, overlay2_7741B0]
       - [0x5A78, .rodata, overlay2_6DB610]
@@ -64,7 +66,7 @@ segments:
       - [0x5FFC, rodata] # 90D0C
       - [0x60E4, .rodata, overlay2_76E7D0]
       - [0x612C, .rodata, overlay2_75BC80]
-      - [0x6608, rodata] # libetc/intr
+      - [0x65D4, rodata] # libetc/intr
       - [0x667C, rodata] # A0934
       - [0x6878, rodata]
       - [0x688C, rodata] # sprintf
@@ -88,13 +90,13 @@ segments:
       - [0x7650, asm] # all handwritten?
       - [0x7B54, asm] # main game loop?
       # --
-      - [0xB7CC, asm]
-      - [0xBA4C, asm]
-      - [0xC278, asm]
+      - [0xB7CC, c] # overlay2_791CD0 ?
+      - [0xBA4C, c]
+      - [0xC278, c]
       - [0xD460, c, controller]
       - [0xD9D4, c, evo_microchip] # unknown reloc 30
-      - [0xDEF4, asm]
-      - [0xE8DC, asm] # part of B7CC ?
+      - [0xDEF4, c]
+      - [0xE8DC, c] # part of B7CC ?
       # --
       - [0xE9D0, asm] # unable to decompile
       - [0xEBB4, asm]
@@ -105,10 +107,8 @@ segments:
       - [0xF7F8, asm] # empty
       # --
       - [0xF800, c, terminal_background]
-      - [0x102E8, asm] # tbd
+      - [0x102E8, c, overlay2_6A7A80]
       - [0x11644, c, controller2]
-      # - [0x105F4, asm]
-      # - [0x11644, asm]
       # --
       - [0x11754, c, camera] #
       - [0x2090C, c, overlay2_71C140]
@@ -118,8 +118,9 @@ segments:
       - [0x376F0, c, overlay2_725D10]
       - [0x3CF44, c, overlay2_72AF60]
       - [0x3D6E8, c, objects]
-      - [0x3E4A0, c, overlay2_72B800]
+      - [0x3E4A0, c, overlay2_72BA20]
       - [0x3EF18, c, overlay2_707310]
+      - [0x488C8, c, 488C8]
       - [0x4FEF8, c, overlay2_6D9330]
       - [0x51374, c, overlay2_7741B0]
       - [0x52A54, c, collist2]
@@ -138,9 +139,10 @@ segments:
       - [0x6D624, c, osd]
       - [0x6ECA0, c, overlay2_73C890]
       - [0x6F6E0, c, overlay2_739290]
-      - [0x71FB0, c, overlay2_76F7D0]
+
+      - [0x71ED8, c, overlay2_76F7D0]
       - [0x7209C, c, overlay2_732A60]
-      - [0x7462C, asm] # esa specific?
+      - [0x7462C, c] # esa specific?
       - [0x74FB8, c, dynamic_tail]
       - [0x78AF4, c, trails]
       - [0x7A6AC, c, rat]
@@ -171,7 +173,7 @@ segments:
       - [0x8F850, c, seagull]
       - [0x8FED4, c, frog]
       - [0x90924, c, parrot]
-      - [0x90D0C, asm]
+      - [0x90D0C, c]
       - [0x910DC, c, overlay2_76E7D0]
       - [0x91D54, c, overlay2_6ED230]
       - [0x94298, c, overlay2_75BC80]

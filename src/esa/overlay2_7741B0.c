@@ -87,8 +87,8 @@ void func_80061D44(struct000 *arg0, struct000 *arg1) {
     arg0->unk2C0 = 3;
     arg0->unk2D0 = D_800E73A8.animals[gCurrentAnimalIndex].animal == arg1;
     arg0->unk2CC = arg1;
-    arg0->unk298 = arg1->unk6;
-    arg0->unk29A = arg1->unkA;
+    arg0->unk298 = arg1->xPos.h[1];
+    arg0->unk29A = arg1->zPos.h[1];
     arg0->unk294 = 2;
     arg0->unk295 = -1;
 }

@@ -1,0 +1,291 @@
+options:
+  platform:     psx
+  basename:     pt
+  # paths
+  base_path:    .
+  target_path:  pt.dat
+  asm_path:     asm/pt
+  asset_path:   assets/pt
+  src_path:     src/pt
+  # compiler
+  compiler: GCC
+  # disasm/linker
+  gp_value: 0
+  symbol_addrs_path:    symbol_addrs.pt.txt
+  undefined_funcs_auto_path: undefined_funcs_auto.pt.txt
+  undefined_syms_auto_path: undefined_syms_auto.pt.txt
+
+  find_file_boundaries: yes
+
+  use_legacy_include_asm: no
+  migrate_rodata_to_functions: no
+
+  auto_decompile_empty_functions: no
+
+  include_macro_inc: no # don't write macro.inc to rodata files
+
+  section_order:
+  - .rodata
+  - .text
+  - .data
+  - .bss
+
+segments:
+  - [0x0, header]       # 0x8000fa00
+  - [0x80, bin]
+  - name:  pt
+    type:  code
+    start: 0x00000800
+    vram:  0x80010200
+    subalign: 4
+    subsegments:
+      - [0x800, rodata]  # B82C
+      - [0xA3C4, rodata] # 1B4F0
+      - [0xA400, rodata] # libcd/event
+      - [0xA420, rodata] # libcd/c_011
+      - [0xA440, rodata] # 1D62C
+      - [0xA490, rodata] # libcd/iso9660
+      - [0xA690, rodata] # libetc/vsync
+      - [0xA6A0, rodata] # libspu/s_sca
+      - [0xA708, rodata] # libc2/sprintf
+      - [0xA7C0, rodata] # 212E0
+      - [0xAA50, rodata] # 22DDC
+      - [0xAA78, rodata] # 2A58C
+      - [0xAADC, rodata] # libmath/printf2
+      - [0xAD90, rodata]
+      - [0xADD8, rodata] # libetc/intr_dma
+      - [0xAF70, rodata] # 2D22C
+      - [0xB068, rodata] # 2EABC
+      - [0xB0B8, rodata]
+      - [0xB0D4, rodata] # libc2/prnt
+      - [0xB2F8, rodata] # 2FA1C
+      - [0xB338, rodata] # libspu/s_sva
+      - [0xB378, rodata] # libmcrd/userfunc
+      - [0xB398, rodata] # 31C9C
+      - [0xB3B8, rodata] # 32B58
+      - [0xB3D8, rodata]
+      - [0xB5B8, rodata]
+      # .text
+      - [0xB82C, asm]
+      - [0x1B4F0, asm]
+      - [0x1BB34, asm, libcd/event]
+      - [0x1BC84, asm]
+      - [0x1C40C, asm, libgpu/p18]
+      - [0x1C42C, asm]
+      - [0x1C544, asm, libetc/vmode]
+      - [0x1C574, asm]
+      - [0x1CA3C, asm, libgpu/e03]
+      - [0x1CAFC, asm, libgpu/e04]
+      - [0x1CB3C, asm, libcd/c_011]
+      - [0x1D62C, asm]
+      - [0x1DAF0, asm, libcd/c_003]
+      - [0x1DB70, asm, libcd/cdread2]
+      - [0x1DC20, asm, libcd/c_005]
+      - [0x1DCB0, asm, libcd/iso9660]
+      - [0x1E620, asm, libcd/cdrom]
+      - [0x1E650, asm, libcd/c_009]
+      - [0x1E710, asm]
+      - [0x1ECFC, asm, libcd/sys]
+      - [0x1ECFC, asm, libds/d3_006]
+      - [0x1ED7C, asm, libc2/printf]
+      - [0x1EDBC, asm, libcd/c_004]
+      - [0x1EEAC, asm, libcd/c_007]
+      - [0x1EF5C, asm, libetc/vsync]
+      - [0x1F16C, asm, libspu/s_gks]
+      - [0x1F1FC, asm, libspu/s_m_init]
+      - [0x1F25C, asm, libspu/s_stm]
+      - [0x1F28C, asm, libspu/s_stsa]
+      - [0x1F2EC, asm, libspu/s_srmp]
+      - [0x1F7CC, asm, libspu/s_r]
+      - [0x1F7CC, asm, libspu/s_w]
+      - [0x1F82C, asm, libspu/s_sca]
+      - [0x1FBAC, asm, libspu/s_skowa]
+      - [0x1FBDC, asm, libsnd/sssv]
+      - [0x1FCEC, asm, libspu/s_sk]
+      - [0x1FEAC, asm, libspu/s_m_m]
+      - [0x2017C, asm, libspu/s_grv]
+      - [0x201AC, asm, libspu/s_srd]
+      - [0x2022C, asm, libspu/s_srv]
+      - [0x2025C, asm, libspu/s_sr]
+      - [0x2032C, asm, libsnd/ut_roff]
+      - [0x2032C, asm, libspu/s_i]
+      - [0x2034C, asm, libspu/s_itc]
+      - [0x203FC, asm, libcard/c171]
+      - [0x2040C, asm, libc2/sprintf]
+      - [0x20C8C, asm, libc2/strncmp]
+      - [0x20D0C, asm, libapi/a51]
+      - [0x20D1C, asm, libapi/a54]
+      - [0x20D2C, asm, libc2/bzero]
+      - [0x20D5C, asm]
+      - [0x20E00, asm, libapi/a53]
+      - [0x20E10, asm, libapi/c112]
+      - [0x20E10, asm, libcard/c112]
+      - [0x20E20, asm, libapi/a12]
+      - [0x20E30, asm, libapi/a67]
+      - [0x20E40, asm, libcard/card]
+      - [0x20E80, asm, libc/memcmp] # aka bcmp
+      - [0x20ED0, asm, libcard/a78]
+      - [0x20EE0, asm, libc2/memcpy]
+      - [0x20F20, asm, libapi/a08]
+      - [0x20F30, asm, libc2/strcmp]
+      - [0x20FA0, asm, libapi/a37]
+      - [0x20FB0, asm, libapi/a52]
+      - [0x20FC0, asm, libapi/a11]
+      - [0x20FD0, asm, libcard/a80]
+      - [0x20FE0, asm, libapi/a50]
+      - [0x20FF0, asm, libgpu/p01]
+      - [0x21010, asm, libapi/first]
+      - [0x212B0, asm, libcard/a79]
+      - [0x212C0, asm, libcard/c172]
+      - [0x212D0, asm, libapi/a36]
+      - [0x212E0, asm]
+      - [0x22CBC, asm, libc2/memset] # or libsnd/ssinit_h
+      - [0x22CEC, asm, libc2/strcpy]
+      - [0x22D3C, asm, libapi/c81]
+      - [0x22D4C, asm]
+      - [0x22DDC, asm]
+      - [0x26170, asm, libgpu/p27]
+      - [0x26190, asm]
+      - [0x2A4CC, asm, libgpu/p41]
+      - [0x2A56C, asm, libgpu/p16]
+      - [0x2A58C, asm]
+      - [0x2AE48, asm, libgte/rmat_00]
+      - [0x2B048, asm, libgpu/p17]
+      - [0x2B068, asm, libgpu/p06]
+      - [0x2B0A8, asm]
+      - [0x2B0E0, asm]
+      - [0x2B530, asm]
+      - [0x2B610, asm, libgte/geo_01]
+      - [0x2B6B0, asm]
+      - [0x2B6D0, asm, libgte/geo_00]
+      - [0x2B7A0, asm, libgpu/p10]
+      - [0x2B7D0, asm, libmath/printf2]
+      - [0x2CD60, asm, libgpu/p22]
+      - [0x2CD80, asm, libapi/c113]
+      - [0x2CD90, asm, libgpu/p00]
+      - [0x2CDD0, asm, libapi/c73]
+      - [0x2CDE0, asm]
+      - [0x2CE1C, asm, libapi/a25]
+      - [0x2CE2C, asm, libetc/intr_vb]
+      - [0x2CF4C, asm, libetc/intr_dma]
+      - [0x2D1EC, asm, libapi/a23]
+      - [0x2D1FC, asm, libapi/a91]
+      - [0x2D20C, asm, libapi/l10]
+      - [0x2D21C, asm, libapi/a24]
+      - [0x2D22C, asm]
+      - [0x2E5E8, asm, libcd/bios_2]
+      - [0x2E6E8, asm]
+      - [0x2E8B8, asm, libapi/a07]
+      - [0x2E8C8, asm, libc2/bcopy]
+      - [0x2E908, asm, libapi/c57]
+      - [0x2E918, asm]
+      - [0x2E974, asm, libc2/strcat]
+      - [0x2EA24, asm, libcd/c_008]
+      - [0x2EA64, asm]
+      - [0x2EA9C, asm, libcd/c_010]
+      - [0x2EABC, asm]
+      - [0x2F2BC, asm, libcd/c_002]
+      - [0x2F31C, asm, libc2/prnt]
+      - [0x2F9BC, asm, libc2/puts]
+      - [0x2FA1C, asm]
+      - [0x30414, asm, libspu/s_ini]
+      - [0x30574, asm]
+      - [0x30604, asm, libspu/s_sra]
+      - [0x30AD4, asm, libspu/s_crwa]
+      - [0x30C74, asm, libspu/s_sva]
+      - [0x31274, asm, libspu/s_m_int]
+      - [0x31574, asm, libspu/s_gav]
+      - [0x315A4, asm, libspu/s_sav]
+      - [0x31864, asm, libspu/s_dcb]
+      - [0x31894, asm, libc2/strlen]
+      - [0x318D4, asm, libc2/memchr]
+      - [0x31924, asm, libc/memmove] # or libc2?
+      - [0x31994, asm]
+      - [0x319A4, asm, libcard/a74]
+      - [0x319B4, asm]
+      - [0x31B84, asm, libcard/a75]
+      - [0x31B94, asm, libapi/a66]
+      - [0x31BA4, asm, libmcrd/userfunc]
+      - [0x31C30, asm]
+      - [0x31C9C, asm]
+      - [0x325B0, asm, libgte/patchgte]
+      - [0x32690, asm, libc2/strncpy]
+      - [0x32700, asm, libgte/mtx_004]
+      - [0x32860, asm, libgte/mtx_06]
+      - [0x328C0, asm, libgte/fgo_00]
+      - [0x32900, asm]
+      - [0x32A48, asm, libgte/mtx_000]
+      - [0x32B58, asm]
+      - [0x33784, asm, libc2/putchar]
+      - [0x339E4, asm, libmath/ltdf2]
+      - [0x33AC4, asm]
+      - [0x33B14, asm, libmath/negdf2]
+      - [0x33B54, asm, libmath/modf00]
+      - [0x33BF4, asm, libmath/divdf3]
+      - [0x33F24, asm, libmath/adddf3]
+      - [0x342A4, asm, libmath/muldf3]
+      - [0x346A4, asm, libmath/fixdfsi]
+      - [0x347A4, asm]
+      - [0x347F4, asm, libmath/fltsidf]
+      - [0x34914, asm, libmath/gtdf2]
+      - [0x349F4, asm, libapi/a10]
+      - [0x34A04, asm]
+      - [0x34AD4, asm, libapi/l03]
+      - [0x34AE4, asm, libapi/l02]
+      - [0x34AF4, asm, libapi/c68]
+      - [0x34B04, asm, libcard/a92]
+      - [0x34B14, asm]
+      - [0x34D38, asm, libpad/pdmaiini]
+      - [0x357B8, asm]
+      - [0x363A8, asm]
+      - [0x36E38, asm, libmath/subdf3]
+      - [0x36EB8, asm, libmath/dbshift]
+      - [0x36F78, asm, libmath/mainasu]
+      - [0x36FE8, asm, libmath/addmant]
+      - [0x37098, asm, libmath/dbshiftu]
+      - [0x37158, asm, libmath/ferr]
+      - [0x371C8, asm]
+      # .sdata/.sbss/.data/.bss
+      - [0x378B0, asm] # data?
+      - [0x48C40, asm]
+      - [0x48C70, asm]
+      - [0x48CD0, asm]
+      - [0x48D00, asm]
+      - [0x49620, asm]
+      - [0x49790, asm]
+      - [0x4A840, asm]
+      - [0x4A890, asm]
+      - [0x4A9E0, asm]
+      - [0x4AAF0, asm]
+      - [0x4AB10, asm]
+      - [0x4AB40, asm]
+      - [0x4AB50, asm]
+      - [0x4AC20, asm]
+      - [0x4AC40, asm]
+      - [0x4AC50, asm]
+      - [0x4AF30, asm]
+      - [0x4AFA0, asm]
+      - [0x4AFD0, asm]
+      - [0x4B5C0, asm] # data for B82C
+      - [0x504C0, asm] # data for 1B4F0/212D0
+      - [0x508C0, asm] # .bss?
+      - [0x508D0, asm]
+      - [0x509C0, asm]
+      - [0x50A90, asm]
+      - [0x52740, asm]
+      - [0x65E40, asm]
+      - [0x66240, asm]
+      - [0x66260, asm]
+      - [0x664C0, asm]
+      - [0x664E0, asm]
+      - [0x66500, asm]
+      - [0x6A280, asm]
+      - [0x6A380, asm]
+      - [0x6AB70, asm]
+      - [0x6C380, asm]
+      - [0x6EEC0, asm]
+      - [0x6F010, asm]
+      - [0x70810, asm]
+      - [0x70820, asm]
+      - [0x73170, asm]
+  - [0x74800] # end of file

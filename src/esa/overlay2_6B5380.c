@@ -31,8 +31,8 @@ void func_800646E4(void) {
             zVel += zVel + 24;
         }
 
-        D_800E527C->xVel += MAX(MIN(xVel, 128), -128) << 12;
-        D_800E527C->zVel += MAX(MIN(zVel, 128), -128) << 12;
+        D_800E527C->xVel.w += MAX(MIN(xVel, 128), -128) << 12;
+        D_800E527C->zVel.w += MAX(MIN(zVel, 128), -128) << 12;
     }
 }
 #else
@@ -73,8 +73,8 @@ void func_80064AC0(void) {
     } else {
         var_s0 = D_800E529C->unkAC;
     }
-    D_800E527C->yVel = (s32) (D_800E527C->yVel * 7) >> 3;
-    D_800E527C->yVel -= ((D_800E527C->yPos.h[1] + var_s0) - func_80020C8C(D_800E527C->xPos.h[1], D_800E527C->zPos.h[1], D_800E527C)) << 0xA;
+    D_800E527C->yVel.w = (s32) (D_800E527C->yVel.w * 7) >> 3;
+    D_800E527C->yVel.w -= ((D_800E527C->yPos.h[1] + var_s0) - func_80020C8C(D_800E527C->xPos.h[1], D_800E527C->zPos.h[1], D_800E527C)) << 0xA;
 }
 
 void func_80064B5C(void) {
@@ -82,9 +82,9 @@ void func_80064B5C(void) {
 
     temp_v1 = (D_800E527C->yPos.h[1] + D_800E529C->unkAE) - func_80020C8C(D_800E527C->xPos.h[1], D_800E527C->zPos.h[1]);
     if (temp_v1 >= 0) {
-        D_800E527C->yVel -= D_800E4B9C;
+        D_800E527C->yVel.w -= D_800E4B9C;
     } else if (temp_v1 >= -0xF) {
-        D_800E527C->yVel -= ((temp_v1 + 0x10) * D_800E4B9C) >> 4;
+        D_800E527C->yVel.w -= ((temp_v1 + 0x10) * D_800E4B9C) >> 4;
     }
 }
 
@@ -107,8 +107,8 @@ void func_80064CD0(u16 arg0, u16 arg1, s16 arg2) {
     s32 temp_t7_3;
     s32 xVel;
 
-    xVel = D_800E527C->xVel;
-    zVel = D_800E527C->zVel;
+    xVel = D_800E527C->xVel.w;
+    zVel = D_800E527C->zVel.w;
 
     temp_t7_2 = D_800CA604[D_800E5274->unk322 & 0xFF] >> 5;
     temp_t6_2 = D_800CA604[(D_800E5274->unk322 + 0x40) & 0xFF] >> 5;
@@ -119,6 +119,6 @@ void func_80064CD0(u16 arg0, u16 arg1, s16 arg2) {
 
     xVel = xVel - (((((xVel - temp_t7_2) >> arg0) + (xVel >> arg1)) * arg2) >> 4);
     zVel = zVel - (((((zVel - temp_t6_2) >> arg0) + (zVel >> arg1)) * arg2) >> 4);
-    D_800E527C->xVel = xVel;
-    D_800E527C->zVel = zVel;
+    D_800E527C->xVel.w = xVel;
+    D_800E527C->zVel.w = zVel;
 }

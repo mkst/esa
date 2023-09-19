@@ -60,7 +60,7 @@ CPP_FLAGS       := -undef -Wall -lang-c
 CPP_FLAGS       += -Dmips -D__GNUC__=2 -D__OPTIMIZE__ -D__mips__ -D__mips -Dpsx -D__psx__ -D__psx -D_PSYQ -D__EXTENSIONS__ -D_MIPSEL -D__CHAR_UNSIGNED__ -D_LANGUAGE_C -DLANGUAGE_C
 CPP_FLAGS       += $(CPP_INCLUDES)
 
-CC_FLAGS        :=  -mrnames -mel -mgpopt -mgpOPT -msoft-float -msplit-addresses -mno-abicalls -fno-builtin -fsigned-char -gcoff
+CC_FLAGS        := -mrnames -mel -mgpopt -mgpOPT -msoft-float -msplit-addresses -mno-abicalls -fno-builtin -fsigned-char -gcoff
 
 CHECK_WARNINGS  := -Wall -Wextra -Wno-format-security -Wno-unknown-pragmas -Wno-unused-parameter -Wno-unused-variable -Wno-missing-braces -Wno-int-conversion
 CC_CHECK        := $(MODERN_GCC) -fsyntax-only -fno-builtin -fsigned-char -std=gnu90 -m32 $(CHECK_WARNINGS) $(CPP_FLAGS)
@@ -82,6 +82,18 @@ $(BUILD_DIR)/src/esa/overlay2_6B5A40.c.o: AS_SDATA_LIMIT := -G8
 $(BUILD_DIR)/src/esa/overlay2_76E7D0.c.o: AS_SDATA_LIMIT := -G0
 
 $(BUILD_DIR)/src/esa/overlay2_6B5380.c.o: AS_SDATA_LIMIT := -G2
+$(BUILD_DIR)/src/esa/overlay2_76F7D0.c.o: AS_SDATA_LIMIT := -G2
+$(BUILD_DIR)/src/esa/overlay2_707310.c.o: AS_SDATA_LIMIT := -G0
+
+$(BUILD_DIR)/src/esa/overlay2_725D10.c.o: AS_SDATA_LIMIT := -G0
+
+$(BUILD_DIR)/src/esa/overlay2_75D3D0.c.o: SDATA_LIMIT := -G8
+$(BUILD_DIR)/src/esa/overlay2_75D3D0.c.o: AS_SDATA_LIMIT := -G8
+
+$(BUILD_DIR)/src/esa/B7CC.c.o: AS_SDATA_LIMIT := -G2
+$(BUILD_DIR)/src/esa/E8DC.c.o: AS_SDATA_LIMIT := -G4
+
+$(BUILD_DIR)/src/esa/488C8.c.o: AS_SDATA_LIMIT := -G4
 
 # recipes
 

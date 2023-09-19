@@ -4,6 +4,7 @@ D_80014828 = 0x80014828; // force_not_migration:true
 D_8001483C = 0x8001483C; // force_not_migration:true
 D_80014858 = 0x80014858; // force_not_migration:true
 
+//D_80014DDC = 0x80014DDC; // force_not_migration:true
 D_80014DF8 = 0x80014DF8; // force_not_migration:true
 D_80014E08 = 0x80014E08; // force_not_migration:true
 D_80014E20 = 0x80014E20; // force_not_migration:true
