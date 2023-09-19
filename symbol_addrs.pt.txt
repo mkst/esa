@@ -1,0 +1,170 @@
+// libapi
+
+lseek           = 0x8003070C;
+close           = 0x8003071C;
+write           = 0x80030800;
+_bu_init        = 0x80030810;
+EnableEvent     = 0x80030820;
+nextfile        = 0x80030830;
+OpenEvent       = 0x80030920;
+strcmp          = 0x80030930;
+ExitCriticalSection = 0x800309A0;
+read            = 0x800309B0;
+TestEvent       = 0x800309C0;
+open            = 0x800309E0;
+firstfile       = 0x80030A10;
+EnterCriticalSection = 0x80030CD0;
+LoadExec        = 0x8003273C;
+_96_init        = 0x8003C780;
+GPU_cw          = 0x8003C7D0;
+HookEntryInt    = 0x8003C81C;
+ReturnFromException = 0x8003CBEC;
+ChangeClearPAD  = 0x8003CBFC;
+ChangeClearRCnt = 0x8003CC0C;
+ResetEntryInt   = 0x8003CC1C;
+DeliverEvent    = 0x8003E2B8;
+InitHeap        = 0x8003E308;
+firstfile2      = 0x80041594;
+WaitEvent       = 0x800443F4;
+SysDeqIntRP     = 0x800444D4;
+SysEnqIntRP     = 0x800444E4;
+FlushCache      = 0x800444F4;
+
+// libc
+memcmp          = 0x80030880;
+memmove         = 0x80041324;
+
+// libc2
+printf          = 0x8002E77C;
+sprintf         = 0x8002FE0C;
+strncmp         = 0x8003068C;
+bzero           = 0x8003072C;
+write           = 0x80030800;
+memcmp          = 0x80030880;
+strcpy          = 0x800326EC;
+memset          = 0x800326BC;
+strcat          = 0x8003E374;
+prnt            = 0x8003ED1C;
+puts            = 0x8003F3BC;
+strlen          = 0x80041294;
+memchr          = 0x800412D4;
+memmove         = 0x80041324;
+_putchar        = 0x80043184;
+_putchar_flash  = 0x80043280;
+putchar         = 0x800432BC;
+
+
+// libcard
+_card_info       = 0x8002FDFC;
+_bu_init         = 0x80030810;
+_card_clear      = 0x80030840;
+_card_write      = 0x800308D0;
+_new_card        = 0x800309D0;
+_card_read       = 0x80030CB0;
+_card_load       = 0x80030CC0;
+InitCARD2        = 0x800413A4;
+StartCARD2       = 0x80041584;
+_card_status     = 0x80044504;
+
+// libcd
+CD_cbread = 0x8002B534;
+CD_read_dma_mode = 0x8002B538;
+StCdInterrupt = 0x8002C53C;
+debug_cause = 0x8002C584;
+StUnSetRing = 0x8002D4F0;
+StSetStream = 0x8002D620;
+CdSearchFile = 0x8002D6B0;
+StSetRing = 0x8002E020;
+StRingBase = 0x8002E028;
+StRgb24 = 0x8002E02C;
+StEmu_Addr = 0x8002E030;
+StEmu_Idx = 0x8002E034;
+StRingIdx1 = 0x8002E038;
+StRingIdx2 = 0x8002E03C;
+StRingIdx3 = 0x8002E040;
+StSTART_FLAG = 0x8002E044;
+StStartFrame = 0x8002E048;
+StEndFrame = 0x8002E04C;
+StFinalSector = 0x8002E050;
+StGetNext = 0x8002E050;
+Stframe_no = 0x8002E054;
+Stsector_offset = 0x8002E058;
+StCdIntrFlag = 0x8002E05C;
+StCHANNEL = 0x8002E060;
+CChannel = 0x8002E064;
+
+// libetc
+InterruptCallback = 0x8002AF20;
+SetVideoMode      = 0x8002BF44;
+GetVideoMode      = 0x8002BF58;
+
+// libgpu
+SetPolyG4 = 0x8002BE0C;
+GetVideoMode = 0x8002BF58;
+SetDefDrawEnv = 0x8002C43C;
+SetDefDispEnv = 0x8002C4FC;
+GetClut = 0x800309F0;
+SetLineF2 = 0x80035B70;
+SetDrawMode = 0x80039ECC;
+SetPolyF4 = 0x80039F6C;
+SetPolyFT4 = 0x8003AA48;
+AddPrim = 0x8003AA68;
+SetSemiTrans = 0x8003B1A0;
+SetSprt = 0x8003C760;
+GetTPage = 0x8003C790;
+
+// libgte
+rcos = 0x8003B010;
+sin_1 = 0x8003B10C;
+_patch_gte = 0x80041FB0;
+ApplyMatrixLV = 0x80042100;
+ApplyMatrixSV = 0x80042260;
+TransposeMatrix = 0x800422C0;
+MulMatrix0 = 0x80042448;
+FlushCache = 0x800444F4;
+rsin_tbl = 0x8006EFC8;
+rcossin_tbl = 0x8007AFC8;
+rsin_tbl = 0x8007EFC8;
+
+// libmath
+__ltdf2 = 0x800433E4;
+__eqdf2 = 0x800434C4;
+__nedf2 = 0x800434C4;
+__negdf2 = 0x80043514;
+modf = 0x80043554;
+__divdf3 = 0x800435F4;
+_comp_mant = 0x800438D4;
+__adddf3 = 0x80043924;
+__muldf3 = 0x80043CA4;
+_mul_mant_d = 0x80043FB8;
+__fixdfsi = 0x800440A4;
+__eqdf2 = 0x800441A4;
+__nedf2 = 0x800441A4;
+__eqdf2 = 0x800441A4;
+__floatsidf = 0x800441F4;
+__gtdf2 = 0x80044314;
+__subdf3 = 0x80046838;
+_dbl_shift = 0x800468B8;
+_mainasu = 0x80046978;
+_add_mant_d = 0x800469E8;
+_dbl_shift_us = 0x80046A98;
+_err_math = 0x80046B58;
+math_errno = 0x80046B60;
+math_err_point = 0x80046B64;
+_ctype_ = 0x8007A570;
+
+// libmcrd
+UserFuncInit     = 0x800415A4;
+UserFuncOpen     = 0x800415B4;
+UserFuncExecute  = 0x80041630;
+UserFuncComplete = 0x8004169C;
+
+// libcard
+ChangeClearRCnt = 0x8003CC0C;
+SysDeqIntRP = 0x800444D4;
+SysEnqIntRP = 0x800444E4;
+PadStartCom = 0x80044738;
+PadStopCom = 0x80044804;
+_padFuncClrInfo = 0x8007FD14;
+_padInfoDir = 0x8007FD44;
+_padIntExec = 0x8007FD48;
