@@ -87,6 +87,8 @@ void func_80099C2C(u16 arg0);
 void func_800A0ADC(void);
 void func_800A0F8C(void);
 void func_800A1294(void);
+void func_800A186C(u16 arg0);
+s32  func_800A22B0(u16 arg0, s16 arg1); // or definition is missing from overlay2_76E7D0
 void func_800A2344(s32);
 void func_800A3A38(s32);
 

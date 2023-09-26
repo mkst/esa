@@ -1,11 +1,13 @@
 #include "common.h"
 
-#if 0
-
 extern s16 D_80015AA4[];
 extern s16 D_80015AC4[];
-extern u16 D_800E4B80;
-extern u16 D_800E5264;
+
+u16        D_800E4B80;
+u16        D_800E5264;
+struct006 *D_800E529C;
+u16        D_800E52C0;
+
 
 extern s32 D_800E54B4;
 extern s32 D_800E54B8;
@@ -51,8 +53,8 @@ void func_800A0ADC(void) {
     if (D_800E4B80 & 8) {
         D_800E54E0 = 0x30000;
         var_a1 = ((temp_v0_2 + 0x10000) / 3);
-        D_800E54B4 = (s32) ((temp_v0_2 + 0x10000) / 3);
-        D_800E54B8 = (s32) ((temp_v0_2 + 0x10000) / 3);
+        D_800E54B4 = var_a1;
+        D_800E54B8 = var_a1;
         D_800E54BC = (0x10000 - temp_v0) / 3;
     }
 
@@ -61,7 +63,6 @@ void func_800A0ADC(void) {
     D_800E54EC = 0;
     D_800E54F8 = 0;
 
-    // not quite this
     if (D_800E5274->unk380 != 0) {
         switch (D_800E5274->unk380) {
           default:
@@ -95,6 +96,7 @@ void func_800A0ADC(void) {
 
     switch (D_800E5274->unk384) {
     case 0:
+    case 3:
         break;
     case 4:
         if ((D_800E52C0 - D_800E5274->unk354) >= 0xA) {
@@ -149,9 +151,6 @@ void func_800A0ADC(void) {
         D_800E5274->unk38B = MAX(0, D_800E5274->unk38B - 2);
     }
 }
-#else
-INCLUDE_ASM("asm/esa/nonmatchings/overlay2_76E7D0", func_800A0ADC);
-#endif
 
 INCLUDE_ASM("asm/esa/nonmatchings/overlay2_76E7D0", func_800A0F84);
 
@@ -159,13 +158,13 @@ INCLUDE_ASM("asm/esa/nonmatchings/overlay2_76E7D0", func_800A0F8C);
 
 INCLUDE_ASM("asm/esa/nonmatchings/overlay2_76E7D0", func_800A1294);
 
-#if 0
-// FIXME: whats up with this decomp.me matches https://decomp.me/scratch/s5ncX
-extern s8  D_800E4FB0;
+
+s8         D_800E4FB0;
+
+struct005 *D_800E5274;
+struct004 *D_800E527C;
 
 void func_800A15BC(void) {
-    s16 var_v0;
-
     if (D_800E5274->unk386 != 5) {
         if (D_800E5274->unk30E < 385) {
             D_800E54C0 += D_800CA604[(s16)((D_800E5274->unk30E & 0xF) << 4) & 0xFF] >> 2;
@@ -194,6 +193,3 @@ void func_800A15BC(void) {
         }
     }
 }
-#else
-INCLUDE_ASM("asm/esa/nonmatchings/overlay2_76E7D0", func_800A15BC);
-#endif

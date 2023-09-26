@@ -1,6 +1,6 @@
 #include "common.h"
 
-s16 gCurrentAnimalIndex; // bss
+extern s16 gCurrentAnimalIndex; // not bss
 
 void func_80039D34(void) {
     D_800E527C->state = 2;
