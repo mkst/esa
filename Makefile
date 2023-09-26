@@ -75,11 +75,11 @@ ESA_LD_FLAGS    := -Map $(ESA_TARGET).map -T $(ESA_BASENAME).ld \
                    --no-check-sections $(LD_FLAGS_EXTRA)
 
 # overrides
-$(BUILD_DIR)/src/esa/controller.c.o: AS_SDATA_LIMIT := -G8
-$(BUILD_DIR)/src/esa/overlay2_6B5A40.c.o: AS_SDATA_LIMIT := -G8
+$(BUILD_DIR)/src/esa/controller.c.o: AS_SDATA_LIMIT := -G2
+$(BUILD_DIR)/src/esa/overlay2_6B5A40.c.o: AS_SDATA_LIMIT := -G4
 
-# $(BUILD_DIR)/src/esa/overlay2_76E7D0.c.o: SDATA_LIMIT := -G8
-$(BUILD_DIR)/src/esa/overlay2_76E7D0.c.o: AS_SDATA_LIMIT := -G0
+$(BUILD_DIR)/src/esa/overlay2_76E7D0.c.o: SDATA_LIMIT    = -G4
+$(BUILD_DIR)/src/esa/overlay2_76E7D0.c.o: AS_SDATA_LIMIT = -G4
 
 $(BUILD_DIR)/src/esa/overlay2_6B5380.c.o: AS_SDATA_LIMIT := -G2
 $(BUILD_DIR)/src/esa/overlay2_76F7D0.c.o: AS_SDATA_LIMIT := -G2
