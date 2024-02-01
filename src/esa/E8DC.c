@@ -1,20 +1,13 @@
 #include "common.h"
 
-#if 0
-
-typedef struct {
-  s16 unk0;
-  s16 unk2;
-  s16 unk4;
-  u8  pad6[0x2];
-} struct025; // size 0x8
-
 s32 func_800B628C(s32);                               /* extern */
 s32 rcos(s32);                                 /* extern */
 s32 rsin(s32);                                 /* extern */
-extern struct025 *D_800E4FBC;
-extern struct025 *D_800E4FC4;
-extern s32 D_800E4FC8;
+struct031 *D_800E4FBC;
+struct031 *D_800E4FC4;
+s32 D_800E4FC8;
+
+#if 0
 
 void func_8001E2DC(void) {
     s32 temp_s0;

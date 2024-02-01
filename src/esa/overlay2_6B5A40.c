@@ -1,6 +1,11 @@
 #include "common.h"
 
-extern s16 gCurrentAnimalIndex; // not bss
+u16 D_800E5264;
+struct005 *D_800E5274;
+struct004 *D_800E527C;
+struct006 *D_800E529C;
+
+s16 gCurrentAnimalIndex; // bss
 
 void func_80039D34(void) {
     D_800E527C->state = 2;
@@ -801,11 +806,10 @@ INCLUDE_ASM("asm/esa/nonmatchings/overlay2_6B5A40", func_80041FEC);
 
 INCLUDE_ASM("asm/esa/nonmatchings/overlay2_6B5A40", func_80042204);
 
-// sssv:func_802AEE18_6C04C8
-extern u16 D_800E5264;
 
 s16 func_80020C8C(s16, s16);
 
+// sssv:func_802AEE18_6C04C8
 void func_80042474(void) {
 
     switch (D_800E527C->state) {                              /* irregular */

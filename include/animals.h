@@ -66,7 +66,7 @@
 #define EVO_TRANSFER                62
 #define EVO                         63
 #define KING_PENGUIN                64
-#define RACING_TORTOISE_ATTACKING   65
+#define RACING_TORTOISE_DEFENDING   65
 #define COOL_COD                    66
 #define EVO_SHELLSUIT               67
 

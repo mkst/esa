@@ -1,5 +1,20 @@
 #include "common.h"
 
+s8  D_800E52E8;
+s8  D_800E52F0;
+s32 D_800E52F4;
+s16 D_800E52FC;
+s8  D_800E52F8;
+s32 D_800E52EC;
+s32 D_800E5300;
+s16 D_800E5304;
+s32 D_800E5308;
+s32 D_800E530C;
+s16 D_800E5310;
+s8  D_800E5314;
+s8  D_800E5318;
+s8  D_800E531C;
+s32 D_800E5320;
 
 struct000 *func_80047DC4(s16, s16);
 
@@ -63,17 +78,21 @@ void func_800471D8(void) {
     D_800E5314 = 0;
     D_800E531C = 0;
     func_8007DD7C();
-    D_800E4B9C = 0x20000;
-    D_800E52F4 = 0x10;
-    D_800E4BA0 = 0x40000;
-
-    D_800E5310 = 0x800;
-    D_800E5304 = 0x800;
     D_800E52EC = 0;
     D_800E5320 = 0;
     D_800E5300 = 0;
+
+    D_800E4B9C = 0x20000;
+    D_800E4BA0 = 0x40000;
+
+    D_800E52F4 = 0x10;
+
+    D_800E5310 = 0x800;
+    D_800E5304 = 0x800;
+
     D_800E52F0 = 1;
     D_800E52F8 = 1;
+
     D_800E5308 = D_800E4F88->unk88;
     D_800E530C = D_800E4F88->unk8C | 1;
 }
@@ -126,14 +145,14 @@ void set_game_state(struct000 *arg0, s16 arg1, s32 arg2) {
         arg0->unk15E = arg2;
         break;
     case 4+0x7F7F:
-        if (!(arg0->unk4C & 0x04000000) || (arg0->unk14C < arg2)) {
-            if ((arg0->unk16C->unk0 >= OB_TYPE_ANIMAL_OFFSET) && (arg2 < arg0->unk14C)) {
-                func_8007DA18(arg0, arg0->unk14C - arg2);
-            }
+        // if (!(arg0->unk4C & 0x04000000) || (arg0->unk14C < arg2)) {
+        //     if ((arg0->unk16C->unk0 >= OB_TYPE_ANIMAL_OFFSET) && (arg2 < arg0->unk14C)) {
+        //         func_8007DA18(arg0, arg0->unk14C - arg2);
+        //     }
 
-            arg0->unk14C = MIN(0x7F, MAX(0, arg2));
-            break;
-        }
+        //     arg0->unk14C = MIN(0x7F, MAX(0, arg2));
+        //     break;
+        // }
         break;
     case 5+0x7F7F:
         func_8001CE8C(arg2);

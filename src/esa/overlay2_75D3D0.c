@@ -2,7 +2,7 @@
 
 extern struct023  D_80112FD8[];
 extern s32        D_800E40E0;
-extern s32        D_800E4BC8;
+s32        D_800E4BC8;
 extern s32        D_80113058;
 
 void func_80070190(s16 numVtxs, struct021 *vtxs, s32 arg2, s16 arg3, s16 arg4, s32 arg5, s16 arg6, s16 arg7, s16 arg8, s32 arg9, s32 argA, s32 argB, s32 argC);
@@ -497,8 +497,6 @@ INCLUDE_ASM("asm/esa/nonmatchings/overlay2_75D3D0", func_8006FC24);
 #endif
 
 // sssv:func_80351390_762A40
-#if 0
-// $gp related shenaningans
 void func_80070190(s16 numVtxs, struct021 *vtxs, s32 arg2, s16 arg3, s16 arg4, s32 arg5, s16 arg6, s16 arg7, s16 arg8, s32 arg9, s32 argA, s32 argB, s32 argC) {
     s16 temp_v0;
     s16 i;
@@ -552,9 +550,6 @@ void func_80070190(s16 numVtxs, struct021 *vtxs, s32 arg2, s16 arg3, s16 arg4, s
         }
     }
 }
-#else
-INCLUDE_ASM("asm/esa/nonmatchings/overlay2_75D3D0", func_80070190);
-#endif
 
 INCLUDE_ASM("asm/esa/nonmatchings/overlay2_75D3D0", func_800704EC);
 
