@@ -3,32 +3,35 @@
 extern s16 D_80015AA4[];
 extern s16 D_80015AC4[];
 
-u16        D_800E4B80;
-u16        D_800E5264;
-struct006 *D_800E529C;
-u16        D_800E52C0;
+extern s8  D_800E4FB0;
 
+extern u16 D_800E5264;
 
-extern s32 D_800E54B4;
-extern s32 D_800E54B8;
-extern s32 D_800E54BC;
-extern s8  D_800E54CC;
-extern s8  D_800E54D0;
-extern s16 D_800E54D8;
-extern s16 D_800E54DC;
-extern s32 D_800E54E0;
-extern s16 D_800E54E8;
-extern s8  D_800E54EC;
-extern s16 D_800E54F4;
-extern s8  D_800E54F8;
+extern u16 D_800E4B80; // externed...
 
+s32 D_800E54B4;
+s32 D_800E54B8;
+s32 D_800E54BC;
+s32 D_800E54C0;
+s32 D_800E54C4;
+s32 D_800E54C8;
+s8  D_800E54CC;
+s8  D_800E54D0;
+s16 D_800E54D8;
+s16 D_800E54DC;
+s32 D_800E54E0;
+s16 D_800E54E8;
+s8  D_800E54EC;
+s16 D_800E54F4;
+s8  D_800E54F8;
+
+// sssv:func_8035D120_76E7D0
 void func_800A0ADC(void) {
     s32 temp_a0;
     s32 temp_a3;
     s32 temp_v0;
     s32 temp_v0_2;
     s32 var_a2;
-    s32 var_a1;
 
     if ((D_800E5274->unk386 == 2) || (D_800E5274->unk386 == 5)) {
         D_800E5274->unk385 = 0;
@@ -44,17 +47,14 @@ void func_800A0ADC(void) {
     D_800E54E0 = 0x10000;
 
     temp_v0 = D_800E527C->unk4B * 0x300;
-    var_a2 = 0x10000 - temp_v0;
-    D_800E54BC = var_a2;
+    D_800E54BC = 0x10000 - temp_v0;
     temp_v0_2 = D_800E527C->unk4B << 0xA;
-    temp_a0 = temp_v0_2 + 0x10000;
-    D_800E54B8 = temp_a0;
-    D_800E54B4 = temp_a0;
+    D_800E54B8 = temp_v0_2 + 0x10000;
+    D_800E54B4 = temp_v0_2 + 0x10000;
     if (D_800E4B80 & 8) {
         D_800E54E0 = 0x30000;
-        var_a1 = ((temp_v0_2 + 0x10000) / 3);
-        D_800E54B4 = var_a1;
-        D_800E54B8 = var_a1;
+        D_800E54B4 = ((temp_v0_2 + 0x10000) / 3);
+        D_800E54B8 = ((temp_v0_2 + 0x10000) / 3);
         D_800E54BC = (0x10000 - temp_v0) / 3;
     }
 
@@ -65,13 +65,11 @@ void func_800A0ADC(void) {
 
     if (D_800E5274->unk380 != 0) {
         switch (D_800E5274->unk380) {
-          default:
-            break;
         case 3:
-            D_800E54BC = (D_800E54BC * 0xE) >> 4;
+            D_800E54BC = (D_800E54BC * 14) >> 4;
             break;
         case 2:
-            D_800E54BC = (D_800E54BC * 0xB) >> 4;
+            D_800E54BC = (D_800E54BC * 11) >> 4;
             break;
         case 1:
             D_800E54BC = (D_800E54BC * 8) >> 4;
@@ -81,7 +79,7 @@ void func_800A0ADC(void) {
 
     if (D_800E5274->unk38D != 0) {
         var_a2 = D_800E529C->unkDD;
-        temp_a3 = ((D_800E5274->unk38D << 4) / var_a2); // * 2;
+        temp_a3 = ((D_800E5274->unk38D << 4) / var_a2);
         D_800E54B4 = (D_800E54B4 * (((D_80015AC4[temp_a3] * D_800E529C->unkDE) >> 4) + 0x10)) >> 4;
         D_800E54B8 = (D_800E54B8 * (((D_80015AC4[temp_a3] * D_800E529C->unkDE) >> 4) + 0x10)) >> 4;
 
@@ -146,24 +144,23 @@ void func_800A0ADC(void) {
             D_800E5274->unk368--;
         }
     }
-    if ((D_800E5264 & 2) && ((s8) D_800E5274->unk38B > 0)) {
+    if ((D_800E5264 & 2) && (D_800E5274->lastHpLost > 0)) {
         D_800E54EC = 1;
-        D_800E5274->unk38B = MAX(0, D_800E5274->unk38B - 2);
+        D_800E5274->lastHpLost = MAX(0, D_800E5274->lastHpLost - 2);
     }
 }
 
-INCLUDE_ASM("asm/esa/nonmatchings/overlay2_76E7D0", func_800A0F84);
+// sssv:func_8035D6A0_76ED50 stubbed
+void func_800A0F84(void) {
+}
 
+// sssv:func_8035D734_76EDE4
 INCLUDE_ASM("asm/esa/nonmatchings/overlay2_76E7D0", func_800A0F8C);
 
+// sssv:func_8035DA60_76F110
 INCLUDE_ASM("asm/esa/nonmatchings/overlay2_76E7D0", func_800A1294);
 
-
-s8         D_800E4FB0;
-
-struct005 *D_800E5274;
-struct004 *D_800E527C;
-
+// sssv:func_8035DEC4_76F574
 void func_800A15BC(void) {
     if (D_800E5274->unk386 != 5) {
         if (D_800E5274->unk30E < 385) {

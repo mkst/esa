@@ -1,7 +1,6 @@
 #include "common.h"
 
-extern u8 D_800E525C;
-extern s16 D_800E5264;
+extern u8  D_800E525C;
 extern s32 D_800E54B4;
 extern s32 D_800E54B8;
 extern s32 D_800E54BC;
@@ -19,7 +18,7 @@ void func_8008D3FC(void) {
 
     if (((D_800E5274->unk386 == 1) || (D_800E5274->unk386 == 3) || (D_800E5274->unk386 == 4)) && (D_800E527C->unk4A == 0)) {
         var_v0 = 0;
-        temp_v1 = (D_800E5264 << 4) & 0xFF;
+        temp_v1 = ((s16)D_800E5264 << 4) & 0xFF;
         if (temp_v1 == 0) {
             var_v0 = func_80082D94(0x3C, -0x28,  0x28, 0x30, 5, 0, 0, 0xC);
         } else if (temp_v1 == 0x40) {
@@ -76,8 +75,8 @@ void func_8008D654(void) {
                (D_800E5274->unk338 == 0)) {
         tmp = D_800E5274->unk340->unk16C;
         D_800E5274->unk34A = D_800E52C0;
-        if ((tmp->unk0 == 2) ||
-            (tmp->unk0 == 0x3D)) {
+        if ((tmp->objectType == 2) ||
+            (tmp->objectType == 0x3D)) {
             D_800E5274->unk385 = 0xE;
         } else {
             D_800E5274->unk385 = 0xF;

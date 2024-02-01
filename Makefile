@@ -40,7 +40,7 @@ CROSS           := mips-linux-gnu-
 # CC              := wine $(TOOLS_DIR)/psyq/psyq4.6/CC1PSX.EXE -quiet
 
 GCC_INCLUDES    := -Iinclude
-GCC             := $(TOOLS_DIR)/gcc-2.95.2/gcc -c -B$(TOOLS_DIR)/gcc-2.95.2/ -pipe $(GCC_INCLUDES)
+GCC             := $(TOOLS_DIR)/gcc-2.95.2/gcc -pipe -c -B$(TOOLS_DIR)/gcc-2.95.2/ $(GCC_INCLUDES)
 
 AS              := $(CROSS)as -EL -32 -march=r3000 -mtune=r3000 -msoft-float -no-pad-sections -Iinclude/
 LD              := $(CROSS)ld -EL
@@ -60,7 +60,7 @@ CPP_FLAGS       := -undef -Wall -lang-c
 CPP_FLAGS       += -Dmips -D__GNUC__=2 -D__OPTIMIZE__ -D__mips__ -D__mips -Dpsx -D__psx__ -D__psx -D_PSYQ -D__EXTENSIONS__ -D_MIPSEL -D__CHAR_UNSIGNED__ -D_LANGUAGE_C -DLANGUAGE_C
 CPP_FLAGS       += $(CPP_INCLUDES)
 
-CC_FLAGS        := -mrnames -mel -mgpopt -mgpOPT -msoft-float -msplit-addresses -mno-abicalls -fno-builtin -fsigned-char -gcoff
+CC_FLAGS        := -mrnames -mel -mgpopt -mgpOPT -mgas -msoft-float -msplit-addresses -mno-abicalls -fno-builtin -fsigned-char -gcoff
 
 CHECK_WARNINGS  := -Wall -Wextra -Wno-format-security -Wno-unknown-pragmas -Wno-unused-parameter -Wno-unused-variable -Wno-missing-braces -Wno-int-conversion
 CC_CHECK        := $(MODERN_GCC) -fsyntax-only -fno-builtin -fsigned-char -std=gnu90 -m32 $(CHECK_WARNINGS) $(CPP_FLAGS)
@@ -75,25 +75,6 @@ ESA_LD_FLAGS    := -Map $(ESA_TARGET).map -T $(ESA_BASENAME).ld \
                    --no-check-sections $(LD_FLAGS_EXTRA)
 
 # overrides
-$(BUILD_DIR)/src/esa/controller.c.o: AS_SDATA_LIMIT := -G2
-$(BUILD_DIR)/src/esa/overlay2_6B5A40.c.o: AS_SDATA_LIMIT := -G4
-
-$(BUILD_DIR)/src/esa/overlay2_76E7D0.c.o: SDATA_LIMIT    = -G4
-$(BUILD_DIR)/src/esa/overlay2_76E7D0.c.o: AS_SDATA_LIMIT = -G4
-
-$(BUILD_DIR)/src/esa/overlay2_6B5380.c.o: AS_SDATA_LIMIT := -G2
-$(BUILD_DIR)/src/esa/overlay2_76F7D0.c.o: AS_SDATA_LIMIT := -G2
-$(BUILD_DIR)/src/esa/overlay2_707310.c.o: AS_SDATA_LIMIT := -G0
-
-$(BUILD_DIR)/src/esa/overlay2_725D10.c.o: AS_SDATA_LIMIT := -G0
-
-$(BUILD_DIR)/src/esa/overlay2_75D3D0.c.o: SDATA_LIMIT := -G8
-$(BUILD_DIR)/src/esa/overlay2_75D3D0.c.o: AS_SDATA_LIMIT := -G8
-
-$(BUILD_DIR)/src/esa/B7CC.c.o: AS_SDATA_LIMIT := -G2
-$(BUILD_DIR)/src/esa/E8DC.c.o: AS_SDATA_LIMIT := -G4
-
-$(BUILD_DIR)/src/esa/488C8.c.o: AS_SDATA_LIMIT := -G4
 
 # recipes
 
@@ -120,14 +101,14 @@ $(ESA_TARGET).elf: $(ESA_O_FILES)
 	$(LD) $(ESA_LD_FLAGS) -o $@
 
 $(BUILD_DIR)/%.s.o: %.s
-	$(AS) -G0 -o $@ $<
+	$(AS) $(AS_SDATA_LIMIT) -o $@ $<
 
 $(BUILD_DIR)/%.bin.o: %.bin
 	$(LD) -r -b binary -o $@ $<
 
 $(BUILD_DIR)/%.c.o: %.c
 	@$(CC_CHECK) $<
-	$(GCC) $(CC_FLAGS) $(SDATA_LIMIT) $(OPT_FLAGS) $(AS_FLAGS),$(AS_SDATA_LIMIT) $< -o $@
+	$(GCC) $(CC_FLAGS) $(SDATA_LIMIT) $(OPT_FLAGS) $(AS_FLAGS),$(SDATA_LIMIT) $< -o $@
 
 # $(BUILD_DIR)/%.c.o: %.c
 # 	@$(CC_CHECK) $<

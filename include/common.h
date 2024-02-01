@@ -13,6 +13,9 @@
 #define MIN(a,b) (((a)<(b))?(a):(b))
 #endif
 
+#define FROM_FLOAT(x) (((s32)x) << 0xC)
+#define TO_FLOAT(x)   (((s32)x) >> 0xC)
+
 #define MAX_INT                 0x7FFFFFFF
 #define OB_TYPE_ANIMAL_OFFSET   256
 
@@ -20,6 +23,8 @@
 #define TILESET_ZERO            (TILESET_ASCII_OFFSET + '0')
 #define TILESET_NINE            (TILESET_ASCII_OFFSET + '9')
 #define TILESET_SPACE           (TILESET_ASCII_OFFSET + ' ')
+
+#define SQ(x) ((x) * (x))
 
 // TBD
 // ABBBBBGG GGGRRRRR

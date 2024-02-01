@@ -1,5 +1,6 @@
 #include "common.h"
 
+
 INCLUDE_ASM("asm/esa/nonmatchings/dynamic_tail", func_800849B8);
 
 INCLUDE_ASM("asm/esa/nonmatchings/dynamic_tail", func_800849EC);
@@ -160,7 +161,62 @@ INCLUDE_ASM("asm/esa/nonmatchings/dynamic_tail", func_80086824);
 
 INCLUDE_ASM("asm/esa/nonmatchings/dynamic_tail", func_80087440);
 
-INCLUDE_ASM("asm/esa/nonmatchings/dynamic_tail", func_80087738);
+void *func_80087738(struct029 *arg0) {
+    Vtx2 *vtx;
+
+    s16 i;
+
+    s32 temp_s3;
+    s32 temp_s4;
+
+    s32 var_lo;
+    s32 var_t1;
+    s32 var_v1;
+
+    s32 sqrt;
+    s32 x, y, z;
+
+    temp_s4 = D_800E5158 >> 2;
+    temp_s3 = D_800E515C >> 2;
+
+    vtx = &D_80122D8C;
+
+    for (i = 0; i < arg0->unk14; i++) {
+
+        if (i == (arg0->unk14 - 1)) {
+            var_t1 =  temp_s3 * (((D_8011C96C[((arg0->unk16 + arg0->unk14) - 1)].unk8) - (D_8011C96C[(arg0->unk16 + arg0->unk14) - 2].unk8)) >> 0x10);
+            var_lo = -temp_s4 * (((D_8011C96C[((arg0->unk16 + arg0->unk14) - 1)].unk8) - (D_8011C96C[(arg0->unk16 + arg0->unk14) - 2].unk8)) >> 0x10);
+            var_v1 = (temp_s4 * (((D_8011C96C[((arg0->unk16 + arg0->unk14) - 1)].unk4) - (D_8011C96C[(arg0->unk16 + arg0->unk14) - 2].unk4)) >> 0x10)) - ((temp_s3 * (D_8011C96C[arg0->unk16 + 0xF].unk0 - D_8011C96C[(arg0->unk16 + arg0->unk14) - 2].unk0)) >> 0x10);
+        } else {
+            var_t1 =  temp_s3 * (((D_8011C96C[((arg0->unk16 + i) + 1)].unk8) - (D_8011C96C[(arg0->unk16 + i)].unk8)) >> 0x10);
+            var_lo = -temp_s4 * (((D_8011C96C[((arg0->unk16 + i) + 1)].unk8) - (D_8011C96C[(arg0->unk16 + i)].unk8)) >> 0x10);
+            var_v1 = (temp_s4 * (((D_8011C96C[((arg0->unk16 + i) + 1)].unk4) - (D_8011C96C[(arg0->unk16 + i)].unk4)) >> 0x10)) - ((temp_s3 * (D_8011C96C[((arg0->unk16 + i) + 1)].unk0 - D_8011C96C[(arg0->unk16 + i)].unk0)) >> 0x10);
+        }
+
+        // unused code that is partially optimised out
+        sqrt = SquareRoot0((var_t1 * var_t1) + (var_lo * var_lo) + (var_v1 * var_v1));
+        if ((sqrt * 2) == 0) {
+             sqrt = 2;
+        } else {
+            sqrt *= 2;
+        }
+
+        x = (var_t1 * (arg0->unk18 >> 0xE)) / sqrt;
+        y = (var_lo * (arg0->unk18 >> 0xE)) / sqrt;
+        z = (var_v1 * (arg0->unk18 >> 0xE)) / sqrt;
+        // end of unused code
+
+
+        vtx[i].vtx1.x = D_8011C96C[arg0->unk16 + i].unk0 >> 0x10;
+        vtx[i].vtx1.y = D_8011C96C[arg0->unk16 + i].unk4 >> 0x10;
+        vtx[i].vtx1.z = D_8011C96C[arg0->unk16 + i].unk8 >> 0x10;
+
+        vtx[i].vtx2.x = D_8011C96C[arg0->unk16 + i].unk0 >> 0x10;
+        vtx[i].vtx2.y = D_8011C96C[arg0->unk16 + i].unk4 >> 0x10;
+        vtx[i].vtx2.z = D_8011C96C[arg0->unk16 + i].unk8 >> 0x10;
+    }
+    return vtx;
+}
 
 INCLUDE_ASM("asm/esa/nonmatchings/dynamic_tail", func_80087AD0);
 

@@ -10,7 +10,7 @@ options:
   # compiler
   compiler: GCC
   # disasm/linker
-  gp_value: 0
+  gp_value: 0x8005fdc8
   symbol_addrs_path:    symbol_addrs.pt.txt
   undefined_funcs_auto_path: undefined_funcs_auto.pt.txt
   undefined_syms_auto_path: undefined_syms_auto.pt.txt
@@ -18,11 +18,15 @@ options:
   find_file_boundaries: yes
 
   use_legacy_include_asm: no
-  migrate_rodata_to_functions: no
+  migrate_rodata_to_functions: yes
 
   auto_decompile_empty_functions: no
 
+  asm_jtbl_label_macro: jlabel
   include_macro_inc: no # don't write macro.inc to rodata files
+
+  rodata_string_guesser_level: 4
+  data_string_guesser_level: 4
 
   section_order:
   - .rodata
@@ -71,7 +75,7 @@ segments:
       - [0x1BB34, asm, libcd/event]
       - [0x1BC84, asm]
       - [0x1C40C, asm, libgpu/p18]
-      - [0x1C42C, asm]
+      - [0x1C42C, asm] # entrypoint?
       - [0x1C544, asm, libetc/vmode]
       - [0x1C574, asm]
       - [0x1CA3C, asm, libgpu/e03]

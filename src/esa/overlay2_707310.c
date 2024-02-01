@@ -1,7 +1,5 @@
 #include "common.h"
 
-s16 SquareRoot0(s32);
-
 void func_8004EE24(s16 x, s16 z, s16 y, s16 yRotation, s16 zRotation, s16* result);
 Object *func_8004F3C0(s16 x, s16 z, s16 y, u8 id, s16 arg4, s16 arg5, s16 arg6, s16 arg7, s16 arg8, s16 arg9, s32 scale);
 u8   func_80050EA4(Object *arg0, Object *arg1, s16 arg2, s16 arg3, s16 *arg4);
@@ -181,7 +179,108 @@ INCLUDE_ASM("asm/esa/nonmatchings/overlay2_707310", func_800502F0);
 INCLUDE_ASM("asm/esa/nonmatchings/overlay2_707310", func_800509BC);
 
 // sssv:func_802F8160_709810
+#if 0
+s16 func_80050BF0(Object *arg0, Object *arg1, s16 arg2, s16 arg3, s16 arg4, s16 arg5, s16 arg6, u8 arg7, f32 arg8) {
+    s16 var_a0;
+    s16 var_a0_3;
+    s16 var_s1;
+    s16 var_s4;
+    s16 var_v0;
+    s16 var_v1;
+    s32 temp_a0;
+    s32 yDist;
+    s32 xzDist;
+    s32 temp_v1;
+    u8 var_s2;
+    u8 tmp;
+
+    temp_v1 = arg0->unk6 - arg1->unk6;
+    temp_a0 = arg0->unkA - arg1->unkA;
+
+    xzDist = SquareRoot0((temp_v1 * temp_v1) + (temp_a0 * temp_a0)) - arg2;
+
+    if (xzDist < 0) {
+      return -1;
+    }
+
+    yDist = (arg1->unkE - arg0->unkE) - arg3;
+    if (arg7 == 3) {
+        tmp = 0;
+        if (yDist < 33) {
+            if (xzDist > 256) {
+                if ((func_8001CE60() & 3) == 1) {
+                    tmp = 1;
+                }
+            } else {
+                tmp = 0;
+            }
+        } else {
+            tmp = 1;
+        }
+        var_s2 = tmp;
+    } else if (arg7 == 4) {
+        var_s2 = 0;
+    } else {
+        var_s2 = arg7;
+    }
+
+    var_s1 = func_800509BC(var_s2, xzDist, arg4, yDist, arg8);
+    if (var_s1 == 9999) {
+        return -1;
+    }
+
+    if (arg5 < var_s1) {
+        var_s4 = abs(var_s1 - arg5);
+        var_s1 = arg5;
+        goto block_14;
+    }
+    if (var_s1 < arg6) {
+        var_s4 = abs(abs(var_s1) - abs(arg6));
+        var_s1 = arg6;
+block_14:
+        if ((arg7 == 4) && (xzDist < 0x46)) {
+            if (var_s1 < 0) {
+                var_s1 += 0x168;
+            }
+            return var_s1;
+        }
+
+        var_a0 = func_800509BC(!var_s2, xzDist, arg4, yDist, arg8);
+        if (var_a0 == 9999) {
+            return -1;
+        }
+        if (arg5 < var_a0) {
+            var_v1 = abs(var_a0 - arg5);
+            var_a0_3 = arg5;
+            goto block_28;
+        }
+        if (var_a0 < arg6) {
+            var_v1 = abs(abs(var_a0) - abs(arg6));
+            var_a0_3 = arg6;
+block_28:
+            if (((var_s4 < var_v1) && (var_v0 = var_s1, ((var_s4 < 5) != 0))) || (var_v0 = var_a0_3, ((var_v1 < 5) != 0))) {
+                if (var_v0 < 0) {
+                    var_v0 += 0x168;
+                }
+                /* Duplicate return node #33. Try simplifying control flow for better match */
+                return var_v0;
+            }
+            return -1;
+        }
+        if (var_a0 < 0) {
+            var_a0 += 0x168;
+        }
+        return var_a0;
+    }
+    if (var_s1 < 0) {
+        var_s1 += 0x168;
+    }
+    return var_s1;
+
+}
+#else
 INCLUDE_ASM("asm/esa/nonmatchings/overlay2_707310", func_80050BF0);
+#endif
 
 // sssv:func_802F8658_709D08
 INCLUDE_ASM("asm/esa/nonmatchings/overlay2_707310", func_80050EA4);
@@ -210,8 +309,8 @@ void func_80051544(Object *arg0) {
     if ((arg0->unk0 == 1)) {
         obj = func_800513C0(arg0);
         if ((obj != 0) && (func_80050EA4(arg0, obj, 16, 512, &sp30) != 0)) {
-            x = sp30[0] - arg0->unk6;
-            z = sp30[1] - arg0->unkA;
+            x = sp30[0] - arg0->xPos.h[1];
+            z = sp30[1] - arg0->zPos.h[1];
 
             SquareRoot0((x * x) + (z * z));
 
@@ -237,9 +336,9 @@ void func_80051544(Object *arg0) {
                         play_sound_effect_at_location(0x4A, D_800E527C->xPos.h[1], D_800E527C->zPos.h[1]);
 
                         obj2 = func_8004F3C0(
-                            arg0->unk6,
-                            arg0->unkA,
-                            arg0->unkE + ((arg0->unk40 * 6) >> 0xB),
+                            arg0->xPos.h[1],
+                            arg0->zPos.h[1],
+                            arg0->yPos.h[1] + ((arg0->unk40 * 6) >> 0xB),
                             0x26,
                             0,
                             (arg0->unk40 * 40) >> 11,
@@ -297,10 +396,10 @@ void func_80051CD0(Object *arg0) {
     if (arg0->unk188 != NULL) {
         a = arg0->unk188;
 
-        x_dist = a->xPos.h[1] - arg0->unk6;
-        z_dist = a->zPos.h[1] - arg0->unkA;
+        x_dist = a->xPos.h[1] - arg0->xPos.h[1];
+        z_dist = a->zPos.h[1] - arg0->zPos.h[1];
 
-        temp_s0 = (a->yPos.h[1] - arg0->unkE) + (a->unk42 >> 1);
+        temp_s0 = (a->yPos.h[1] - arg0->yPos.h[1]) + (a->unk42 >> 1);
         temp_s1_2 = SquareRoot0((x_dist * x_dist) + (z_dist * z_dist));
         temp_s1_2 = (s16)temp_s1_2;
 
@@ -336,7 +435,7 @@ void func_80051CD0(Object *arg0) {
     }
 
     func_80050148(arg0, var_a3);
-    func_800ABBB0(arg0->unk6 * 2, arg0->unkE * 2, arg0->unkA * 2);
+    func_800ABBB0(arg0->xPos.h[1] * 2, arg0->yPos.h[1] * 2, arg0->zPos.h[1] * 2);
     arg0->unk14E++;
     if (arg0->unk154 == 0) {
         arg0->unk154 = 0xA0;

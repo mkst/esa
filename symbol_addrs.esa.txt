@@ -11,9 +11,13 @@ D_80014E20 = 0x80014E20; // force_not_migration:true
 
 // functions
 
+game_loop                        = 0x80017554;
+
 play_sound_effect_at_location    = 0x8001BA00;
 func_8001E3D0                    = 0x8001E3D0; // type:func
+set_volume                       = 0x8001F1A0;
 func_8001FFF4                    = 0x8001FFF4; // type:func
+reset_camera                     = 0x8002A3D0;
 set_game_state                   = 0x80047290;
 get_game_state                   = 0x800478FC;
 copy_command_struct              = 0x80047D38;

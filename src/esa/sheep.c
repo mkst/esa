@@ -8,7 +8,6 @@ INCLUDE_ASM("asm/esa/nonmatchings/sheep", func_8008C3F8);
 // sssv:func_80362618_773CC8
 #if 0
 extern s32 D_800E4B9C;
-extern u16 D_800E5264;
 
 s32 func_80037098(s16 x, s16 z, u8 arg2);
 void func_8008CB14(void) {

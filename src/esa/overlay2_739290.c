@@ -1,5 +1,7 @@
 #include "common.h"
 
+extern s32 D_800E5320;
+
 INCLUDE_ASM("asm/esa/nonmatchings/overlay2_739290", func_8007F0E0);
 
 INCLUDE_ASM("asm/esa/nonmatchings/overlay2_739290", func_8007F278);
@@ -208,4 +210,10 @@ INCLUDE_ASM("asm/esa/nonmatchings/overlay2_739290", func_8008175C);
 
 INCLUDE_ASM("asm/esa/nonmatchings/overlay2_739290", load_animal);
 
-INCLUDE_ASM("asm/esa/nonmatchings/overlay2_739290", check_and_set_species_encountered);
+void check_and_set_species_encountered(s16 animal_id) {
+    if ((D_800E5320 & 8) == 0) {
+        if (((D_800E4F88->unk68[(s8) (animal_id >> 3)] & (1 << (animal_id & 7))) == 0)) {
+            D_800E4F88->unk68[(s8) (animal_id >> 3)] |= (1 << (animal_id & 7));
+        }
+    }
+}

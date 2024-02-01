@@ -1,12 +1,14 @@
 #ifndef VARIABLES_H
 #define VARIABLES_H
 
+extern u8  D_800C8E26[];
 extern s16 D_800C99CC[];
 extern s8  D_800C9BD4[];
 extern u8  D_800C91CC[];
 extern u16 D_800C9CDC[];
 extern s16 D_800CA604[];
 extern s16 D_800CCF6C[];
+
 extern s32 D_800DE2B8;
 
 extern s32 D_800E2C78;
@@ -37,6 +39,14 @@ extern struct017 D_800D64E0[];
 extern struct015 D_800E53A4[72+1][128+1];
 extern struct016 D_800E53B4[];
 extern s32 D_800E4BA0;
+
+// camera
+extern s32 D_800E5158; // defined in camera
+extern s32 D_800E515C; // defined in camera
+
+
+extern u16 D_800E5264;
+
 extern s8  D_800E52E8;
 extern s32 D_800E52EC;
 extern s32 D_800E52F4;
@@ -53,12 +63,18 @@ extern s8  D_800E52F8;
 extern s32 D_800E5308;
 extern s32 D_800E530C;
 
+extern struct032 D_800EB298[];
+
 extern struct025 *D_800E4F88;
+
+extern struct027 D_800F2708;
 
 extern struct065 D_80112DF8[40];
 
 // TBD
 extern struct012 D_800EAF28;
+
+extern Vtx2 D_80122D8C[];
 
 extern struct024 D_80122EAC[];
 extern struct024 D_8012353C[];

@@ -1,7 +1,7 @@
 #include "common.h"
 
-extern s16 D_800E53C4;
-extern s16 D_800E53C8;
+s16 D_800E53C4;
+s16 D_800E53C8;
 
 #if 0
 void func_800646E4(void) {

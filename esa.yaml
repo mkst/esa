@@ -31,6 +31,7 @@ options:
   - .data
   - .bss
 
+sha1:         f8edcf0590f957bf24efa297b0b699990a1109bd
 segments:
   - [0x0, header]
   - [0x80, bin]     # zero padding
@@ -39,6 +40,7 @@ segments:
     start: 0x00000800
     vram:  0x80010200
     subalign: 4
+    align: 4
     subsegments:
       - [0x800, rodata]
       - [0xDE8, rodata] # 7B54
@@ -88,7 +90,7 @@ segments:
       - [0x6FCC, rodata]
       - [0x7568, rodata]
       - [0x7650, asm] # all handwritten?
-      - [0x7B54, asm] # main game loop?
+      - [0x7AB4, c] # main game loop?
       # --
       - [0xB7CC, c] # overlay2_791CD0 ?
       - [0xBA4C, c]
@@ -98,13 +100,11 @@ segments:
       - [0xDEF4, c]
       - [0xE8DC, c] # part of B7CC ?
       # --
-      - [0xE9D0, asm] # unable to decompile
-      - [0xEBB4, asm]
-      - [0xED10, asm] # setup spu
-      - [0xF4C4, asm]
-      - [0xF514, asm]
-      - [0xF7A0, asm] # cdrom set volume
-      - [0xF7F8, asm] # empty
+      - [0xE9D0, c] #
+      - [0xEBB4, c]
+      - [0xED10, c] # setup spu
+      - [0xF514, c]
+      - [0xF7A0, c] # cdrom set volume
       # --
       - [0xF800, c, terminal_background]
       - [0x102E8, c, overlay2_6A7A80]
@@ -145,6 +145,7 @@ segments:
       - [0x7462C, c] # esa specific?
       - [0x74FB8, c, dynamic_tail]
       - [0x78AF4, c, trails]
+      # animals
       - [0x7A6AC, c, rat]
       - [0x7B034, c, fox]
       - [0x7C5E8, c, sheep]
@@ -173,6 +174,7 @@ segments:
       - [0x8F850, c, seagull]
       - [0x8FED4, c, frog]
       - [0x90924, c, parrot]
+      #
       - [0x90D0C, c]
       - [0x910DC, c, overlay2_76E7D0]
       - [0x91D54, c, overlay2_6ED230]
@@ -351,7 +353,7 @@ segments:
       - [0xB68DC, asm]
       - [0xB736C, asm]
       # .data
-      - [0xB7C74, bin, data] # data from here
+      - [0xB7C88, bin, data] # data from here
       # - [0xCED58, lib, libetc, intr_dma, .data]
       # - [0xCED88, asm, CED88]
       # .sdata (?)

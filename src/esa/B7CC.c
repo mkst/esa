@@ -1,7 +1,9 @@
 #include "common.h"
 
-INCLUDE_ASM("asm/esa/nonmatchings/B7CC", func_8001B1CC);
+s8  D_800E4FB0;
 
+// nasty loops
+INCLUDE_ASM("asm/esa/nonmatchings/B7CC", func_8001B1CC);
 
 // simplified func_8038064C_791CFC?
 void func_8001B3FC(void) {
