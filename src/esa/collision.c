@@ -417,7 +417,6 @@ INCLUDE_ASM("asm/esa/nonmatchings/collision", func_80071CBC);
 INCLUDE_ASM("asm/esa/nonmatchings/collision", func_800724D4);
 
 // sssv:func_802B6B5C_6C820C
-u8 D_800E53EC;
 u8 func_800726C8(Animal *arg0, Animal *arg1, Position **p1, Position **arg3, Pos xPos1, Pos zPos1, Pos yPos1, Pos xPos2, Pos zPos2, Pos yPos2) {
 
     s32 tmp1;

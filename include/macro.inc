@@ -1,12 +1,18 @@
 # Assembly Macros
 
-.macro jlabel label
-    glabel \label
-.endm
-
 .macro glabel label
     .global \label
-    .balign 2
+    .type \label, @function
+    \label:
+.endm
+
+.macro dlabel label
+    .global \label
+    \label:
+.endm
+
+.macro jlabel label
+    .global \label
     \label:
 .endm
 

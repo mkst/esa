@@ -189,10 +189,13 @@ void func_80078890(struct079 *arg0) {
 INCLUDE_ASM("asm/esa/nonmatchings/overlay2_716900", func_80078890);
 #endif
 
+// sssv:func_80305A70_717120
 INCLUDE_ASM("asm/esa/nonmatchings/overlay2_716900", func_80078EAC);
 
+// sssv:func_80305DA4_717454
 INCLUDE_ASM("asm/esa/nonmatchings/overlay2_716900", func_800791C4);
 
+// sssv:func_803064BC_717B6C
 INCLUDE_ASM("asm/esa/nonmatchings/overlay2_716900", func_80079984);
 
 

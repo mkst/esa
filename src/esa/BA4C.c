@@ -4,11 +4,7 @@ extern s16 D_800E4F30;
 s8 *D_800E4FA8;
 s64 D_800E4FD8;
 
-extern s8 D_800E525C;
-extern struct002 *D_800E5284;
-extern struct005 *D_800E52A8;
-extern s16 D_800E52C8;
-extern s16 D_800E52D8;
+
 
 #if 0
 
@@ -114,6 +110,7 @@ block_22:
 INCLUDE_ASM("asm/esa/nonmatchings/BA4C", func_8001B44C);
 #endif
 
+// play sound effect
 INCLUDE_ASM("asm/esa/nonmatchings/BA4C", func_8001B714);
 
 

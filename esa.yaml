@@ -53,7 +53,7 @@ segments:
       - [0x4E28, .rodata, overlay2_725D10]
       - [0x52D0, .rodata, overlay2_72AF60]
       - [0x5314, .rodata, overlay2_707310]
-      - [0x53B4, .rodata, 488C8]
+      - [0x53B4, .rodata, 48A78]
       - [0x56AC, .rodata, overlay2_6D9330]
       - [0x57D4, .rodata, overlay2_7741B0]
       - [0x5A78, .rodata, overlay2_6DB610]
@@ -121,6 +121,8 @@ segments:
       - [0x3E4A0, c, overlay2_72BA20]
       - [0x3EF18, c, overlay2_707310]
       - [0x488C8, c, 488C8]
+      - [0x48968, c, overlay2_7689A0]
+      - [0x48A78, c, 48A78]
       - [0x4FEF8, c, overlay2_6D9330]
       - [0x51374, c, overlay2_7741B0]
       - [0x52A54, c, collist2]
@@ -361,7 +363,7 @@ segments:
       - [0xD4754, .sdata, controller]
       - [0xD4758, bin, sdata_D4758]
       # .sbss
-      - [0xD551C, bin, sbss]
+      - [0xD551C, data, sbss]
       # - [0xD55A0, .sbss, 78AF4] # fixme
       # - [0xD55A4, asm]
       # - [0xD55B0, .sbss, B7CC]

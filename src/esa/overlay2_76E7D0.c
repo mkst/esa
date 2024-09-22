@@ -3,11 +3,6 @@
 extern s16 D_80015AA4[];
 extern s16 D_80015AC4[];
 
-extern s8  D_800E4FB0;
-
-extern u16 D_800E5264;
-
-extern u16 D_800E4B80; // externed...
 
 s32 D_800E54B4;
 s32 D_800E54B8;

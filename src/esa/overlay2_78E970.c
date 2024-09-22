@@ -8,7 +8,131 @@ INCLUDE_ASM("asm/esa/nonmatchings/overlay2_78E970", func_80076D94);
 
 INCLUDE_ASM("asm/esa/nonmatchings/overlay2_78E970", func_80076DC4);
 
+#if 1
+u16 D_800E53FC;
+extern s64 D_800EAF2C[]; // fake
+
+void func_800775B8(void) {
+    s32 sp20;
+    Animal *animal;
+    s16 temp_s0;
+    s16 temp_s0_3;
+    s16 temp_s0_2;
+    s16 temp_v0_3;
+    s16 temp_v0_4;
+    s16 var_a0;
+    s16 var_s3;
+    s32 newHealth;
+    s16 temp_a0;
+    s16 temp_s6;
+    s32 doLaughter;
+    s32 var_a1;
+    s32 var_a2;
+    struct006 *temp_a0_2;
+    struct065 *var_s2;
+    s16 zPos;
+    s16 xPos;
+    s16 var_a3; // from sssv
+
+    if (D_800E529C->unk90 != MYSTERY_BEAR) {
+        func_8001B714(
+            D_800E527C,
+            0x77, // SFX_CONTAGIOUS_LAUGHTER
+            0x7000,
+            0,
+            30,
+            D_800E527C->xPos.h[1],
+            D_800E527C->zPos.h[1],
+            D_800E527C->yPos.h[1]);
+    }
+
+    xPos = D_800E527C->xPos.h[1];
+    zPos = D_800E527C->zPos.h[1];
+    temp_a0 = xPos >> 0xA;
+    temp_s6 = zPos >> 0xA;
+
+    sp20 = -1;
+    var_a1 = -1;
+    var_a2 = 1;
+    var_a3 = 1;
+
+    if ((temp_a0 + 1) >= 5) {
+        var_a3 = 0;
+    }
+    if (temp_a0 <= 0) {
+        var_a1 = 0;
+    }
+    if ((temp_s6 + 1) >= 8) {
+        var_a2 = 0;
+    }
+    if (temp_s6 <= 0) {
+        sp20 = 0;
+    }
+
+    for (var_s3 = temp_a0 + var_a1; var_s3 <= (temp_a0 + var_a3); var_s3++) {
+        for (var_a0 = temp_s6 + sp20;var_a0 <= (temp_s6 + var_a2); var_a0++) {
+            for (var_s2 = D_80112DF8[(s16) (var_s3 + ((var_a0 * 5)))].next; var_s2 != NULL; var_s2 = var_s2->next) {
+                if ((&var_s2->animal->unk116[6] == var_s2) && (D_800E527C != var_s2->animal)) {
+                    animal = var_s2->animal;
+                    if (abs(animal->yPos.h[1] - D_800E527C->yPos.h[1]) < 0xC0) {
+                        temp_s0_3 = xPos - animal->xPos.h[1];
+                        temp_s0 =  zPos - animal->zPos.h[1];
+
+                        temp_s0_2 = abs(temp_s0_3);
+                        temp_v0_3 = abs(temp_s0);
+
+                        temp_v0_4 = MAX(temp_s0_2, temp_v0_3) + (MIN(temp_s0_2, temp_v0_3) >> 1);
+
+                        if (temp_v0_4 < 0x200) {
+                            temp_a0_2 = animal->unk16C;
+                            if (temp_a0_2->unk80 & 0x40000) {
+                                if ((animal->unk386 != 2) && (animal->unk386 != 5)) {
+                                    if ((temp_a0_2->unk90 != EVO_TRANSFER) && (temp_a0_2->unk90 != HYENA) && (temp_a0_2->unk90 != HYENA_BIKER)) {
+                                        doLaughter = 0;
+                                        if (animal == D_800EAF2C[gCurrentAnimalIndex]) {
+                                            if (D_800E53FC != D_800E52C0) {
+                                                D_800E53FC = D_800E52C0;
+                                                doLaughter = 1;
+                                            }
+                                        } else {
+                                            doLaughter = 1;
+                                        }
+                                        if (doLaughter != 0) {
+                                            if ((animal->unk16C->unk90 != RACING_TORTOISE_DEFENDING) && (animal->unk16C->unk90 != TORTOISE_TANK_DEFENDING) && (animal->unk16C->unk90 != HYENA) && (animal->unk16C->unk90 != HYENA_BIKER)) {
+                                                if (animal->unk378 < 0x64) {
+                                                    animal->unk378++;
+                                                    if (temp_v0_4 < 0x100) {
+                                                        animal->unk378++;
+                                                    }
+                                                }
+                                                if (animal->unk378 >= 0x51) {
+                                                    animal->unk383 = 1;
+
+                                                    // SFX_LAUGHTER function removed
+
+                                                    if (!(D_800E5264 & 3)) {
+                                                        animal->health = MAX(0, animal->health - 1);
+                                                        func_8007DA18((struct000 *) animal, 1);
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            if (animal->unk16C->objectType != (256 + HYENA)) {
+                                animal->pad50[7] = 0x16;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+#else
 INCLUDE_ASM("asm/esa/nonmatchings/overlay2_78E970", func_800775B8);
+#endif
 
 INCLUDE_ASM("asm/esa/nonmatchings/overlay2_78E970", func_800779AC);
 
@@ -33,7 +157,6 @@ s32 func_80077FD0(s16 arg0, s16 arg1) {
     s16 i;
     s16 var_s0;
     s16 var_s0_2;
-    s16 var_v0_3;
     s16 var_v0_6;
     s32 temp_fp;
     s32 temp_s0;

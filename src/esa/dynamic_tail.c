@@ -206,7 +206,6 @@ void *func_80087738(struct029 *arg0) {
         z = (var_v1 * (arg0->unk18 >> 0xE)) / sqrt;
         // end of unused code
 
-
         vtx[i].vtx1.x = D_8011C96C[arg0->unk16 + i].unk0 >> 0x10;
         vtx[i].vtx1.y = D_8011C96C[arg0->unk16 + i].unk4 >> 0x10;
         vtx[i].vtx1.z = D_8011C96C[arg0->unk16 + i].unk8 >> 0x10;

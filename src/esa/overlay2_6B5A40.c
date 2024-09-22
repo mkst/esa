@@ -1,6 +1,6 @@
 #include "common.h"
 
-u16 D_800E5264;
+s16 D_800E5264;
 struct005 *D_800E5274;
 struct004 *D_800E527C;
 struct006 *D_800E529C;
@@ -820,7 +820,7 @@ void func_80042474(void) {
         D_800E527C->unk28 = D_800E73A8.unkB33E;
 
         D_800E527C->yVel.w = ((D_800E527C->yVel.w * 7) >> 3) + ((D_800E527C->unk28 * 5) << 8);
-        D_800E527C->yVel.w += (D_800CA604[(D_800E5264 << 2) & 0xFF] >> 0x7) << 6;
+        D_800E527C->yVel.w += (D_800CA604[((u16)D_800E5264 << 2) & 0xFF] >> 0x7) << 6;
 
         if ((D_800E73A8.unkB33C != 0) || (D_800E5274->unk32C != 0)) {
             D_800E5274->unk32E = MIN(16, D_800E5274->unk32E + 1);
@@ -893,12 +893,14 @@ INCLUDE_ASM("asm/esa/nonmatchings/overlay2_6B5A40", func_800433F0);
 
 // sssv:func_802B066C_6C1D1C
 #if 0
+void func_80086120(s16, s16, s32, s32, s32);
+
 void func_80043E8C(void) {
-    s16 temp_s2;
-    s16 temp_s0;
-    s16 temp_s1;
+    s16 temp_s2; // sp36
+    s16 temp_s0; // sp34
+    s16 temp_s1; // sp32
     s16 var_a3;
-    s32 idx;
+    s16 var_v1;
 
     temp_s2 = D_800E5274->unk328;
     if (D_800E73A8.unkB33E < 0) {
@@ -920,9 +922,11 @@ void func_80043E8C(void) {
     }
 
     temp_s0 = D_800E5274->unk32A >> 4;
-    D_8011E58C[temp_s2].unk30 = temp_s0;
     temp_s1 = D_800E5274->unk32A & 0xF;
 
+    D_8011E58C[temp_s2].unk30 = temp_s0 & 0xFF;
+
+    var_v1 = D_800E73A8.unkB33C;
     if (D_800E73A8.unkB33C > 0) {
         D_800E527C->unk2C = (((s32) D_8010CC50[D_800E5144].unk74 >> 0xC) + 0x40) & 0xFF;
     }
@@ -930,13 +934,12 @@ void func_80043E8C(void) {
         D_800E527C->unk2C = (((s32) D_8010CC50[D_800E5144].unk74 >> 0xC) + 0xC0) & 0xFF;
     }
 
-    if (D_8011E58C[temp_s2].unk35 != 0) {
-        idx = (s32) D_8010CC50[D_800E5144].unk74 >> 0xC;
+    if (D_8011E58C[temp_s2].unk35 == 0) {
         func_80086120(
             temp_s2,
-            D_8011E58C[temp_s2].unk30,
-             D_800E73A8.unkB33C * ((s16)(D_800CA604[((s16) idx + 0x40) & 0xFF]) >> 0x7),
-            -D_800E73A8.unkB33C * ((s16)(D_800CA604[idx & 0xFF]) >> 0x7),
+            temp_s0,
+             D_800E73A8.unkB33C * (COS((s32) D_8010CC50[D_800E5144].unk74 >> 0xC) >> 0x7),
+            -D_800E73A8.unkB33C * (SIN((s32) D_8010CC50[D_800E5144].unk74 >> 0xC) >> 0x7),
             -0x10000);
     } else {
         D_8011E58C[temp_s2].unk35--;
@@ -955,9 +958,9 @@ void func_80043E8C(void) {
                              ((     temp_s1) * (D_8011C96C[(D_8011E58C[temp_s2].unk16 + temp_s0) + 1].unk8 >> 4));
     }
     func_8003950C(D_800E527C);
-    D_800E527C->xVel = D_8011C96C[D_8011E58C[temp_s2].unk16 + temp_s0].unkC;
-    D_800E527C->zVel = D_8011C96C[D_8011E58C[temp_s2].unk16 + temp_s0].unk10;
-    D_800E527C->yVel = D_8011C96C[D_8011E58C[temp_s2].unk16 + temp_s0].unk14;
+    D_800E527C->xVel.w = D_8011C96C[D_8011E58C[temp_s2].unk16 + temp_s0].unkC;
+    D_800E527C->zVel.w = D_8011C96C[D_8011E58C[temp_s2].unk16 + temp_s0].unk10;
+    D_800E527C->yVel.w = D_8011C96C[D_8011E58C[temp_s2].unk16 + temp_s0].unk14;
 }
 #else
 INCLUDE_ASM("asm/esa/nonmatchings/overlay2_6B5A40", func_80043E8C);

@@ -1,5 +1,9 @@
 #include "common.h"
 
+s16 D_800E546C;
+s16 D_800E547C;
+s16 D_800E5474;
+
 extern s32 D_800E5320;
 
 INCLUDE_ASM("asm/esa/nonmatchings/overlay2_739290", func_8007F0E0);
@@ -10,7 +14,6 @@ INCLUDE_ASM("asm/esa/nonmatchings/overlay2_739290", func_8007F278);
 extern struct006 **D_800E5284;
 extern struct019 *D_800E5468[];
 extern s16 D_800E546C;
-extern s16 D_800E5474;
 extern struct018 D_800E5478[];
 
 // sssv:func_80328258_739908
@@ -89,85 +92,71 @@ extern struct002 *D_800E5284;
 extern s32        D_800E52A8;
 extern s16        D_800E52C8;
 extern s16        D_800E52D8;
-extern s16        D_800E546C;
-extern s16        D_800E5474;
-extern s16        D_800E547C;
 extern struct006 *D_800EA9E8;
 
 void func_800813C8(void) {
     s16 temp_a1;
-    s16 temp_s1;
-    s32 temp_a1_5;
-    s32 temp_a2;
-    s32 temp_v1_3;
+    s16 swapIdx;
     s16 i;
-    s32 var_t0;
-    struct000 *temp_v1;
-    struct002 *temp_v0_2;
     u16 animal_id;
-    u8 temp_a1_6;
-    struct002 *temp_t1;
-    struct004 *temp_v0;
-    struct004 *temp_v0_3;
-    struct004 *temp_v1_2;
+    u8 tmp;
 
-    temp_s1 = D_800E5274->unk32E;
+    swapIdx = D_800E5274->unk32E;
     D_800E5274->unk340 = NULL;
     func_8008175C();
 
-    temp_t1 = &D_800E73A8.animals[temp_s1].animal; // (temp_s1 * 8) +
-    temp_v0 = temp_t1->animal;
-
-    temp_a1 = temp_v0->unk14C;
-    temp_v0->unk14C = D_800E73A8.animals[0].animal->unk14C;
+    temp_a1 = D_800E73A8.animals[swapIdx].animal->unk14C;
+    D_800E73A8.animals[swapIdx].animal->unk14C = D_800E73A8.animals[0].animal->unk14C;
     D_800E73A8.animals[0].animal->unk14C = temp_a1;
 
-    temp_a1 = temp_v0->unk300;
-    temp_v0->unk300 = D_800E73A8.animals[0].animal->unk300;
-    D_800E73A8.animals[0].animal->unk300 = temp_a1;
+    temp_a1 = D_800E73A8.animals[swapIdx].animal->energy[0].unk0;
+    D_800E73A8.animals[swapIdx].animal->energy[0].unk0 = D_800E73A8.animals[0].animal->energy[0].unk0;
+    D_800E73A8.animals[0].animal->energy[0].unk0 = temp_a1;
 
-    temp_a1 = temp_v0->unk304;
-    temp_v0->unk304 = D_800E73A8.animals[0].animal->unk304;
-    D_800E73A8.animals[0].animal->unk304 = temp_a1;
+    temp_a1 = D_800E73A8.animals[swapIdx].animal->energy[1].unk0;
+    D_800E73A8.animals[swapIdx].animal->energy[1].unk0 = D_800E73A8.animals[0].animal->energy[1].unk0;
+    D_800E73A8.animals[0].animal->energy[1].unk0 = temp_a1;
 
     D_800E73A8.animals[0].animal->unk4A = 0;
-    temp_t1->animal->unk4A = 0;
+    D_800E73A8.animals[swapIdx].animal->unk4A = 0;
 
-    D_800E73A8.animals[0].animal->unk4C.unk1A = temp_t1->animal->unk4C.unk1A;
-    temp_t1->animal->unk4C.unk1A = D_800E73A8.animals[0].animal->unk4C.unk1A;
+    tmp = D_800E73A8.animals[0].animal->unk4C.unk1A;
+    D_800E73A8.animals[0].animal->unk4C.unk1A = D_800E73A8.animals[swapIdx].animal->unk4C.unk1A;
+    D_800E73A8.animals[swapIdx].animal->unk4C.unk1A = tmp;
 
+    D_800E5284 = &D_800E73A8.animals[0];
     D_800E529C = D_800E73A8.animals[0].unk0;
-    D_800E5284 = D_800E73A8.animals;
     D_800E52A8 = D_800E73A8.animals[0].animal;
-    D_800E5274 = D_800E73A8.animals[0].animal;
-    D_800E527C = D_800E73A8.animals[0].animal;
+    D_800E5274 = D_800E52A8;
+    D_800E527C = D_800E52A8;
 
     if (gCurrentAnimalIndex == 0) {
         D_800E525C = 1;
     } else {
         D_800E525C = 0;
     }
-
-    D_800E5284->unk0 = &D_800E73A8.unk0[62]; // D_800EA9E8; (0x3640 / 0xE0 -> 62)
-    temp_v0_2 = &D_800E73A8.animals[temp_s1]; //(temp_s1 * 8) + (&D_800EA9E8 + 0x540);
-    temp_v1 = temp_v0_2->animal;
     D_800E52C8 = 0;
     D_800E52D8 = 0;
 
-    gCurrentAnimalIndex = temp_s1;
-    D_800E5284 = temp_v0_2;
-    D_800E527C->unk16C = (struct006 *) &D_800EA9E8;
-    D_800E527C = D_800E5274 = D_800E52A8 = temp_v1;
-    D_800E529C = D_800E5284->unk0;
+    D_800E5284->unk0 = &D_800E73A8.unk0[62]; // D_800EA9E8; (0x3640 / 0xE0 -> 62)
+    D_800E527C->unk16C = &D_800E73A8.unk0[62];
 
-    if (gCurrentAnimalIndex == temp_s1) {
+    gCurrentAnimalIndex = swapIdx;
+    D_800E5284 = &D_800E73A8.animals[swapIdx];
+    D_800E529C = D_800E73A8.animals[swapIdx].unk0;
+    D_800E52A8 = D_800E73A8.animals[swapIdx].animal;
+    D_800E5274 = D_800E52A8;
+    D_800E527C = D_800E52A8;
+
+    if (gCurrentAnimalIndex == swapIdx) {
         D_800E525C = 1;
     } else {
         D_800E525C = 0;
     }
 
-    D_800E52C8 = temp_s1;
+    D_800E52C8 = swapIdx;
     D_800E52D8 = 0;
+
     D_800E5274->unk386 = 1;
     D_800E5274->unk348 = (s16) D_800E52C0;
     D_800E5274->unk38A = 2;
@@ -179,7 +168,7 @@ void func_800813C8(void) {
     }
 
     D_800E527C->unk18C = D_800E73A8.animals[0].animal->unk18C;
-    D_800E546C = D_800E73A8.animals[temp_s1].unk0->unk90;
+    D_800E546C = D_800E73A8.animals[swapIdx].unk0->unk90;
     D_800E547C = D_800D8F60[D_800E546C*2];
     D_800E5474 = D_800D8F60[D_800E546C*2 + 1];//*(temp_v1_3 + 1 + &D_800D8F60);
     check_and_set_species_encountered(D_800E546C); //, (s8) temp_a1_6, &D_800D8F60, animal_id);
@@ -188,9 +177,11 @@ void func_800813C8(void) {
     func_800463C4();
     func_8004D86C(D_800E527C);
 
-    D_800E5284 = D_800E73A8.animals;
-    D_800E529C = (struct006 *) D_800E73A8.animals[0].unk0;
-    D_800E527C =D_800E5274 = D_800E52A8 = D_800E73A8.animals[0].animal;
+    D_800E5284 = &D_800E73A8.animals[0];
+    D_800E529C = D_800E73A8.animals[0].unk0;
+    D_800E52A8 = D_800E73A8.animals[0].animal;
+    D_800E5274 = D_800E52A8;
+    D_800E527C = D_800E52A8;
 
     if (gCurrentAnimalIndex == 0) {
         D_800E525C = 1;

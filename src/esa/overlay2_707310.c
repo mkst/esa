@@ -194,16 +194,16 @@ s16 func_80050BF0(Object *arg0, Object *arg1, s16 arg2, s16 arg3, s16 arg4, s16 
     u8 var_s2;
     u8 tmp;
 
-    temp_v1 = arg0->unk6 - arg1->unk6;
-    temp_a0 = arg0->unkA - arg1->unkA;
+    temp_v1 = arg0->xPos.h[1] - arg1->xPos.h[1];
+    temp_a0 = arg0->zPos.h[1] - arg1->zPos.h[1];
 
     xzDist = SquareRoot0((temp_v1 * temp_v1) + (temp_a0 * temp_a0)) - arg2;
 
     if (xzDist < 0) {
-      return -1;
+        return -1;
     }
 
-    yDist = (arg1->unkE - arg0->unkE) - arg3;
+    yDist = (arg1->yPos.h[1] - arg0->yPos.h[1]) - arg3;
     if (arg7 == 3) {
         tmp = 0;
         if (yDist < 33) {
@@ -232,50 +232,55 @@ s16 func_80050BF0(Object *arg0, Object *arg1, s16 arg2, s16 arg3, s16 arg4, s16 
     if (arg5 < var_s1) {
         var_s4 = abs(var_s1 - arg5);
         var_s1 = arg5;
-        goto block_14;
-    }
-    if (var_s1 < arg6) {
+    } else if (var_s1 < arg6) {
         var_s4 = abs(abs(var_s1) - abs(arg6));
         var_s1 = arg6;
-block_14:
-        if ((arg7 == 4) && (xzDist < 0x46)) {
-            if (var_s1 < 0) {
-                var_s1 += 0x168;
-            }
-            return var_s1;
+    } else {
+        if (var_s1 < 0) {
+            var_s1 += 0x168;
         }
+        return var_s1;
+    }
 
-        var_a0 = func_800509BC(!var_s2, xzDist, arg4, yDist, arg8);
-        if (var_a0 == 9999) {
-            return -1;
+    if ((arg7 == 4) && (xzDist < 0x46)) {
+        if (var_s1 < 0) {
+            var_s1 += 0x168;
         }
-        if (arg5 < var_a0) {
-            var_v1 = abs(var_a0 - arg5);
-            var_a0_3 = arg5;
-            goto block_28;
+        return var_s1;
+    }
+
+    var_a0 = func_800509BC(!var_s2, xzDist, arg4, yDist, arg8);
+    if (var_a0 == 9999) {
+        return -1;
+    }
+
+    if (arg5 < var_a0) {
+        var_v1 = abs(var_a0 - arg5);
+        var_a0 = arg5;
+    } else if (var_a0 < arg6) {
+        var_v1 = abs(abs(var_a0) - abs(arg6));
+        var_a0 = arg6;
+    } else {
+        return -1;
+    }
+
+    if ((var_s4 < var_v1) && (var_s4 < 5)) {
+        if (var_s1 < 0) {
+            var_s1 += 360;
         }
-        if (var_a0 < arg6) {
-            var_v1 = abs(abs(var_a0) - abs(arg6));
-            var_a0_3 = arg6;
-block_28:
-            if (((var_s4 < var_v1) && (var_v0 = var_s1, ((var_s4 < 5) != 0))) || (var_v0 = var_a0_3, ((var_v1 < 5) != 0))) {
-                if (var_v0 < 0) {
-                    var_v0 += 0x168;
-                }
-                /* Duplicate return node #33. Try simplifying control flow for better match */
-                return var_v0;
-            }
-            return -1;
-        }
+        return var_s1;
+    } else if (var_v1 < 5) {
         if (var_a0 < 0) {
-            var_a0 += 0x168;
+            var_a0 += 360;
+        }
+        return var_a0;
+    } else {
+        if (var_a0 < 0) {
+            var_a0 += 360;
         }
         return var_a0;
     }
-    if (var_s1 < 0) {
-        var_s1 += 0x168;
-    }
-    return var_s1;
+
 
 }
 #else

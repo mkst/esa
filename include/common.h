@@ -26,6 +26,9 @@
 
 #define SQ(x) ((x) * (x))
 
+#define COS(x) D_800CA604[((s16)(x) + 0x40) & 0xFF]
+#define SIN(x) D_800CA604[((s16)(x) ) & 0xFF]
+
 // TBD
 // ABBBBBGG GGGRRRRR
 #define GPACK_RGBA5551(r, g, b, a) \

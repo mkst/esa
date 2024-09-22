@@ -7,7 +7,7 @@ s32 D_800E5158; // defined in camera
 s32 D_800E515C; // defined in camera
 
 // tbd
-s32 func_8001D8F4(s16, s16, s16, s16, s16, s16, s16, u8, u8, u8);
+s16 func_8001D8F4(s16, s16, s16, s16, s16, s16, s16, u8, u8, u8);
 
 
 // sssv:func_8032F950_741000
@@ -147,7 +147,7 @@ void func_8002A3C0(void) {
 INCLUDE_ASM("asm/esa/nonmatchings/camera", reset_camera);
 
 // sssv:func_8033C814_74DEC4
-s32 func_8002A8D4(s16 arg0, s16 arg1, s16 arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6, s32 arg7, u8 arg8) {
+s16 func_8002A8D4(s16 arg0, s16 arg1, s16 arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6, s32 arg7, u8 arg8) {
     s32 sp28;
     s32 sp2C;
     s32 sp30;
@@ -159,7 +159,7 @@ s32 func_8002A8D4(s16 arg0, s16 arg1, s16 arg2, s32 arg3, s32 arg4, s32 arg5, s3
 }
 
 // sssv:func_8033C8EC_74DF9C
-s32 func_8002A9D0(s16 arg0, s16 arg1, s16 arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6, s32 arg7) {
+s16 func_8002A9D0(s16 arg0, s16 arg1, s16 arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6, s32 arg7) {
     s32 sp28;
     s32 sp2C;
     s32 sp30;

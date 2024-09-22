@@ -1,21 +1,190 @@
 #include "common.h"
+#include "libgte.h"
+
+typedef struct {
+  s16 unk0;
+  s16 unk2;
+  s16 unk4;
+  u8  pad6[0x2];
+} struct022;
+
+typedef struct {
+  u8  pad0[0x30];
+  s32 unk30;
+} struct024a;
 
 extern struct023  D_80112FD8[];
-extern s32        D_800E40E0;
-s32        D_800E4BC8;
+extern struct024a *D_800E40E0;
+
+s32               D_800E4BC8;
 extern s32        D_80113058;
 
-void func_80070190(s16 numVtxs, struct021 *vtxs, s32 arg2, s16 arg3, s16 arg4, s32 arg5, s16 arg6, s16 arg7, s16 arg8, s32 arg9, s32 argA, s32 argB, s32 argC);
-void func_8006FC24(s16 numVtxs, struct021 *vtxs, s16 arg2, s16 arg3, s16 arg4, s32 arg5, u8 arg6, u8 arg7, s16 red, s16 green, s16 blue, s32 argB, s32 argC, s32 argD, s32 argE);
-void func_8006B88C(s16, s32, s32, struct021 *, u8, u8, u8);
-void func_800169CC(s16 numVtxs, void*, void*, s32);
+extern s32 D_800E5E9C[3][2]; // matrix?
 
 INCLUDE_ASM("asm/esa/nonmatchings/overlay2_75D3D0", func_8006B88C);
 
-INCLUDE_ASM("asm/esa/nonmatchings/overlay2_75D3D0", func_8006BC30);
+void func_8006BC30(s16 arg0, s16 arg1, s16 arg2, s16 arg3, void *img, s16 arg5, s16 arg6, s16 alpha, s16 red, s16 green, s16 blue, s16 argB, u8 argC) {
+    struct021 vtxs[5][10];
 
+    s32 pad[12];
+    s16 numVtxs[6];
+    s32 pad2[12];
+
+    s32 sp220[4][4]; // tbd
+
+    s16 var_a1;
+    s32 temp_s4;
+    s32 sp274;
+    s32 sp278;
+
+    Animal *animal;
+    Animal *var_s3;
+
+    s16 x_high;
+    s16 x_low;
+    s16 z_low;
+    s16 z_high;
+    s16 new_distance;
+    s16 best_distance;
+    s16 temp_a0;
+    s16 temp_a2;
+    s16 temp_t0;
+    s16 temp_t1;
+    s16 temp_v1;
+    s16 temp_v1_2;
+    s32 idx;
+    s32 idx2;
+    struct065 *var_s2;
+
+    // complete guess (very likely wrong!)
+    sp220[1][1] = 0;
+    sp220[1][2] = 0;
+    sp220[1][3] = 0;
+
+    gte_SetRotMatrix(D_800E5E9C);
+    gte_SetTransMatrix(sp220);
+
+    temp_a0 = (D_800CA604[(s16)(arg3) & 0xFF] >> 0x7) + 1;
+    temp_v1 = (D_800CA604[(s16)(arg3 + 0x40) & 0xFF] >> 0x7) + 1;
+
+    temp_t0 = (arg5 * temp_a0) >> 8;
+    temp_t1 = (arg5 * temp_v1) >> 8;
+    temp_a2 = -(arg6 * temp_a0) >> 8;
+    temp_v1_2 = (arg6 * temp_v1) >> 8;
+
+    vtxs[0][0].unk0 = temp_v1_2 + (arg0 + temp_t0);
+    vtxs[0][0].unk2 = temp_a2 + (arg1 + temp_t1);
+    vtxs[0][0].unk4 = 0xFC0;
+    vtxs[0][0].unk6 = 0xFC0;
+
+    vtxs[0][1].unk0 = temp_v1_2 + (arg0 - temp_t0);
+    vtxs[0][1].unk2 = temp_a2 + (arg1 - temp_t1);
+    vtxs[0][1].unk4 = 0;
+    vtxs[0][1].unk6 = 0xFC0;
+
+    vtxs[0][2].unk0 = (arg0 - temp_t0) - temp_v1_2;
+    vtxs[0][2].unk2 = (arg1 - temp_t1) - temp_a2;
+    vtxs[0][2].unk4 = 0;
+    vtxs[0][2].unk6 = 0;
+
+    vtxs[0][3].unk0 = (arg0 + temp_t0) - temp_v1_2;
+    vtxs[0][3].unk2 = (arg1 + temp_t1) - temp_a2;
+    vtxs[0][3].unk4 = 0xFC0;
+    vtxs[0][3].unk6 = 0;
+
+    numVtxs[0] = 4;
+
+    var_a1 =  MIN(MIN(vtxs[0][0].unk0, vtxs[0][1].unk0), MIN(vtxs[0][2].unk0, vtxs[0][3].unk0));
+    temp_s4 = MAX(MAX(vtxs[0][0].unk0, vtxs[0][1].unk0), MAX(vtxs[0][2].unk0, vtxs[0][3].unk0));
+
+    sp274 = MIN(MIN(vtxs[0][0].unk2, vtxs[0][1].unk2), MIN(vtxs[0][2].unk2, vtxs[0][3].unk2));
+    sp278 = MAX(MAX(vtxs[0][0].unk2, vtxs[0][1].unk2), MAX(vtxs[0][2].unk2, vtxs[0][3].unk2));
+
+    var_s3 = NULL;
+    best_distance = 0x280;
+
+    idx2 = (s16)((arg0 >> 0xA) + ((arg1 >> 0xA) * 5));
+    for (var_s2 = D_80112DF8[idx2].next; var_s2 != NULL; var_s2 = var_s2->next) {
+        animal = var_s2->animal;
+        if ((animal != D_800E527C) && ((animal->unk3E & 0x3F) != 0x28) &&
+            ((animal->unk16C->unk15 == 4) ||
+            ((animal->unk16C->objectType == 0x5D)) || (animal->unk16C->objectType == 0x5E)) &&
+            !(animal->unk163[0] & 0x10) && ((arg2 << 0x10) >= (animal->yPos.w + (animal->unk42 << 0x10)))) {
+
+            if (((animal->xPos.h[1] + animal->unk30) >= var_a1) && (temp_s4 >= (animal->xPos.h[1] - animal->unk30))) {
+                if (((animal->zPos.h[1] + animal->unk32) >= sp274) && (sp278 >= (animal->zPos.h[1] - animal->unk32))) {
+                    new_distance = abs(animal->xPos.h[1] - arg0) + abs(animal->zPos.h[1] - arg1);
+                    if (new_distance < best_distance) {
+                        best_distance = new_distance;
+                        var_s3 = animal;
+                    }
+                }
+            }
+        }
+    }
+    if (var_s3 == NULL) {
+        func_8006C6E8(vtxs[0], 4, arg2, alpha, (s32) (s16) red, green, blue);
+        return;
+    }
+
+    x_low  = var_s3->xPos.h[1] - var_s3->unk30;
+    x_high = var_s3->xPos.h[1] + var_s3->unk30;
+    z_low  = var_s3->zPos.h[1] - var_s3->unk32;
+    z_high = var_s3->zPos.h[1] + var_s3->unk32;
+
+    if ((var_a1 >= x_low) && (x_high >= temp_s4)) {
+        if ((sp274 >= z_low) && (z_high >= sp278)) {
+            func_8007080C(4, vtxs[0], (var_s3->yPos.h[1] + var_s3->unk42), alpha, red, green, blue);
+            idx = -1;
+        } else {
+            idx = 0;
+        }
+    } else if ((var_a1 < x_high) && (x_high < temp_s4)) {
+        func_8006EBD0(vtxs[0], vtxs[1], vtxs[2], 4, &numVtxs[1], &numVtxs[2], x_high);
+        if (numVtxs[2] >= 3) {
+            func_8006C6E8(vtxs[2], numVtxs[2], arg2, alpha, red, green, blue);
+        }
+        idx = 1;
+    } else if ((var_a1 < x_low) && (x_low < temp_s4)) {
+        func_8006EBD0(vtxs[0], vtxs[1], vtxs[2], 4, &numVtxs[1], &numVtxs[2], x_low);
+        if (numVtxs[1] >= 3) {
+            func_8006C6E8(vtxs[1], numVtxs[1], arg2, alpha, red, green, blue);
+        }
+        idx = 2;
+    } else {
+        func_8006C6E8(vtxs[0], 4, arg2, alpha, red, green, blue);
+        idx = -1;
+    }
+
+    if (idx >= 0) {
+        if ((z_high >= sp274) && (sp278 >= z_high)) {
+            func_8006F408(vtxs[idx], vtxs[3], vtxs[4], numVtxs[idx], &numVtxs[3], &numVtxs[4], (s32) z_high);
+            if (numVtxs[4] >= 3) {
+                func_8006C6E8(vtxs[4], numVtxs[4], arg2, alpha, red, green, blue);
+            }
+            if ((numVtxs[3] >= 3)) {
+                func_8007080C(numVtxs[3], vtxs[3], (var_s3->yPos.h[1] + var_s3->unk42), alpha, red, green, blue);
+            }
+        } else if ((z_low >= sp274) && (((sp278 < z_low) == 0))) {
+            func_8006F408(vtxs[idx], vtxs[3], vtxs[4], numVtxs[idx], &numVtxs[3], &numVtxs[4], (s32) z_low);
+            if (numVtxs[3] >= 3) {
+                func_8006C6E8(vtxs[3], numVtxs[3], arg2, alpha, red, green, blue);
+            }
+            if (!(numVtxs[4] < 3)) {
+                func_8007080C(numVtxs[4], vtxs[4], (var_s3->yPos.h[1] + var_s3->unk42), alpha, red, green, blue);
+            }
+        } else {
+            if (numVtxs[idx] >= 3) {
+                func_8007080C(numVtxs[idx], vtxs[idx], (var_s3->yPos.h[1] + var_s3->unk42), alpha, red, green, blue);
+            }
+        }
+    }
+}
+
+// sssv:func_8034C8F8_75DFA8 (but customised)
 INCLUDE_ASM("asm/esa/nonmatchings/overlay2_75D3D0", func_8006C510);
 
+// sssv:func_8034CCBC_75E36C
 INCLUDE_ASM("asm/esa/nonmatchings/overlay2_75D3D0", func_8006C6E8);
 
 #if 0
@@ -381,24 +550,6 @@ INCLUDE_ASM("asm/esa/nonmatchings/overlay2_75D3D0", func_8006F408);
 
 
 #if 0
-
-typedef struct {
-  s16 unk0;
-  s16 unk2;
-  s16 unk4;
-  u8  pad6[0x2];
-} struct022;
-
-typedef struct {
-  u8  pad0[0x30];
-  s32 unk30;
-} struct024;
-
-
-extern struct024 *D_800E40E0;
-
-void func_8006B88C(s32, s32, s32, void*, u8, u8, u8);
-
 void func_8006FC24(s16 numVtxs, struct021 *vtxs, s16 arg3, s16 arg4, u8 arg6, u8 arg7, s16 red, s16 green, s16 blue, s32 argB, s32 argC, s32 argD, s32 argE) {
     s16 temp_v0;
     s16 temp_v1;
@@ -406,7 +557,6 @@ void func_8006FC24(s16 numVtxs, struct021 *vtxs, s16 arg3, s16 arg4, u8 arg6, u8
     s32 var_a0;
     s32 var_a1;
     s16 i;
-    s32 var_lo;
     s32 var_v0;
 
     struct021 *var_a2;
@@ -420,6 +570,7 @@ void func_8006FC24(s16 numVtxs, struct021 *vtxs, s16 arg3, s16 arg4, u8 arg6, u8
     }
 
     if (arg6 != 0) {
+        s32 tmp1, tmp2;
 
         if (arg7 == 0) {
             var_a0 = MAX(MAX(argB, argE), argD) - MIN(MIN(argB, argE), argD);
@@ -534,7 +685,7 @@ void func_80070190(s16 numVtxs, struct021 *vtxs, s32 arg2, s16 arg3, s16 arg4, s
                 D_80112FD8[i].unk4 *= 4;
             }
 
-            func_800169CC(numVtxs, &D_80112FD8, &D_80113058, D_800E40E0 + 0x30);
+            func_800169CC(numVtxs, &D_80112FD8, &D_80113058, &D_800E40E0->unk30);
 
             for (i = 2; i < numVtxs; i++) {
                 if (i < (numVtxs - 1)) {

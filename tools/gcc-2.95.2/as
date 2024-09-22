@@ -1,3 +1,9 @@
 #!/bin/bash
 
-python3 $(dirname -- $0)/../maspsx/maspsx.py --run-assembler --aspsx-version=2.86 $@
+python3 $(dirname -- $0)/../maspsx/maspsx.py \
+    --run-assembler \
+    --aspsx-version=2.86 \
+    --macro-inc \
+    --use-comm-section \
+    --use-comm-for-lcomm \
+    $@

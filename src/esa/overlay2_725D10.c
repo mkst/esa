@@ -102,7 +102,6 @@ INCLUDE_ASM("asm/esa/nonmatchings/overlay2_725D10", func_800471D8);
 
 #if 0
 extern struct006 D_800D93A8[];
-extern s8 D_800E525C;
 extern struct002 *D_800E5284;
 extern s16 D_800E5290;
 extern struct005 *D_800E52A8;
