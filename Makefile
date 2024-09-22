@@ -94,6 +94,9 @@ extract: $(ESA_BASENAME).yaml
 clean:
 	rm -rf $(BUILD_DIR) $(ESA_ASM_DIR) $(ESA_ASSETS_DIR)
 
+progress: $(ESA_TARGET).ok
+	$(PYTHON) $(TOOLS_DIR)/progress.py esa > progress.esa.json
+
 $(ESA_TARGET).dat: $(ESA_TARGET).elf
 	$(OBJCOPY) $(OBJCOPY_FLAGS) $< $@
 
