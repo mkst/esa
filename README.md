@@ -1,6 +1,7 @@
 # Evo's Space Adventures PSX
 
 ![build](https://github.com/mkst/esa/workflows/build/badge.svg)
+![progress](https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/mkst/esa/refs/heads/master/progress.esa.json&query=total&suffix=%25&logo=github&logoColor=959da5&label=progress&labelColor=353c43&color=critical)
 
 A Proof-of-Concept, Work-in-Progress, decompilation of Evo's Space Adventure for the PlayStation 1.
 
