@@ -61,7 +61,14 @@ void func_80064858(struct004 *arg0, s32 *arg1, s32 *arg2) {
     }
 }
 
+#if 0
+void func_80064930(s32 *arg0, s32 *arg1) {
+    *arg0 += ((((D_800E53A4[D_800E527C->xPos.h[1] >> 6][D_800E527C->zPos.h[1] >> 6].unk7 & 0xF0) >> 4) & 7   ) * (1 - (((D_800E53A4[D_800E527C->xPos.h[1] >> 6][D_800E527C->zPos.h[1] >> 6].unk7 >> 4) & 8) >> 2))) << 17;
+    *arg1 += ((((D_800E53A4[D_800E527C->xPos.h[1] >> 6][D_800E527C->zPos.h[1] >> 6].unk7 & 7)        ) & 0xFF) * (1 - (((D_800E53A4[D_800E527C->xPos.h[1] >> 6][D_800E527C->zPos.h[1] >> 6].unk7     ) & 8) >> 2))) << 17;
+}
+#else
 INCLUDE_ASM("asm/esa/nonmatchings/overlay2_6B5380", func_80064930);
+#endif
 
 INCLUDE_ASM("asm/esa/nonmatchings/overlay2_6B5380", func_80064A14);
 

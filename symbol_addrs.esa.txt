@@ -96,6 +96,11 @@ func_8009B26C                    = 0x8009B26C; // type:func
 func_8009E114                    = 0x8009E114; // type:func
 parrot_fly                       = 0x800A06C4;
 printf                           = 0x800A070C;
+spawn_dizzy_stars_big            = 0x800A2A54;
+spawn_dizzy_stars_medium         = 0x800A2D30;
+spawn_dizzy_starts_small         = 0x800A300C;
+kick_up_dust_small               = 0x800A32EC;
+kick_up_dust_big                 = 0x800A3404;
 create_particle_effect           = 0x800A401C;
 func_800A4F90                    = 0x800A4F90; // type:func
 ResetCallback                    = 0x800ABBD8;
@@ -259,3 +264,7 @@ gCurrentAnimalIndex              = 0x800E52A4;
 
 //LoadAndExecute                   = 0x800B2A78;
 //CdInit2                          = 0x800B8D00;
+
+// fake
+
+D_FFE6C000 = 0xFFE6C000; // ignore:true

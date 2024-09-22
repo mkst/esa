@@ -111,6 +111,7 @@ s32 func_80082D94(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16 arg4, s16 arg5, s1
 INCLUDE_ASM("asm/esa/nonmatchings/overlay2_732A60", func_80082D94);
 #endif
 
+// sssv:func_80322A58_734108
 INCLUDE_ASM("asm/esa/nonmatchings/overlay2_732A60", func_80083350);
 
 INCLUDE_ASM("asm/esa/nonmatchings/overlay2_732A60", func_80083664);
@@ -125,4 +126,5 @@ INCLUDE_ASM("asm/esa/nonmatchings/overlay2_732A60", func_80083CB8);
 
 INCLUDE_ASM("asm/esa/nonmatchings/overlay2_732A60", func_80083CE8);
 
+// no sssv equivalent?
 INCLUDE_ASM("asm/esa/nonmatchings/overlay2_732A60", func_80083EF8);

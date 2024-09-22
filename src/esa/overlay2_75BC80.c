@@ -1,67 +1,33 @@
 #include "common.h"
 
-INCLUDE_ASM("asm/esa/nonmatchings/overlay2_75BC80", func_800A3C98);
+// sssv:spawn_dizzy_stars_big
+INCLUDE_ASM("asm/esa/nonmatchings/overlay2_75BC80", spawn_dizzy_stars_big);
 
-// sssv:create_particle_effect_2
-INCLUDE_ASM("asm/esa/nonmatchings/overlay2_75BC80", func_800A3CC4);
+// sssv:spawn_dizzy_stars_medium
+INCLUDE_ASM("asm/esa/nonmatchings/overlay2_75BC80", spawn_dizzy_stars_medium);
 
-INCLUDE_ASM("asm/esa/nonmatchings/overlay2_75BC80", create_particle_effect);
+// sssv:spawn_dizzy_starts_small
+INCLUDE_ASM("asm/esa/nonmatchings/overlay2_75BC80", spawn_dizzy_starts_small);
 
-// sssv:func_802D6738_6E7DE8
-INCLUDE_ASM("asm/esa/nonmatchings/overlay2_75BC80", func_800A4668);
+// sssv:kick_up_dust_small
+INCLUDE_ASM("asm/esa/nonmatchings/overlay2_75BC80", kick_up_dust_small);
 
-// ESA/PS1 specific function
-INCLUDE_ASM("asm/esa/nonmatchings/overlay2_75BC80", func_800A4F90);
+// sssv:kick_up_dust_big
+INCLUDE_ASM("asm/esa/nonmatchings/overlay2_75BC80", kick_up_dust_big);
 
-// ESA/PS1 specific function
-INCLUDE_ASM("asm/esa/nonmatchings/overlay2_75BC80", func_800A80F8);
+// sssv:func_8034B298_75C948
+INCLUDE_ASM("asm/esa/nonmatchings/overlay2_75BC80", func_800A350C);
 
-// sssv:func_802D7434_6E8AE4
-INCLUDE_ASM("asm/esa/nonmatchings/overlay2_75BC80", func_800A88BC);
+// sssv:func_8034B3A8_75CA58
+void func_800A3628(s16 arg0) {
 
-// sssv:func_802D7AD4_6E9184
-void func_800A8A00(s16 x, s16 z, s16 y, s16 arg3) {
-    s16 tmp;
-    s16 i;
-
-    tmp = (arg3 * 3) + 1;
-
-    for (i = 0; i < tmp; i++) {
-        func_800A3CC4(
-            x + SSSV_RAND(8),
-            z + SSSV_RAND(8),
-            y,
-            0x1C,
-            SSSV_RAND(8) + 1,
-            0,
-            0,
-            0);
-    }
 }
 
-INCLUDE_ASM("asm/esa/nonmatchings/overlay2_75BC80", func_800A8AF0);
+// sssv:func_8034B45C_75CB0C
+INCLUDE_ASM("asm/esa/nonmatchings/overlay2_75BC80", func_800A3630);
 
-// sssv:func_802D9C64_6EB314
-INCLUDE_ASM("asm/esa/nonmatchings/overlay2_75BC80", func_800AAD34);
+// sssv:func_8034B64C_75CCFC
+INCLUDE_ASM("asm/esa/nonmatchings/overlay2_75BC80", func_800A3828);
 
-// sssv:func_802D7BE0_6E9290
-INCLUDE_ASM("asm/esa/nonmatchings/overlay2_75BC80", func_800AB0AC);
-
-// sssv:func_802D9FC4_6EB674
-INCLUDE_ASM("asm/esa/nonmatchings/overlay2_75BC80", func_800AB3B8);
-
-// file split, but what file?
-s32 func_800ABBB0(s32 arg0, s32 arg1, s32 arg2) {
-}
-
-void func_800ABBB8(void) {
-}
-
-void func_800ABBC0(void) {
-}
-
-void func_800ABBC8(void) {
-}
-
-void func_800ABBD0(void) {
-}
+// sssv:func_8034BB38_75D1E8
+INCLUDE_ASM("asm/esa/nonmatchings/overlay2_75BC80", func_800A3A38);

@@ -15,7 +15,24 @@ void func_80039D34(void) {
     D_800E5274->unk388 = 0;
 }
 
-INCLUDE_ASM("asm/esa/nonmatchings/overlay2_6B5A40", func_80039D58);
+void func_80039D58(u16 rotation, s8 arg1) {
+    D_800E5274->unk312 = 0;
+    D_800E5274->unk314 = 0;
+
+    D_800E527C->state = 3;
+    D_800E527C->unk2C = rotation;
+
+    if ((D_800E529C->unk90 == GORILLA) || (D_800E529C->unk90 == BEAR)) {
+        if (D_800E5274->unk340 != 0) {
+            arg1 = (arg1 * 5) / 6;
+        }
+    }
+    D_800E5274->unk388 = arg1;
+    D_800E5274->unk33A = (arg1 * D_800E529C->unk98) / 16;
+#ifdef SSSV
+    // func_802B8790_6C9E40();
+#endif
+}
 
 INCLUDE_ASM("asm/esa/nonmatchings/overlay2_6B5A40", func_80039E0C);
 

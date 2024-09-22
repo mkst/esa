@@ -49,7 +49,7 @@ s32  func_80030364(Animal *);
 
 s32  func_80037098(s16 x, s16 z, u8 arg2);
 s32  func_800370FC(s32, s32);
-s32  func_800373B0(s32, s32);
+s32  func_800373B0(s16, s16);
 
 void func_8003961C(void *buf, s32 offset, s32 length, s32 value);
 s32  func_800397B0(s16 arg0, s16 arg1, s32 arg2, Animal *arg3, s32 arg4, Animal **arg5, s32 *arg6, s32 arg7, Animal **arg8, s32 *arg9);

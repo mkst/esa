@@ -300,7 +300,7 @@ struct Animal {
     /* 0x18  */ Pos unk18; // Position
     /* 0x1C  */ Pos unk1C; // Position
     /* 0x20  */ Pos unk20; // Position
-    /* 0x24  */ Pos unk24; // Position
+    /* 0x24  */ Pos unk24; // Position yVelocity
     /* 0x28  */ u8 pad28[0x8];
     /* 0x30  */ s16 unk30;
     /* 0x32  */ s16 unk32;
@@ -683,7 +683,7 @@ typedef struct {
     /* 0x344 */ u8  pad344[0x4];
     /* 0x348 */ s16 unk348;
     /* 0x34A */ u16 unk34A;
-    /* 0x34C */ u8  pad34C[0x4];
+    /* 0x34C */ s16 unk34C;
     /* 0x350 */ struct003* unk350;
     /* 0x354 */ u16 unk354;
     /* 0x358 */ s32 unk358;
@@ -692,7 +692,9 @@ typedef struct {
     /* 0x36A */ s16 unk36A;
     /* 0x36C */ u8  unk36C[0xC];
     /* 0x378 */ s16 unk378;
-    /* 0x37A */ u8  pad37A[0x6];
+    /* 0x37A */ s16 unk37A;
+    /* 0x37C */ s16 unk37C;
+    /* 0x37E */ u16 unk37E;
     /* 0x380 */ s8  unk380;
     /* 0x381 */ u8  pad381[0x2];
     /* 0x383 */ u8  unk383;
@@ -712,10 +714,15 @@ typedef struct {
 } struct005;
 
 typedef struct {
-  u8  pad0[0x1A];
-  u16 unk1A;
-  u8  pad1C[0x32];
-  s16 unk4E;
+    /* 0x00 */ u8  pad0[0x10];
+    /* 0x10 */ u16 unk10;
+    /* 0x12 */ u16 unk12;
+    /* 0x14 */ u16 unk14;
+    /* 0x16 */ u16 unk16;
+    /* 0x18 */ u16 unk18;
+    /* 0x1A */ u16 unk1A; // animalID
+    /* 0x1C */ u8  pad1C[0x32];
+    /* 0x4E */ s16 unk4E;
 } struct011;
 
 typedef struct struct013 struct013;
@@ -852,6 +859,16 @@ struct struct065 {
     /* 0x4 */ struct065 *prev;
     /* 0x8 */ Animal *animal;
 }; // size 0xC
+
+typedef struct {
+  u8  unk0; // start1
+  u8  unk1; // start2
+  u8  unk2; // used?
+  u8  unk3; // end 1
+  u8  unk4; // send 2
+  u8  unk5; // used2?
+  u16 alignment;
+} struct067; // size 0x8
 
 typedef struct {
     /* 0x0 */  u16 used;

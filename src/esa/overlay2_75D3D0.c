@@ -23,6 +23,7 @@ extern s32 D_800E5E9C[3][2]; // matrix?
 
 INCLUDE_ASM("asm/esa/nonmatchings/overlay2_75D3D0", func_8006B88C);
 
+// sssv:func_8034BD20_75D3D0?
 void func_8006BC30(s16 arg0, s16 arg1, s16 arg2, s16 arg3, void *img, s16 arg5, s16 arg6, s16 alpha, s16 red, s16 green, s16 blue, s16 argB, u8 argC) {
     struct021 vtxs[5][10];
 

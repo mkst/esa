@@ -1,8 +1,5 @@
 #include "common.h"
 
-
-
-
 // sssv:func_80352380_763A30
 INCLUDE_ASM("asm/esa/nonmatchings/tortoise", func_800951B4);
 

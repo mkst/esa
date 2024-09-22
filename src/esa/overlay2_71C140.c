@@ -39,7 +39,6 @@ s16 D_800E520C;
 INCLUDE_ASM("asm/esa/nonmatchings/overlay2_71C140", func_8003030C);
 
 // sssv:func_8030AAE0_71C190
-
 s32 func_80030364(Animal *arg0) {
     s32 temp_s0;
     s32 temp_s1;
@@ -415,6 +414,3 @@ INCLUDE_ASM("asm/esa/nonmatchings/overlay2_71C140", func_8003950C);
 
 INCLUDE_ASM("asm/esa/nonmatchings/overlay2_71C140", func_80039554);
 
-INCLUDE_ASM("asm/esa/nonmatchings/overlay2_71C140", func_800395E0);
-
-INCLUDE_ASM("asm/esa/nonmatchings/overlay2_71C140", func_8003961C);

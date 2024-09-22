@@ -77,6 +77,7 @@ extern void      *D_80111164[32]; // size 0x80
 extern struct065  D_80112DF8[40];
 
 extern Camera     D_8010CC50[];
+extern struct067  D_801114EC[];
 extern struct028  D_8011C96C[];
 extern struct029  D_8011E58C[];
 
@@ -86,5 +87,4 @@ extern struct024  D_80122EAC[];
 extern struct024  D_8012353C[];
 extern struct024  D_80123C3C[];
 extern struct024  D_8012433C[];
-
 #endif
