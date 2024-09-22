@@ -17,13 +17,11 @@ options:
 
   find_file_boundaries: yes
 
-  use_legacy_include_asm: no
   migrate_rodata_to_functions: yes
 
   auto_decompile_empty_functions: no
 
   asm_jtbl_label_macro: jlabel
-  include_macro_inc: no # don't write macro.inc to rodata files
 
   section_order:
   - .rodata
