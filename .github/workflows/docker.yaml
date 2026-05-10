@@ -1,7 +1,7 @@
 name: Create and push Docker build image
 on:
   push:
-    branches: [ master ]
+    branches: [master]
     paths:
       - Dockerfile
       - packages.txt
